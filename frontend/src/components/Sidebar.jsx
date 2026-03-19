@@ -45,7 +45,7 @@ export default function Sidebar({
         >
           <span className="sidebar-mode-eyebrow">WORKBENCH</span>
           <span className="sidebar-mode-title">Dataset Explorer</span>
-          <span className="sidebar-mode-copy">Inspect issues, compare sources, run AI repair, and export to SQL.</span>
+          <span className="sidebar-mode-copy">Inspect issues, compare sources, run AI repair, and export to SQLite.</span>
         </button>
       </div>
 
@@ -119,10 +119,10 @@ export default function Sidebar({
             style={{ background: isConnected ? '#34c759' : '#ff3b30' }}
           />
           <div className="db-conn-btn-text">
-            <span className="db-conn-btn-label">SQL SERVER</span>
+            <span className="db-conn-btn-label">SQLITE</span>
             <span className="db-conn-btn-sub">
               {isConnected
-                ? `${dbConn.server} / ${dbConn.database}`
+                ? dbConn.database
                 : 'Not connected'}
             </span>
           </div>

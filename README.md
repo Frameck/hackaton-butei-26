@@ -2,6 +2,8 @@
 
 Hackathon prototype for spotting data quality issues across healthcare datasets, comparing faulty mock data against cleaner reference data, and reviewing the results in a local dashboard.
 
+The repair/export flow now writes to a local SQLite database, so you can run the full stack without provisioning SQL Server.
+
 ## Current Repository Layout
 
 ```text
@@ -23,6 +25,7 @@ start.bat           start backend + frontend on Windows
 - Parses nursing PDF reports into structured data
 - Exposes results through a Flask API
 - Shows issues and repair workflows in a React dashboard
+- Exports repaired datasets into local SQLite tables under `databases/`
 - Includes ML utilities and a trained model under `ml/`
 
 ## Run Locally
@@ -45,6 +48,13 @@ npm run dev
 ```
 
 Then open `http://localhost:5173`.
+
+SQLite export:
+
+- Open the SQLite button in the lower-left of the dashboard
+- Enter a database file such as `dashboard.sqlite`
+- Relative names are created inside `databases/`
+- Each dataset export replaces a table named after the dataset file
 
 ## One-Command Startup
 

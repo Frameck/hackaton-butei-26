@@ -945,7 +945,7 @@ UNIFIED_PRESENTATION = {
         "Harmonize raw fields into one patient/case target model",
         "Open a patient 360 view across labs, meds, notes, and devices",
         "Run Claude-assisted repair on bad rows",
-        "Export the cleaned result set to SQL Server",
+        "Export the cleaned result set to SQLite",
     ],
     "deployment": "Designed to run locally with offline/on-premises fallback when external AI is unavailable.",
 }
@@ -1579,8 +1579,6 @@ try:
 except ImportError:
     _HAS_ANTHROPIC = False
 
-import sqlite3
-
 DB_DIR = os.path.normpath(os.path.join(BASE_DIR, "..", "databases"))
 os.makedirs(DB_DIR, exist_ok=True)
 
@@ -2195,46 +2193,28 @@ def _extract_nursing_note_entities(nursing_rows: list[dict]) -> list[dict]:
 
 @app.route("/api/db/test-connection", methods=["POST"])
 def test_db_connection():
-    """Test a SQL Server connection without writing any data."""
+    """Test that a SQLite database file can be opened."""
     try:
         from sqlalchemy import create_engine, text
-        import urllib.parse
     except ImportError:
-        return safe_jsonify({"error": "sqlalchemy/pyodbc not installed"}), 500
+        return safe_jsonify({"error": "sqlalchemy not installed"}), 500
 
-    body     = request.get_json(silent=True) or {}
-    server   = body.get("server", "").strip()
-    port     = int(body.get("port", 1433))
-    database = body.get("database", "").strip()
-    username = body.get("username", "").strip()
-    password = body.get("password", "")
-    driver   = body.get("driver", "SQL Server")
-    auth     = body.get("auth", "sql")
-
-    if not server or not database:
-        return safe_jsonify({"ok": False, "error": "server and database are required"}), 400
+    body = request.get_json(silent=True) or {}
 
     try:
-        driver_enc = urllib.parse.quote_plus(driver)
-        if auth == "windows":
-            conn_str = (
-                f"mssql+pyodbc://@{server},{port}/{database}"
-                f"?driver={driver_enc}&trusted_connection=yes"
-            )
-        else:
-            if not username:
-                return safe_jsonify({"ok": False, "error": "username required for SQL auth"}), 400
-            pw_enc   = urllib.parse.quote_plus(password)
-            conn_str = (
-                f"mssql+pyodbc://{username}:{pw_enc}@{server},{port}/{database}"
-                f"?driver={driver_enc}"
-            )
+        db_path = _resolve_sqlite_path(body)
+        if db_path != ":memory:":
+            os.makedirs(os.path.dirname(db_path), exist_ok=True)
 
-        engine = create_engine(conn_str, connect_args={"timeout": 8})
+        engine = create_engine(_sqlite_engine_url(db_path), connect_args={"timeout": 8})
         with engine.connect() as con:
             con.execute(text("SELECT 1"))
 
-        return safe_jsonify({"ok": True})
+        return safe_jsonify({
+            "ok": True,
+            "database": os.path.basename(db_path) if db_path != ":memory:" else ":memory:",
+            "path": db_path,
+        })
     except Exception as e:
         return safe_jsonify({"ok": False, "error": str(e)}), 200
 
@@ -2340,31 +2320,53 @@ def _coerce_corrected_value(series: pd.Series, value):
     return value
 
 
+def _sanitize_sqlite_identifier(value: str, fallback: str) -> str:
+    cleaned = re.sub(r"[^\w]", "_", str(value or "")).strip("_")
+    if not cleaned:
+        cleaned = fallback
+    if cleaned[0].isdigit():
+        cleaned = f"_{cleaned}"
+    return cleaned[:128]
+
+
+def _resolve_sqlite_path(conn_cfg: dict) -> str:
+    database = str(conn_cfg.get("database", "")).strip()
+    if not database:
+        raise ValueError("database is required")
+
+    if database == ":memory:":
+        return database
+
+    candidate = os.path.expanduser(database)
+    if not candidate.lower().endswith((".db", ".sqlite", ".sqlite3")):
+        candidate = f"{candidate}.sqlite"
+
+    if not os.path.isabs(candidate):
+        candidate = os.path.join(DB_DIR, candidate)
+
+    return os.path.normpath(candidate)
+
+
+def _sqlite_engine_url(db_path: str) -> str:
+    if db_path == ":memory:":
+        return "sqlite+pysqlite:///:memory:"
+    return f"sqlite+pysqlite:///{db_path}"
+
+
 @app.route("/api/datasets/<path:name>/export-db", methods=["POST"])
 def export_db(name: str):
-    """Export the dataset (with optional AI corrections) to SQL Server."""
+    """Export the dataset (with optional AI corrections) to SQLite."""
     try:
         from sqlalchemy import create_engine, text
-        import urllib.parse
     except ImportError:
-        return safe_jsonify({"error": "sqlalchemy/pyodbc not installed"}), 500
+        return safe_jsonify({"error": "sqlalchemy not installed"}), 500
 
     body        = request.get_json(silent=True) or {}
     corrections = body.get("corrections", [])
     conn_cfg    = body.get("connection", {})
 
-    server   = conn_cfg.get("server", "").strip()
-    port     = int(conn_cfg.get("port", 1433))
-    database = conn_cfg.get("database", "").strip()
-    username = conn_cfg.get("username", "").strip()
-    password = conn_cfg.get("password", "")
-    driver   = conn_cfg.get("driver", "SQL Server")
-    auth     = conn_cfg.get("auth", "sql")  # "sql" | "windows"
-
-    if not server or not database:
-        return safe_jsonify({"error": "server and database are required"}), 400
-
     try:
+        db_path = _resolve_sqlite_path(conn_cfg)
         df = get_dataset(name)
         if df is None:
             return safe_jsonify({"error": "Dataset not found"}), 404
@@ -2388,44 +2390,31 @@ def export_db(name: str):
 
         # ── Derive table name ───────────────────────────────────────────────
         base       = os.path.splitext(name)[0]
-        table_name = re.sub(r"[^\w]", "_", base).strip("_") or "dataset"
-        # SQL Server max identifier length = 128 chars
-        table_name = table_name[:128]
+        table_name = _sanitize_sqlite_identifier(base, "dataset")
+        index_label = _sanitize_sqlite_identifier(f"{table_name}_row_index", "row_index")
 
-        # ── Build SQLAlchemy connection string ──────────────────────────────
-        driver_enc = urllib.parse.quote_plus(driver)
-        if auth == "windows":
-            conn_str = (
-                f"mssql+pyodbc://@{server},{port}/{database}"
-                f"?driver={driver_enc}&trusted_connection=yes"
-            )
-        else:
-            if not username:
-                return safe_jsonify({"error": "username is required for SQL auth"}), 400
-            pw_enc = urllib.parse.quote_plus(password)
-            conn_str = (
-                f"mssql+pyodbc://{username}:{pw_enc}@{server},{port}/{database}"
-                f"?driver={driver_enc}"
-            )
+        if db_path != ":memory:":
+            os.makedirs(os.path.dirname(db_path), exist_ok=True)
 
-        engine = create_engine(conn_str, fast_executemany=True)
+        engine = create_engine(_sqlite_engine_url(db_path))
 
         # ── Test connection before writing ──────────────────────────────────
         with engine.connect() as con:
             con.execute(text("SELECT 1"))
 
-        # ── Export to SQL Server ────────────────────────────────────────────
+        # ── Export to SQLite ────────────────────────────────────────────────
         corrected_df.to_sql(
             table_name, engine,
             if_exists="replace",
             index=True,
+            index_label=index_label,
             chunksize=500,
         )
 
         return safe_jsonify({
             "success":             True,
-            "server":              server,
-            "database":            database,
+            "database":            os.path.basename(db_path) if db_path != ":memory:" else ":memory:",
+            "path":                db_path,
             "table_name":          table_name,
             "rows_exported":       len(corrected_df),
             "corrections_applied": applied,

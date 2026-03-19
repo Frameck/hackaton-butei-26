@@ -92,13 +92,7 @@ export default function AIRepairPanel({ datasetName, dbConn }) {
           body:    JSON.stringify({
             corrections,
             connection: {
-              server:   dbConn.server,
-              port:     parseInt(dbConn.port, 10) || 1433,
               database: dbConn.database,
-              auth:     dbConn.auth,
-              username: dbConn.username,
-              password: dbConn.password,
-              driver:   dbConn.driver,
             },
           }),
           signal: controller.signal,
@@ -138,7 +132,7 @@ export default function AIRepairPanel({ datasetName, dbConn }) {
 
       <div className="ai-repair-desc">
         Claude analyzes corrupted, missing, and invalid values and suggests
-        context-aware corrections. Corrected data is then exported to the connected SQL Server.
+        context-aware corrections. Corrected data is then exported to the connected SQLite database.
       </div>
 
       {/* ── Analyze button ─────────────────────────────────── */}
@@ -259,7 +253,7 @@ export default function AIRepairPanel({ datasetName, dbConn }) {
         <div className="ai-export-section">
           <div className="ai-export-divider" />
           <div className="ai-export-header">
-            <span className="ai-export-title">↓ EXPORT TO SQL SERVER</span>
+            <span className="ai-export-title">↓ EXPORT TO SQLITE</span>
             {repairStatus === 'done' && corrections.length > 0 && (
               <span className="ai-export-hint">
                 {corrections.length} corrections will be applied
@@ -271,7 +265,7 @@ export default function AIRepairPanel({ datasetName, dbConn }) {
           {!isConnected && (
             <div className="ai-export-no-conn">
               <span>⬡</span>
-              No SQL Server connection — configure it from the bottom-left button.
+              No SQLite database selected — configure it from the bottom-left button.
             </div>
           )}
 
@@ -280,8 +274,6 @@ export default function AIRepairPanel({ datasetName, dbConn }) {
             <>
               <div className="ai-export-target">
                 <span className="db-conn-dot" style={{ background: '#34c759', width: 7, height: 7, borderRadius: '50%', display: 'inline-block', marginRight: 6 }} />
-                <code className="ai-export-filename">{dbConn.server}</code>
-                {' / '}
                 <code className="ai-export-filename">{dbConn.database}</code>
               </div>
               <button
@@ -292,8 +284,8 @@ export default function AIRepairPanel({ datasetName, dbConn }) {
                 {exportStatus === 'loading'
                   ? 'Exporting…'
                   : repairStatus === 'done' && corrections.length > 0
-                    ? `Export corrected data (${corrections.length} fixes) → SQL Server`
-                    : 'Export raw data → SQL Server'}
+                    ? `Export corrected data (${corrections.length} fixes) → SQLite`
+                    : 'Export raw data → SQLite'}
               </button>
             </>
           )}
@@ -305,8 +297,11 @@ export default function AIRepairPanel({ datasetName, dbConn }) {
               <div className="ai-export-result-text">
                 <strong>{exportResult.rows_exported.toLocaleString()} rows</strong> exported to{' '}
                 <code className="ai-export-filename">
-                  [{exportResult.database}].[dbo].[{exportResult.table_name}]
+                  {exportResult.database}:{exportResult.table_name}
                 </code>
+                {exportResult.path && (
+                  <span className="ai-export-applied"> {' '}· {exportResult.path}</span>
+                )}
                 {exportResult.corrections_applied > 0 && (
                   <span className="ai-export-applied">
                     {' '}· {exportResult.corrections_applied} corrections applied

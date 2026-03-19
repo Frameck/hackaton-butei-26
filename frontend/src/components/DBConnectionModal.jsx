@@ -1,13 +1,7 @@
 import React, { useState } from 'react'
 
 const DEFAULT = {
-  server:   '',
-  port:     '1433',
-  database: '',
-  auth:     'sql',
-  username: '',
-  password: '',
-  driver:   'SQL Server',
+  database: 'dashboard.sqlite',
 }
 
 export default function DBConnectionModal({ current, onSave, onClose }) {
@@ -28,13 +22,7 @@ export default function DBConnectionModal({ current, onSave, onClose }) {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({
-          server:   form.server,
-          port:     parseInt(form.port, 10) || 1433,
           database: form.database,
-          auth:     form.auth,
-          username: form.username,
-          password: form.password,
-          driver:   form.driver,
         }),
       })
       const data = await r.json()
@@ -51,8 +39,7 @@ export default function DBConnectionModal({ current, onSave, onClose }) {
     onClose()
   }
 
-  const canTest = form.server.trim() && form.database.trim() &&
-    (form.auth === 'windows' || form.username.trim())
+  const canTest = form.database.trim()
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -62,7 +49,7 @@ export default function DBConnectionModal({ current, onSave, onClose }) {
         <div className="modal-header">
           <div className="modal-title">
             <span className="modal-icon">⬡</span>
-            SQL SERVER CONNECTION
+            SQLITE DATABASE
           </div>
           <button className="missing-panel-close" onClick={onClose}>✕</button>
         </div>
@@ -71,32 +58,10 @@ export default function DBConnectionModal({ current, onSave, onClose }) {
         <div className="modal-body">
           <div className="ai-conn-row">
             <div className="ai-conn-field ai-conn-wide">
-              <label className="ai-conn-label">Server / Host</label>
+              <label className="ai-conn-label">Database File</label>
               <input
                 className="ai-conn-input"
-                placeholder="localhost or 192.168.1.10"
-                value={form.server}
-                onChange={e => set('server', e.target.value)}
-              />
-            </div>
-            <div className="ai-conn-field ai-conn-narrow">
-              <label className="ai-conn-label">Port</label>
-              <input
-                className="ai-conn-input"
-                type="number"
-                placeholder="1433"
-                value={form.port}
-                onChange={e => set('port', e.target.value)}
-              />
-            </div>
-          </div>
-
-          <div className="ai-conn-row">
-            <div className="ai-conn-field">
-              <label className="ai-conn-label">Database</label>
-              <input
-                className="ai-conn-input"
-                placeholder="MyDatabase"
+                placeholder="dashboard.sqlite or /full/path/dashboard.sqlite"
                 value={form.database}
                 onChange={e => set('database', e.target.value)}
               />
@@ -105,59 +70,19 @@ export default function DBConnectionModal({ current, onSave, onClose }) {
 
           <div className="ai-conn-row">
             <div className="ai-conn-field">
-              <label className="ai-conn-label">Authentication</label>
-              <select
-                className="ai-conn-input ai-conn-select"
-                value={form.auth}
-                onChange={e => set('auth', e.target.value)}
-              >
-                <option value="sql">SQL Server Authentication</option>
-                <option value="windows">Windows Authentication</option>
-              </select>
-            </div>
-            <div className="ai-conn-field">
-              <label className="ai-conn-label">ODBC Driver</label>
-              <select
-                className="ai-conn-input ai-conn-select"
-                value={form.driver}
-                onChange={e => set('driver', e.target.value)}
-              >
-                <option value="SQL Server">SQL Server (built-in)</option>
-                <option value="ODBC Driver 17 for SQL Server">ODBC Driver 17</option>
-                <option value="ODBC Driver 18 for SQL Server">ODBC Driver 18</option>
-              </select>
+              <label className="ai-conn-label">How It Works</label>
+              <div className="ai-conn-input" style={{ lineHeight: 1.5 }}>
+                Relative names are stored in the local <code>databases/</code> folder.
+                Absolute paths work too.
+              </div>
             </div>
           </div>
-
-          {form.auth === 'sql' && (
-            <div className="ai-conn-row">
-              <div className="ai-conn-field">
-                <label className="ai-conn-label">Username</label>
-                <input
-                  className="ai-conn-input"
-                  placeholder="sa"
-                  value={form.username}
-                  onChange={e => set('username', e.target.value)}
-                />
-              </div>
-              <div className="ai-conn-field">
-                <label className="ai-conn-label">Password</label>
-                <input
-                  className="ai-conn-input"
-                  type="password"
-                  placeholder="••••••••"
-                  value={form.password}
-                  onChange={e => set('password', e.target.value)}
-                />
-              </div>
-            </div>
-          )}
 
           {/* Test result */}
           {testResult && (
             <div className={`modal-test-result ${testResult.ok ? 'ok' : 'fail'}`}>
               {testResult.ok
-                ? '✓ Connection successful'
+                ? `✓ Ready: ${testResult.path || testResult.database}`
                 : `✕ ${testResult.error}`}
             </div>
           )}

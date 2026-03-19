@@ -1414,7 +1414,7 @@ html, body, #root {
   font-size: 11px;
 }
 
-/* ── SQL Server connection form ──────────────────────────────── */
+/* ── SQLite connection form ──────────────────────────────────── */
 .ai-conn-form {
   display: flex;
   flex-direction: column;
