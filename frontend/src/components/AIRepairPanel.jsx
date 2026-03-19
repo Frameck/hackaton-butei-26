@@ -181,18 +181,20 @@ export default function AIRepairPanel({ datasetName, dbConn }) {
               <span className="ai-repair-meta-note">{repairMeta.note}</span>
               <span className="ai-repair-meta-stats">
                 {repairMeta.rows_analysed ?? 0} rows analysed
+                {repairMeta.issue_cells_analysed ? ` · ${repairMeta.issue_cells_analysed} flagged cells` : ''}
                 {' · '}
                 {repairMeta.total_issue_rows ?? 0} issue rows detected
                 {repairMeta.duration_ms ? ` · ${repairMeta.duration_ms} ms` : ''}
+                {repairMeta.payload_chars ? ` · ${repairMeta.payload_chars} chars sent` : ''}
               </span>
               {repairMeta.model && (
                 <span className="ai-repair-meta-model">{repairMeta.model}</span>
               )}
             </div>
           )}
-          {repairMeta?.context_columns?.length > 0 && (
+          {(repairMeta?.issue_columns?.length > 0 || repairMeta?.context_columns?.length > 0) && (
             <div className="ai-repair-context">
-              Focus columns: {repairMeta.context_columns.join(', ')}
+              Focus columns: {(repairMeta.issue_columns || repairMeta.context_columns).join(', ')}
             </div>
           )}
 

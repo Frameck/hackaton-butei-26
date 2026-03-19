@@ -486,6 +486,7 @@ def _collect_issue_analysis(
     display_col_limit: int = 30,
     issue_limit_per_row: int | None = None,
     prioritize: bool = False,
+    issue_only_data: bool = False,
 ) -> dict:
     empty_mask = pd.Series(False, index=df.index)
     wt_cols = {col for col in df.columns if detect_wrong_type(df[col], df[col].dtype)[0]}
@@ -538,6 +539,8 @@ def _collect_issue_analysis(
 
     display_cols = list(df.columns[:display_col_limit])
     issue_rows = []
+    result_cols = []
+    seen_result_cols = set()
     for idx in selected_indices:
         row = df.loc[idx]
         issues = []
@@ -573,12 +576,26 @@ def _collect_issue_analysis(
         if issue_limit_per_row is not None:
             issues = issues[:issue_limit_per_row]
 
-        row_data = {col: _coerce_json_cell(row[col]) for col in display_cols}
+        issue_cols = []
+        seen_issue_cols = set()
+        for issue in issues:
+            col = issue["col"]
+            if col not in seen_issue_cols:
+                seen_issue_cols.add(col)
+                issue_cols.append(col)
+
+        row_cols = issue_cols if issue_only_data else display_cols
+        row_data = {col: _coerce_json_cell(row[col]) for col in row_cols}
+        for col in row_cols:
+            if col not in seen_result_cols:
+                seen_result_cols.add(col)
+                result_cols.append(col)
         issue_rows.append({
             "row_index": int(idx),
             "data": row_data,
             "issues": issues,
             "issue_count": len(issues),
+            "issue_columns": issue_cols,
         })
 
     col_summary = {}
@@ -599,7 +616,7 @@ def _collect_issue_analysis(
     return {
         "total_rows": int(len(df)),
         "total_issue_rows": total_issue_rows,
-        "columns": display_cols,
+        "columns": result_cols if issue_only_data else display_cols,
         "issue_rows": issue_rows,
         "col_summary": col_summary,
         "patient_id_col": pid_col,
@@ -652,7 +669,12 @@ def api_dataset_issues(name: str):
         df = get_dataset(name)
         if df is None:
             return safe_jsonify({"error": "Dataset not found"}), 404
-        analysis = _collect_issue_analysis(df, row_limit=500, display_col_limit=30)
+        analysis = _collect_issue_analysis(
+            df,
+            row_limit=500,
+            display_col_limit=30,
+            issue_only_data=True,
+        )
         return safe_jsonify({
             "total_rows": analysis["total_rows"],
             "total_issue_rows": analysis["total_issue_rows"],
@@ -1093,15 +1115,17 @@ _CORRECTION_SCHEMA = {
 
 _AI_REPAIR_MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-6").strip() or "claude-sonnet-4-6"
 _AI_REPAIR_MAX_ROWS = 18
-_AI_REPAIR_MAX_CONTEXT_COLS = 8
 _AI_REPAIR_MAX_ISSUES_PER_ROW = 4
-_AI_REPAIR_REFERENCE_ROWS = 4
+_AI_REPAIR_MAX_ISSUE_CELLS = 32
+_AI_REPAIR_MAX_COLUMN_EXAMPLES = 3
+_AI_REPAIR_MAX_SAMPLE_CHARS = 72
 _AI_REPAIR_MAX_TOKENS = 1400
 _AI_REPAIR_CONFIDENCE = {"high", "medium", "low"}
 _AI_REPAIR_TOOL_NAME = "suggest_dataset_repairs"
 _AI_REPAIR_SYSTEM_PROMPT = (
     "You are a medical data quality engineer. "
     "Suggest only precise, cell-level corrections for corrupted healthcare data. "
+    "You will receive only flagged issue cells plus compact column hints, not the full dataset. "
     "Use NULL only when a value cannot be inferred with confidence. "
     "Prefer conservative fixes over guesses."
 )
@@ -1144,58 +1168,143 @@ def _column_profile(df: pd.DataFrame, col: str) -> dict:
     return profile
 
 
-def _build_ai_context_columns(df: pd.DataFrame, issue_rows: list, patient_id_col: str | None) -> list[str]:
-    ranked = []
-    seen = set()
-    if patient_id_col and patient_id_col in df.columns:
-        ranked.append(patient_id_col)
-        seen.add(patient_id_col)
+def _truncate_ai_sample(value, max_chars: int = _AI_REPAIR_MAX_SAMPLE_CHARS) -> str:
+    text = str(value)
+    if len(text) <= max_chars:
+        return text
+    return text[: max_chars - 3].rstrip() + "..."
 
+
+def _trim_issue_rows_for_ai(issue_rows: list[dict], max_issue_cells: int) -> list[dict]:
+    if max_issue_cells <= 0:
+        return []
+
+    trimmed_rows = []
+    used_cells = 0
     for row in issue_rows:
-        for issue in row["issues"]:
-            col = issue["col"]
-            if col in df.columns and col not in seen:
-                ranked.append(col)
-                seen.add(col)
-            if len(ranked) >= _AI_REPAIR_MAX_CONTEXT_COLS:
-                return ranked
+        row_issues = list(row.get("issues", []))
+        if not row_issues:
+            continue
 
-    for col in df.columns:
-        if col not in seen:
-            ranked.append(col)
-            seen.add(col)
-        if len(ranked) >= _AI_REPAIR_MAX_CONTEXT_COLS:
+        remaining = max_issue_cells - used_cells
+        if remaining <= 0:
             break
-    return ranked
+
+        if len(row_issues) > remaining:
+            row_issues = row_issues[:remaining]
+
+        row_cols = []
+        row_data = {}
+        for issue in row_issues:
+            col = issue["col"]
+            if col not in row_data:
+                row_data[col] = row.get("data", {}).get(col)
+                row_cols.append(col)
+
+        trimmed_rows.append({
+            **row,
+            "issues": row_issues,
+            "issue_count": len(row_issues),
+            "issue_columns": row_cols,
+            "data": row_data,
+        })
+        used_cells += len(row_issues)
+
+    return trimmed_rows
+
+
+def _build_ai_issue_columns(issue_rows: list[dict]) -> list[str]:
+    issue_cols = []
+    seen = set()
+    for row in issue_rows:
+        for issue in row.get("issues", []):
+            col = issue["col"]
+            if col not in seen:
+                seen.add(col)
+                issue_cols.append(col)
+    return issue_cols
+
+
+def _sample_clean_column_values(
+    df: pd.DataFrame,
+    col: str,
+    patient_id_col: str | None,
+    patient_id_stats: dict,
+    max_examples: int = _AI_REPAIR_MAX_COLUMN_EXAMPLES,
+) -> list[str]:
+    if col not in df.columns:
+        return []
+
+    series = df[col]
+    mask = series.notna()
+
+    if str(series.dtype) == "object":
+        mask &= ~_sentinel_mask(series)
+        wrong_type, _ = detect_wrong_type(series, series.dtype)
+        if wrong_type:
+            mask &= ~_garbled_numeric_mask(series)
+
+    if patient_id_col and col == patient_id_col:
+        invalid_indices = set(patient_id_stats.get("invalid_indices", []))
+        if invalid_indices:
+            mask &= ~pd.Series(df.index.isin(invalid_indices), index=df.index)
+
+    examples = []
+    seen = set()
+    for value in series[mask]:
+        clean_value = _coerce_json_cell(value)
+        if clean_value is None:
+            continue
+        sample = _truncate_ai_sample(clean_value)
+        if sample in seen:
+            continue
+        seen.add(sample)
+        examples.append(sample)
+        if len(examples) >= max_examples:
+            break
+    return examples
 
 
 def _build_repair_request(dataset_name: str, df: pd.DataFrame, issue_rows: list, patient_id_stats: dict, patient_id_col: str | None) -> tuple[dict, list[str]]:
-    context_cols = _build_ai_context_columns(df, issue_rows, patient_id_col)
-    issue_row_indices = {r["row_index"] for r in issue_rows}
+    issue_columns = _build_ai_issue_columns(issue_rows)
 
-    reference_rows = []
-    valid_rows = df[~df.index.isin(issue_row_indices)].head(_AI_REPAIR_REFERENCE_ROWS)
-    for _, row in valid_rows.iterrows():
-        reference_rows.append({col: _coerce_json_cell(row[col]) for col in context_cols})
+    column_hints = []
+    for col in issue_columns:
+        hint = _column_profile(df, col)
+        clean_examples = _sample_clean_column_values(df, col, patient_id_col, patient_id_stats)
+        if clean_examples:
+            hint["clean_examples"] = clean_examples
+        column_hints.append(hint)
 
     compact_issue_rows = []
     for row in issue_rows:
+        issue_cells = []
+        for issue in row["issues"]:
+            col = issue["col"]
+            cell_value = row["data"].get(col)
+            cell = {
+                "column": col,
+                "issue_type": issue["type"],
+                "current_value": "NULL" if cell_value is None else str(cell_value),
+            }
+            if "reason" in issue:
+                cell["reason"] = issue["reason"]
+            issue_cells.append(cell)
+
         compact_issue_rows.append({
             "row_index": row["row_index"],
-            "data": {col: row["data"].get(col) for col in context_cols},
-            "issues": row["issues"],
+            "issue_cells": issue_cells,
         })
 
     payload = {
         "dataset_name": dataset_name,
-        "context_columns": [_column_profile(df, col) for col in context_cols],
-        "reference_rows": reference_rows,
+        "issue_columns": column_hints,
         "corrupted_rows": compact_issue_rows,
         "rules": {
-            "null_or_missing": 'Fill from context if obvious, otherwise use "NULL".',
-            "wrong_type": 'Strip invalid characters and return the clean value as a string.',
-            "invalid_patient_id": "Match the dominant patient ID pattern when clear.",
-            "sentinel_values": 'Prefer "NULL" unless a better replacement is strongly inferable.',
+            "null_or_missing": 'Only fill when the replacement is obvious from the supplied hints; otherwise use "NULL".',
+            "wrong_type": "Remove corrupt characters and keep the corrected value as a string.",
+            "invalid_patient_id": "Match the dominant patient ID pattern when the repair is clear.",
+            "sentinel_values": 'Prefer "NULL" unless a better replacement is strongly supported by the hints.',
             "confidence_levels": {
                 "high": "obvious fix",
                 "medium": "reasonable inference",
@@ -1208,8 +1317,9 @@ def _build_repair_request(dataset_name: str, df: pd.DataFrame, issue_rows: list,
             "column": patient_id_col,
             "dominant_pattern": patient_id_stats.get("dominant_pattern", ""),
             "has_pattern": bool(patient_id_stats.get("has_pattern")),
+            "clean_examples": _sample_clean_column_values(df, patient_id_col, patient_id_col, patient_id_stats),
         }
-    return payload, context_cols
+    return payload, issue_columns
 
 
 def _block_attr(block, attr: str, default=None):
@@ -1399,17 +1509,17 @@ def ai_repair(name: str):
         analysis = _collect_issue_analysis(
             df,
             row_limit=_AI_REPAIR_MAX_ROWS,
-            display_col_limit=_AI_REPAIR_MAX_CONTEXT_COLS,
             issue_limit_per_row=_AI_REPAIR_MAX_ISSUES_PER_ROW,
             prioritize=True,
+            issue_only_data=True,
         )
-        issue_rows = analysis["issue_rows"]
+        issue_rows = _trim_issue_rows_for_ai(analysis["issue_rows"], _AI_REPAIR_MAX_ISSUE_CELLS)
         total_issue_rows = analysis["total_issue_rows"]
 
         if not issue_rows:
             return safe_jsonify({"corrections": [], "summary": "No issues found in dataset."})
 
-        payload, context_cols = _build_repair_request(
+        payload, issue_columns = _build_repair_request(
             name,
             df,
             issue_rows,
@@ -1432,12 +1542,15 @@ def ai_repair(name: str):
 
         result["meta"] = {
             "rows_analysed": len(issue_rows),
+            "issue_cells_analysed": sum(len(row.get("issues", [])) for row in issue_rows),
             "total_issue_rows": total_issue_rows,
-            "context_columns": context_cols,
+            "issue_columns": issue_columns,
             "model": _AI_REPAIR_MODEL,
             "duration_ms": elapsed_ms,
+            "payload_chars": payload_size,
             "note": (
-                f"Optimized AI pass: prioritised {len(issue_rows)} high-signal rows "
+                f"Optimized AI pass: sent {len(issue_rows)} prioritised rows "
+                f"covering {sum(len(row.get('issues', [])) for row in issue_rows)} flagged cells "
                 f"out of {total_issue_rows} issue rows."
             ),
         }
