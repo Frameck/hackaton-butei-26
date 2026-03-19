@@ -1,15 +1,3 @@
-.DS_Store
+hack_env
 .env
-.venv/
-hack_env/*
-.claude/*
-.vscode/
-node_modules/
-backend/.env
-backend/__pycache__/
-backend/backend.log
-frontend/dist/
-frontend/node_modules/
-ml/__pycache__/
-databases/
-output/*
+node_modules

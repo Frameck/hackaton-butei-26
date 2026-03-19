@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m venv \"c:/Users/miche/Desktop/hackaton-butei-26/dashoard/hack_env\")"
+    ]
+  }
+}
