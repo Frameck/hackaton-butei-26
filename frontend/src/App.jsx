@@ -3,12 +3,14 @@ import Sidebar from './components/Sidebar.jsx'
 import DatasetView from './components/DatasetView.jsx'
 import CompareView from './components/CompareView.jsx'
 import DBConnectionModal from './components/DBConnectionModal.jsx'
+import Patient360View from './components/Patient360View.jsx'
 
 export default function App() {
   const [datasets, setDatasets]           = useState([])
   const [loadingList, setLoadingList]     = useState(true)
   const [listError, setListError]         = useState(null)
   const [selected, setSelected]           = useState(null)
+  const [workspaceMode, setWorkspaceMode] = useState('patient360')
   const [compareMode, setCompareMode]     = useState(false)
   const [compareSelected, setCompareSelected] = useState([])
   const [dbConn, setDbConn]               = useState(null)
@@ -29,6 +31,7 @@ export default function App() {
   }, [])
 
   const toggleCompare = () => {
+    setWorkspaceMode('datasets')
     setCompareMode(m => !m)
     setCompareSelected([])
   }
@@ -46,7 +49,18 @@ export default function App() {
         loading={loadingList}
         error={listError}
         selected={selected}
-        onSelect={(name) => { setSelected(name); setCompareMode(false) }}
+        workspaceMode={workspaceMode}
+        onSelectWorkspace={(mode) => {
+          setWorkspaceMode(mode)
+          if (mode !== 'datasets') {
+            setCompareMode(false)
+          }
+        }}
+        onSelect={(name) => {
+          setSelected(name)
+          setWorkspaceMode('datasets')
+          setCompareMode(false)
+        }}
         compareMode={compareMode}
         onToggleCompare={toggleCompare}
         compareSelected={compareSelected}
@@ -55,7 +69,9 @@ export default function App() {
         onOpenDBModal={() => setShowDBModal(true)}
       />
       <main className="main-content">
-        {compareMode ? (
+        {workspaceMode === 'patient360' ? (
+          <Patient360View />
+        ) : compareMode ? (
           <CompareView
             datasets={datasets}
             compareSelected={compareSelected}

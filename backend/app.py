@@ -8,6 +8,7 @@ import re
 import sys
 import logging
 import time
+import unicodedata
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -873,6 +874,503 @@ def api_patient_id_issues(name: str):
         return safe_jsonify({"error": str(e)}), 500
 
 
+# ---------------------------------------------------------------------------
+# Unified patient model + field harmonization
+# ---------------------------------------------------------------------------
+UNIFIED_FIELD_ALIASES = {
+    "patient_id": (
+        "patientid",
+        "patient_id",
+        "patid",
+        "pat_id",
+        "pid",
+        "patientnr",
+    ),
+    "case_id": (
+        "caseid",
+        "case_id",
+        "fallnr",
+    ),
+    "encounter_id": (
+        "encid",
+        "enc_id",
+        "encounterid",
+        "encounter_id",
+        "einschidfall",
+    ),
+    "ward": (
+        "ward",
+        "station",
+        "statbez",
+        "faberfaabt",
+    ),
+    "report_date": (
+        "reportdate",
+        "specdt",
+        "gabe_dt",
+        "start_dt",
+        "aufnahmedatum",
+        "aufndat",
+        "aufnahme_dt",
+        "date",
+        "timestamp",
+    ),
+    "shift": (
+        "shift",
+    ),
+    "note_text": (
+        "nursingnote",
+        "note_text",
+        "evaluation",
+        "observations",
+        "interventions",
+        "notiz",
+    ),
+}
+
+UNIFIED_SECTION_ORDER = ["labs", "medication", "nursing", "device", "cases", "assessment", "generic"]
+UNIFIED_SECTION_LABELS = {
+    "labs": "Labs",
+    "medication": "Medication",
+    "nursing": "Nursing Notes",
+    "device": "Device Data",
+    "cases": "Cases / Coding",
+    "assessment": "Assessments",
+    "generic": "Other Linked Data",
+}
+UNIFIED_PRESENTATION = {
+    "market_savings": "€800M-€1.6B",
+    "workflow": [
+        "Ingest polluted hospital exports",
+        "Harmonize raw fields into one patient/case target model",
+        "Open a patient 360 view across labs, meds, notes, and devices",
+        "Run Claude-assisted repair on bad rows",
+        "Export the cleaned result set to SQL Server",
+    ],
+    "deployment": "Designed to run locally with offline/on-premises fallback when external AI is unavailable.",
+}
+_UNIFIED_OVERVIEW_CACHE = None
+_NURSING_NOTE_ENTITY_CACHE = {}
+
+
+def _ascii_key(text: str) -> str:
+    normalized = unicodedata.normalize("NFKD", str(text))
+    ascii_text = normalized.encode("ascii", "ignore").decode("ascii")
+    return re.sub(r"[^A-Za-z0-9]+", "", ascii_text).lower()
+
+
+def _clean_identifier_text(value) -> str:
+    if pd.isna(value):
+        return ""
+    text = str(value).strip()
+    if not text:
+        return ""
+    normalized = unicodedata.normalize("NFKD", text)
+    ascii_text = normalized.encode("ascii", "ignore").decode("ascii")
+    return ascii_text.strip().upper()
+
+
+def _identifier_digits(value) -> str | None:
+    text = _clean_identifier_text(value)
+    if not text:
+        return None
+    digits = "".join(re.findall(r"\d+", text))
+    if not digits:
+        return None
+    stripped = digits.lstrip("0")
+    return stripped or "0"
+
+
+def _normalize_patient_key(value) -> str | None:
+    text = _clean_identifier_text(value)
+    if not text:
+        return None
+    digits = _identifier_digits(text)
+    if digits:
+        return digits
+    clean = re.sub(r"[^A-Z0-9]+", "", text)
+    return clean or None
+
+
+def _normalize_case_key(value) -> str | None:
+    text = _clean_identifier_text(value)
+    if not text:
+        return None
+    clean = re.sub(r"[^A-Z0-9]+", "", text)
+    return clean or None
+
+
+def _infer_unified_field(column_name: str) -> str | None:
+    key = _ascii_key(column_name)
+    if not key:
+        return None
+    for canonical, aliases in UNIFIED_FIELD_ALIASES.items():
+        for alias in aliases:
+            alias_key = _ascii_key(alias)
+            if key == alias_key or key.startswith(alias_key):
+                return canonical
+    return None
+
+
+def _infer_dataset_kind(name: str, df: pd.DataFrame, mappings: dict[str, str]) -> str:
+    key_cols = [_ascii_key(col) for col in df.columns]
+    name_key = _ascii_key(name)
+
+    if "note_text" in mappings or "nursing" in name_key:
+        return "nursing"
+    if _find_lab_triplets(df):
+        return "labs"
+    if any(k in key_cols for k in ("atccode", "medikament", "orderid", "gabestatus")) or "medication" in name_key:
+        return "medication"
+    if any(k in key_cols for k in ("movementindex0100", "fallevent01", "bedexitdetected01", "impactmagnitudeg")) or "device" in name_key:
+        return "device"
+    if any(k.startswith("icd10") or k.startswith("ops") for k in key_cols) or "icdops" in name_key:
+        return "cases"
+    if "epaac" in name_key or any(k in key_cols for k in ("risikosturz", "risikodekubitus", "kontinenzprofil")):
+        return "assessment"
+    return "generic"
+
+
+def _add_unique(seq: list, value):
+    if value is None:
+        return
+    if value not in seq:
+        seq.append(value)
+
+
+def _pick_columns_by_keywords(df: pd.DataFrame, keywords: list[str], limit: int) -> list[str]:
+    selected = []
+    for col in df.columns:
+        key = _ascii_key(col)
+        if any(keyword in key for keyword in keywords):
+            selected.append(col)
+            if len(selected) >= limit:
+                break
+    return selected
+
+
+def _select_unified_display_columns(df: pd.DataFrame, dataset_type: str, mappings: dict[str, str], limit: int = 8) -> list[str]:
+    ordered = []
+    for canonical in ("patient_id", "case_id", "encounter_id", "ward", "report_date", "shift", "note_text"):
+        _add_unique(ordered, mappings.get(canonical))
+
+    keyword_map = {
+        "labs": ["na", "k", "creat", "egfr", "crp", "hb", "wbc", "plt", "gluc"],
+        "medication": ["medikament", "atccode", "dosis", "einheit", "haeufigkeit", "startdt", "stopdt", "gabestatus", "notiz"],
+        "nursing": ["reportdate", "shift", "ward", "nursingnote", "observations", "interventions", "evaluation"],
+        "device": ["timestamp", "movementindex", "micromovementscount", "bedexitdetected", "fallevent", "impactmagnitude", "postfallimmobility"],
+        "cases": ["station", "aufnahmedatum", "entlassungsdatum", "verweildauer", "icd10haupt", "icd10neben", "opscode"],
+        "assessment": ["fallnr", "aufndat", "statbez", "alter", "bmi", "risikosturz", "risikodekubitus"],
+        "generic": [],
+    }
+    for col in _pick_columns_by_keywords(df, keyword_map.get(dataset_type, []), limit=limit):
+        _add_unique(ordered, col)
+
+    for col in list(df.columns):
+        if len(ordered) >= limit:
+            break
+        _add_unique(ordered, col)
+    return ordered[:limit]
+
+
+def _collect_unified_specs() -> list[dict]:
+    specs = []
+    for name in sorted(list_dataset_files()):
+        df = get_dataset(name)
+        if df is None:
+            continue
+        mappings = {}
+        mapped_fields = []
+        for col in df.columns:
+            canonical = _infer_unified_field(col)
+            if canonical and canonical not in mappings:
+                mappings[canonical] = col
+                mapped_fields.append({
+                    "canonical_field": canonical,
+                    "source_column": col,
+                })
+
+        dataset_type = _infer_dataset_kind(name, df, mappings)
+        specs.append({
+            "name": name,
+            "dataset_type": dataset_type,
+            "mappings": mappings,
+            "mapped_fields": mapped_fields,
+            "display_columns": _select_unified_display_columns(df, dataset_type, mappings),
+        })
+    return specs
+
+
+def _serialise_subset_row(row: pd.Series, columns: list[str]) -> dict:
+    data = {}
+    for col in columns:
+        if col in row.index:
+            data[col] = _coerce_json_cell(row[col])
+    return data
+
+
+def _row_identifiers(row: pd.Series, mappings: dict[str, str]) -> dict:
+    raw = {}
+    for field in ("patient_id", "case_id", "encounter_id"):
+        col = mappings.get(field)
+        if not col or col not in row.index:
+            raw[field] = None
+            continue
+        value = row[col]
+        raw[field] = None if pd.isna(value) else str(value).strip() or None
+
+    return {
+        "patient_id": raw["patient_id"],
+        "patient_key": _normalize_patient_key(raw["patient_id"]),
+        "patient_digits": _identifier_digits(raw["patient_id"]),
+        "case_id": raw["case_id"],
+        "case_key": _normalize_case_key(raw["case_id"]),
+        "case_digits": _identifier_digits(raw["case_id"]),
+        "encounter_id": raw["encounter_id"],
+        "encounter_key": _normalize_case_key(raw["encounter_id"]),
+    }
+
+
+def _match_lookup(identifiers: dict, query: str) -> tuple[bool, str | None]:
+    patient_key = _normalize_patient_key(query)
+    case_key = _normalize_case_key(query)
+    digits = _identifier_digits(query)
+
+    if patient_key and identifiers.get("patient_key") == patient_key:
+        return True, "patient_id"
+    if case_key and identifiers.get("case_key") == case_key:
+        return True, "case_id"
+    if case_key and identifiers.get("encounter_key") == case_key:
+        return True, "encounter_id"
+    if digits and digits in {
+        identifiers.get("patient_digits"),
+        identifiers.get("case_digits"),
+    }:
+        matched_field = "patient_id" if identifiers.get("patient_digits") == digits else "case_id"
+        return True, matched_field
+    return False, None
+
+
+def _build_harmonization_summary(specs: list[dict]) -> dict:
+    field_summary = {field: {"canonical_field": field, "dataset_count": 0, "source_columns": []} for field in UNIFIED_FIELD_ALIASES}
+    dataset_entries = []
+
+    for spec in specs:
+        mappings = []
+        for item in spec["mapped_fields"]:
+            canonical = item["canonical_field"]
+            source = item["source_column"]
+            field_summary[canonical]["dataset_count"] += 1
+            _add_unique(field_summary[canonical]["source_columns"], source)
+            mappings.append({
+                "canonical_field": canonical,
+                "source_column": source,
+            })
+
+        if mappings:
+            dataset_entries.append({
+                "dataset_name": spec["name"],
+                "dataset_type": spec["dataset_type"],
+                "mappings": mappings,
+            })
+
+    fields = [field_summary[field] for field in ("patient_id", "case_id", "encounter_id", "ward", "report_date", "shift", "note_text")]
+    return {
+        "fields": fields,
+        "datasets": dataset_entries,
+    }
+
+
+def _build_unified_overview() -> dict:
+    global _UNIFIED_OVERVIEW_CACHE
+    if _UNIFIED_OVERVIEW_CACHE is not None:
+        return _UNIFIED_OVERVIEW_CACHE
+
+    specs = _collect_unified_specs()
+    buckets = {}
+
+    for spec in specs:
+        df = get_dataset(spec["name"])
+        mappings = spec["mappings"]
+        if df is None or not mappings:
+            continue
+
+        for _, row in df.iterrows():
+            identifiers = _row_identifiers(row, mappings)
+            patient_key = identifiers.get("patient_key")
+            case_key = identifiers.get("case_key")
+            bucket_key = patient_key or (f"case:{case_key}" if case_key else None)
+            if not bucket_key:
+                continue
+
+            bucket = buckets.setdefault(bucket_key, {
+                "bucket_key": bucket_key,
+                "dataset_names": set(),
+                "dataset_types": set(),
+                "matched_rows": 0,
+                "patient_ids": [],
+                "case_ids": [],
+                "encounter_ids": [],
+            })
+            bucket["dataset_names"].add(spec["name"])
+            bucket["dataset_types"].add(spec["dataset_type"])
+            bucket["matched_rows"] += 1
+            _add_unique(bucket["patient_ids"], identifiers.get("patient_id"))
+            _add_unique(bucket["case_ids"], identifiers.get("case_id"))
+            _add_unique(bucket["encounter_ids"], identifiers.get("encounter_id"))
+
+    quick_picks = []
+    for bucket in buckets.values():
+        quick_picks.append({
+            "lookup_id": bucket["patient_ids"][0] if bucket["patient_ids"] else (bucket["case_ids"][0] if bucket["case_ids"] else bucket["bucket_key"]),
+            "dataset_count": len(bucket["dataset_names"]),
+            "dataset_types": sorted(bucket["dataset_types"], key=lambda x: UNIFIED_SECTION_ORDER.index(x) if x in UNIFIED_SECTION_ORDER else 999),
+            "matched_rows": bucket["matched_rows"],
+            "patient_ids": bucket["patient_ids"][:3],
+            "case_ids": bucket["case_ids"][:3],
+            "encounter_ids": bucket["encounter_ids"][:3],
+        })
+
+    rich_quick_picks = [item for item in quick_picks if item["dataset_count"] >= 2]
+    ranked = sorted(
+        rich_quick_picks or quick_picks,
+        key=lambda item: (
+            item["dataset_count"],
+            len(item["dataset_types"]),
+            item["matched_rows"],
+        ),
+        reverse=True,
+    )[:8]
+
+    _UNIFIED_OVERVIEW_CACHE = {
+        "presentation": UNIFIED_PRESENTATION,
+        "quick_picks": ranked,
+        "harmonization": _build_harmonization_summary(specs),
+        "stats": {
+            "datasets_mapped": len(specs),
+            "unified_entities": len(buckets),
+            "canonical_fields": 7,
+        },
+    }
+    return _UNIFIED_OVERVIEW_CACHE
+
+
+def _lookup_patient_unified(query: str) -> dict:
+    specs = _collect_unified_specs()
+    sections = {}
+    matched_dataset_names = set()
+    patient_ids = []
+    case_ids = []
+    encounter_ids = []
+    nursing_rows = []
+
+    for spec in specs:
+        df = get_dataset(spec["name"])
+        if df is None or not spec["mappings"]:
+            continue
+
+        matched_rows = []
+        matched_on = None
+        for idx, row in df.iterrows():
+            identifiers = _row_identifiers(row, spec["mappings"])
+            matched, row_matched_on = _match_lookup(identifiers, query)
+            if not matched:
+                continue
+
+            matched_on = matched_on or row_matched_on
+            _add_unique(patient_ids, identifiers.get("patient_id"))
+            _add_unique(case_ids, identifiers.get("case_id"))
+            _add_unique(encounter_ids, identifiers.get("encounter_id"))
+            matched_rows.append({
+                "row_index": int(idx),
+                "ids": {
+                    "patient_id": identifiers.get("patient_id"),
+                    "case_id": identifiers.get("case_id"),
+                    "encounter_id": identifiers.get("encounter_id"),
+                },
+                "data": _serialise_subset_row(row, spec["display_columns"]),
+            })
+
+            if spec["dataset_type"] == "nursing":
+                note_col = spec["mappings"].get("note_text")
+                report_col = spec["mappings"].get("report_date")
+                shift_col = spec["mappings"].get("shift")
+                ward_col = spec["mappings"].get("ward")
+                nursing_rows.append({
+                    "dataset_name": spec["name"],
+                    "row_index": int(idx),
+                    "patient_id": identifiers.get("patient_id"),
+                    "case_id": identifiers.get("case_id"),
+                    "report_date": None if not report_col or pd.isna(row.get(report_col)) else str(row.get(report_col)),
+                    "shift": None if not shift_col or pd.isna(row.get(shift_col)) else str(row.get(shift_col)),
+                    "ward": None if not ward_col or pd.isna(row.get(ward_col)) else str(row.get(ward_col)),
+                    "note_text": None if not note_col or pd.isna(row.get(note_col)) else str(row.get(note_col)),
+                })
+
+            if len(matched_rows) >= 6:
+                break
+
+        if not matched_rows:
+            continue
+
+        matched_dataset_names.add(spec["name"])
+        section = sections.setdefault(spec["dataset_type"], {
+            "key": spec["dataset_type"],
+            "label": UNIFIED_SECTION_LABELS.get(spec["dataset_type"], spec["dataset_type"].title()),
+            "datasets": [],
+            "total_rows": 0,
+        })
+        section["datasets"].append({
+            "dataset_name": spec["name"],
+            "matched_on": matched_on,
+            "row_count": len(matched_rows),
+            "display_columns": spec["display_columns"],
+            "mapped_fields": spec["mapped_fields"],
+            "rows": matched_rows,
+        })
+        section["total_rows"] += len(matched_rows)
+
+    extracted_notes = _extract_nursing_note_entities(nursing_rows)
+    section_list = [sections[key] for key in UNIFIED_SECTION_ORDER if key in sections]
+
+    return {
+        "query": query,
+        "canonical_patient_id": patient_ids[0] if patient_ids else None,
+        "patient_ids": patient_ids,
+        "case_ids": case_ids,
+        "encounter_ids": encounter_ids,
+        "summary": {
+            "matched_dataset_count": len(matched_dataset_names),
+            "matched_row_count": sum(section["total_rows"] for section in section_list),
+            "section_count": len(section_list),
+            "nursing_note_count": len(extracted_notes),
+        },
+        "sections": section_list,
+        "nursing_notes": extracted_notes,
+        "harmonization": _build_harmonization_summary(specs),
+        "presentation": UNIFIED_PRESENTATION,
+    }
+
+
+@app.route("/api/unified/overview", methods=["GET"])
+def api_unified_overview():
+    try:
+        return safe_jsonify(_build_unified_overview())
+    except Exception as e:
+        return safe_jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/unified/patient-lookup", methods=["GET"])
+def api_unified_patient_lookup():
+    try:
+        query = (request.args.get("q", "") or "").strip()
+        if not query:
+            return safe_jsonify({"error": "Query parameter q is required"}), 400
+        return safe_jsonify(_lookup_patient_unified(query))
+    except Exception as e:
+        return safe_jsonify({"error": str(e)}), 500
+
+
 @app.route("/api/health", methods=["GET"])
 def health():
     return safe_jsonify({"status": "ok", "mock_db": MOCK_DB,
@@ -1439,6 +1937,260 @@ def _call_claude_repair(client_ai, payload: dict) -> dict:
     if not raw_text:
         raise RuntimeError("Claude returned neither tool output nor text output")
     return _parse_legacy_claude_json(raw_text)
+
+
+_NURSING_EXTRACTION_MODEL = os.environ.get("ANTHROPIC_MODEL_NURSING", _AI_REPAIR_MODEL).strip() or _AI_REPAIR_MODEL
+_NURSING_TOOL_NAME = "extract_nursing_entities"
+_NURSING_EXTRACTION_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "notes": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "note_index": {"type": "integer"},
+                    "symptoms": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                    },
+                    "interventions": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                    },
+                    "risks": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                    },
+                    "fall_risk": {
+                        "type": "string",
+                        "enum": ["low", "medium", "high"],
+                    },
+                    "summary": {"type": "string"},
+                },
+                "required": ["note_index", "symptoms", "interventions", "risks", "fall_risk", "summary"],
+                "additionalProperties": False,
+            },
+        },
+    },
+    "required": ["notes"],
+    "additionalProperties": False,
+}
+_NURSING_TOOL = {
+    "name": _NURSING_TOOL_NAME,
+    "description": (
+        "Extract structured clinical entities from nursing notes. "
+        "Return concise symptoms, interventions, risk factors, and a fall-risk rating."
+    ),
+    "input_schema": _NURSING_EXTRACTION_SCHEMA,
+    "strict": True,
+}
+_NURSING_SYSTEM_PROMPT = (
+    "You are extracting structured nursing entities from hospital daily reports. "
+    "Be concise and conservative. "
+    "Capture only facts that are explicit in the note."
+)
+_NURSING_SYMPTOM_PATTERNS = {
+    "stable condition": "stable condition",
+    "disoriented": "disorientation",
+    "confused": "confusion",
+    "reduced az": "reduced general condition",
+    "reduzierter az": "reduced general condition",
+    "fatigue": "fatigue",
+    "pain": "pain",
+    "fever": "fever",
+    "dyspnea": "dyspnea",
+    "shortness of breath": "dyspnea",
+}
+_NURSING_INTERVENTION_PATTERNS = {
+    "medication administered": "medication administered",
+    "iv line flushed": "IV line flushed",
+    "mobilized to corridor": "mobilized to corridor",
+    "physician notified": "physician notified",
+    "family informed": "family informed",
+    "patient abwesend": "patient unavailable",
+    "wound care": "wound care",
+    "repositioned": "repositioned",
+}
+_NURSING_RISK_PATTERNS = {
+    "disoriented": "fall risk",
+    "confused": "fall risk",
+    "fall": "fall risk",
+    "bed exit": "fall risk",
+    "wander": "fall risk",
+    "reduced az": "mobility risk",
+    "reduzierter az": "mobility risk",
+}
+
+
+def _score_fall_risk(risks: list[str], symptoms: list[str]) -> str:
+    risk_score = len(risks)
+    if any(symptom in {"disorientation", "confusion"} for symptom in symptoms):
+        risk_score += 1
+    if risk_score >= 2:
+        return "high"
+    if risk_score == 1:
+        return "medium"
+    return "low"
+
+
+def _heuristic_extract_note_entities(note_text: str) -> dict:
+    text = (note_text or "").strip()
+    lowered = _clean_identifier_text(text).lower()
+
+    symptoms = []
+    for needle, label in _NURSING_SYMPTOM_PATTERNS.items():
+        if needle in lowered and label not in symptoms:
+            symptoms.append(label)
+
+    interventions = []
+    for needle, label in _NURSING_INTERVENTION_PATTERNS.items():
+        if needle in lowered and label not in interventions:
+            interventions.append(label)
+
+    risks = []
+    for needle, label in _NURSING_RISK_PATTERNS.items():
+        if needle in lowered and label not in risks:
+            risks.append(label)
+
+    summary_bits = []
+    if symptoms:
+        summary_bits.append(f"Symptoms: {', '.join(symptoms)}")
+    if interventions:
+        summary_bits.append(f"Interventions: {', '.join(interventions)}")
+    if not summary_bits:
+        summary_bits.append("No high-signal structured entities detected")
+
+    return {
+        "symptoms": symptoms,
+        "interventions": interventions,
+        "risks": risks,
+        "fall_risk": _score_fall_risk(risks, symptoms),
+        "summary": ". ".join(summary_bits),
+        "source": "heuristic-offline",
+    }
+
+
+def _call_claude_nursing_extractor(client_ai, payload: dict) -> dict:
+    request_args = {
+        "model": _NURSING_EXTRACTION_MODEL,
+        "max_tokens": 1400,
+        "system": _NURSING_SYSTEM_PROMPT,
+        "messages": [{"role": "user", "content": json.dumps(payload, ensure_ascii=False)}],
+        "tools": [_NURSING_TOOL],
+        "tool_choice": {"type": "tool", "name": _NURSING_TOOL_NAME},
+        "disable_parallel_tool_use": True,
+    }
+
+    try:
+        response = client_ai.messages.create(**request_args)
+    except Exception as tool_exc:
+        log.warning("Structured Claude nursing extraction failed, falling back to text JSON: %s", tool_exc)
+        fallback_prompt = (
+            f"{_NURSING_SYSTEM_PROMPT}\n\n"
+            "Return only JSON matching this schema:\n"
+            f"{json.dumps(_NURSING_EXTRACTION_SCHEMA, ensure_ascii=False)}\n\n"
+            f"Payload:\n{json.dumps(payload, ensure_ascii=False)}"
+        )
+        response = client_ai.messages.create(
+            model=_NURSING_EXTRACTION_MODEL,
+            max_tokens=1400,
+            messages=[{"role": "user", "content": fallback_prompt}],
+        )
+        raw_text = _extract_text_response(response)
+        if not raw_text:
+            raise RuntimeError("Claude returned an empty nursing extraction response")
+        return _parse_legacy_claude_json(raw_text)
+
+    tool_payload = _extract_tool_payload(response)
+    if tool_payload is not None:
+        return tool_payload
+
+    raw_text = _extract_text_response(response)
+    if not raw_text:
+        raise RuntimeError("Claude returned neither tool output nor text output for nursing extraction")
+    return _parse_legacy_claude_json(raw_text)
+
+
+def _extract_nursing_note_entities(nursing_rows: list[dict]) -> list[dict]:
+    if not nursing_rows:
+        return []
+
+    notes_to_extract = []
+    note_text_by_index = {}
+    extracted = {}
+    for idx, row in enumerate(nursing_rows):
+        note_text = (row.get("note_text") or "").strip()
+        if not note_text:
+            extracted[idx] = {
+                "symptoms": [],
+                "interventions": [],
+                "risks": [],
+                "fall_risk": "low",
+                "summary": "No nursing note text available",
+                "source": "heuristic-offline",
+            }
+            continue
+
+        cache_key = ("claude" if os.environ.get("ANTHROPIC_API_KEY", "").strip() else "heuristic", note_text)
+        cached = _NURSING_NOTE_ENTITY_CACHE.get(cache_key)
+        if cached is not None:
+            extracted[idx] = cached
+            continue
+
+        notes_to_extract.append({
+            "note_index": idx,
+            "text": note_text,
+        })
+        note_text_by_index[idx] = note_text
+
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+    if notes_to_extract and _HAS_ANTHROPIC and api_key:
+        try:
+            client_ai = _get_anthropic_client(api_key)
+            payload = {"notes": notes_to_extract}
+            result = _call_claude_nursing_extractor(client_ai, payload)
+            for item in result.get("notes", []):
+                note_index = item.get("note_index")
+                if note_index is None:
+                    continue
+                entity = {
+                    "symptoms": list(item.get("symptoms", [])),
+                    "interventions": list(item.get("interventions", [])),
+                    "risks": list(item.get("risks", [])),
+                    "fall_risk": str(item.get("fall_risk", "low")).lower(),
+                    "summary": str(item.get("summary", "")).strip() or "Claude extracted nursing entities",
+                    "source": "claude",
+                }
+                extracted[int(note_index)] = entity
+                note_text = note_text_by_index.get(int(note_index), "")
+                _NURSING_NOTE_ENTITY_CACHE[("claude", note_text)] = entity
+        except Exception:
+            log.exception("Claude nursing extraction failed; using heuristic fallback")
+
+    for item in notes_to_extract:
+        note_index = item["note_index"]
+        if note_index in extracted:
+            continue
+        entity = _heuristic_extract_note_entities(item["text"])
+        extracted[note_index] = entity
+        _NURSING_NOTE_ENTITY_CACHE[("heuristic", item["text"])] = entity
+
+    results = []
+    for idx, row in enumerate(nursing_rows):
+        entity = extracted.get(idx) or _heuristic_extract_note_entities(row.get("note_text") or "")
+        results.append({
+            **row,
+            "entities": {
+                "symptoms": entity.get("symptoms", []),
+                "interventions": entity.get("interventions", []),
+                "risks": entity.get("risks", []),
+                "fall_risk": entity.get("fall_risk", "low"),
+                "summary": entity.get("summary", ""),
+            },
+            "extraction_source": entity.get("source", "heuristic-offline"),
+        })
+    return results
 
 
 @app.route("/api/db/test-connection", methods=["POST"])

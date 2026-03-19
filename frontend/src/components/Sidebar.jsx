@@ -13,6 +13,7 @@ function FileBadge({ type }) {
 
 export default function Sidebar({
   datasets, loading, error,
+  workspaceMode, onSelectWorkspace,
   selected, onSelect,
   compareMode, onToggleCompare,
   compareSelected, onToggleCompareItem,
@@ -29,6 +30,25 @@ export default function Sidebar({
         </div>
       </div>
 
+      <div className="sidebar-mode-wrap">
+        <button
+          className={`sidebar-mode-card ${workspaceMode === 'patient360' ? 'active' : ''}`}
+          onClick={() => onSelectWorkspace('patient360')}
+        >
+          <span className="sidebar-mode-eyebrow">LIVE DEMO</span>
+          <span className="sidebar-mode-title">Patient 360</span>
+          <span className="sidebar-mode-copy">Unified patient view, NLP notes, and harmonized field mapping.</span>
+        </button>
+        <button
+          className={`sidebar-mode-card ${workspaceMode === 'datasets' ? 'active' : ''}`}
+          onClick={() => onSelectWorkspace('datasets')}
+        >
+          <span className="sidebar-mode-eyebrow">WORKBENCH</span>
+          <span className="sidebar-mode-title">Dataset Explorer</span>
+          <span className="sidebar-mode-copy">Inspect issues, compare sources, run AI repair, and export to SQL.</span>
+        </button>
+      </div>
+
       <div className="sidebar-list">
         {loading && (
           <div style={{ padding: '20px 14px' }}>
@@ -41,7 +61,7 @@ export default function Sidebar({
           </div>
         )}
         {datasets.map(ds => {
-          const isActive  = !compareMode && selected === ds.name
+          const isActive  = workspaceMode === 'datasets' && !compareMode && selected === ds.name
           const isChecked = compareSelected.includes(ds.name)
           const col = completenessColor(ds.completeness)
 
