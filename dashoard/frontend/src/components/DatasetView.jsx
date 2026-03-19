@@ -31,7 +31,7 @@ function groupColumns(columns) {
   }))
 }
 
-export default function DatasetView({ name, dbConn }) {
+export default function DatasetView({ name }) {
   const [data, setData]       = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError]     = useState(null)
@@ -201,7 +201,7 @@ export default function DatasetView({ name, dbConn }) {
 
       {/* ── AI Repair tab ───────────────────────────────────────── */}
       {activeTab === 'ai' && (
-        <AIRepairPanel datasetName={name} dbConn={dbConn} />
+        <AIRepairPanel datasetName={name} />
       )}
 
       {/* ── Missing Rows Panel ──────────────────────────────────── */}

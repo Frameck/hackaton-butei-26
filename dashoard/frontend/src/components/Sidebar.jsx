@@ -16,10 +16,7 @@ export default function Sidebar({
   selected, onSelect,
   compareMode, onToggleCompare,
   compareSelected, onToggleCompareItem,
-  dbConn, onOpenDBModal,
 }) {
-  const isConnected = dbConn?.status === 'connected'
-
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
@@ -91,24 +88,6 @@ export default function Sidebar({
         })}
       </div>
 
-      {/* ── DB Connection button ──────────────────────────── */}
-      <div className="db-conn-btn-wrap">
-        <button className="db-conn-btn" onClick={onOpenDBModal}>
-          <span
-            className="db-conn-dot"
-            style={{ background: isConnected ? '#34c759' : '#ff3b30' }}
-          />
-          <div className="db-conn-btn-text">
-            <span className="db-conn-btn-label">SQL SERVER</span>
-            <span className="db-conn-btn-sub">
-              {isConnected
-                ? `${dbConn.server} / ${dbConn.database}`
-                : 'Not connected'}
-            </span>
-          </div>
-          <span className="db-conn-btn-edit">✎</span>
-        </button>
-      </div>
     </aside>
   )
 }

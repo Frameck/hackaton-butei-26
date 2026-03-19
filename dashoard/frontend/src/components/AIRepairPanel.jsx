@@ -2,15 +2,13 @@ import React, { useState } from 'react'
 
 const CONF_COLOR = { high: '#34c759', medium: '#fbbf24', low: '#f87171' }
 
-export default function AIRepairPanel({ datasetName, dbConn }) {
+export default function AIRepairPanel({ datasetName }) {
   const [repairStatus, setRepairStatus] = useState('idle')
   const [corrections, setCorrections]   = useState([])
   const [summary, setSummary]           = useState('')
   const [repairError, setRepairError]   = useState(null)
   const [exportStatus, setExportStatus] = useState('idle')
   const [exportResult, setExportResult] = useState(null)
-
-  const isConnected = dbConn?.status === 'connected'
 
   async function handleRepair() {
     setRepairStatus('loading')
@@ -48,18 +46,7 @@ export default function AIRepairPanel({ datasetName, dbConn }) {
         {
           method:  'POST',
           headers: { 'Content-Type': 'application/json' },
-          body:    JSON.stringify({
-            corrections,
-            connection: {
-              server:   dbConn.server,
-              port:     parseInt(dbConn.port, 10) || 1433,
-              database: dbConn.database,
-              auth:     dbConn.auth,
-              username: dbConn.username,
-              password: dbConn.password,
-              driver:   dbConn.driver,
-            },
-          }),
+          body:    JSON.stringify({ corrections }),
         }
       )
       const data = await r.json()
@@ -89,7 +76,7 @@ export default function AIRepairPanel({ datasetName, dbConn }) {
 
       <div className="ai-repair-desc">
         Claude analyzes corrupted, missing, and invalid values and suggests
-        context-aware corrections. Corrected data is then exported to the connected SQL Server.
+        context-aware corrections. Corrected data can then be exported as a SQLite database.
       </div>
 
       {/* ── Analyze button ─────────────────────────────────── */}
@@ -184,63 +171,51 @@ export default function AIRepairPanel({ datasetName, dbConn }) {
       )}
 
       {/* ── Export section ─────────────────────────────────── */}
-      {(repairStatus === 'done' || repairStatus === 'idle' || repairStatus === 'error') && (
-        <div className="ai-export-section">
-          <div className="ai-export-divider" />
-          <div className="ai-export-header">
-            <span className="ai-export-title">↓ EXPORT TO SQL SERVER</span>
-            {repairStatus === 'done' && corrections.length > 0 && (
-              <span className="ai-export-hint">
-                {corrections.length} corrections will be applied
-              </span>
-            )}
-          </div>
-
-          {/* Not connected warning */}
-          {!isConnected && (
-            <div className="ai-export-no-conn">
-              <span>⬡</span>
-              No SQL Server connection — configure it from the bottom-left button.
-            </div>
+      <div className="ai-export-section">
+        <div className="ai-export-divider" />
+        <div className="ai-export-header">
+          <span className="ai-export-title">↓ EXPORT TO SQLITE</span>
+          {repairStatus === 'done' && corrections.length > 0 && exportStatus !== 'done' && (
+            <span className="ai-export-hint">
+              {corrections.length} corrections will be applied
+            </span>
           )}
+        </div>
 
-          {/* Connected — show export button */}
-          {isConnected && exportStatus !== 'done' && (
-            <>
-              <div className="ai-export-target">
-                <span className="db-conn-dot" style={{ background: '#34c759', width: 7, height: 7, borderRadius: '50%', display: 'inline-block', marginRight: 6 }} />
-                <code className="ai-export-filename">{dbConn.server}</code>
-                {' / '}
-                <code className="ai-export-filename">{dbConn.database}</code>
-              </div>
-              <button
-                className="ai-export-btn"
-                onClick={handleExport}
-                disabled={exportStatus === 'loading'}
-              >
-                {exportStatus === 'loading'
-                  ? 'Exporting…'
-                  : repairStatus === 'done' && corrections.length > 0
-                    ? `Export corrected data (${corrections.length} fixes) → SQL Server`
-                    : 'Export raw data → SQL Server'}
-              </button>
-            </>
-          )}
+        {exportStatus !== 'done' && (
+          <button
+            className="ai-export-btn"
+            onClick={handleExport}
+            disabled={exportStatus === 'loading'}
+          >
+            {exportStatus === 'loading'
+              ? 'Exporting…'
+              : repairStatus === 'done' && corrections.length > 0
+                ? `Export corrected data (${corrections.length} fixes) → SQLite`
+                : 'Export data → SQLite'}
+          </button>
+        )}
 
-          {/* Success */}
-          {exportStatus === 'done' && exportResult && !exportResult.error && (
-            <div className="ai-export-result">
-              <span className="ai-export-ok">✓</span>
-              <div className="ai-export-result-text">
-                <strong>{exportResult.rows_exported.toLocaleString()} rows</strong> exported to{' '}
-                <code className="ai-export-filename">
-                  [{exportResult.database}].[dbo].[{exportResult.table_name}]
-                </code>
-                {exportResult.corrections_applied > 0 && (
-                  <span className="ai-export-applied">
-                    {' '}· {exportResult.corrections_applied} corrections applied
-                  </span>
-                )}
+        {/* Success */}
+        {exportStatus === 'done' && exportResult && !exportResult.error && (
+          <div className="ai-export-result">
+            <span className="ai-export-ok">✓</span>
+            <div className="ai-export-result-text">
+              <strong>{exportResult.rows_exported.toLocaleString()} rows</strong> exported to{' '}
+              <code className="ai-export-filename">{exportResult.file_name}</code>
+              {exportResult.corrections_applied > 0 && (
+                <span className="ai-export-applied">
+                  {' '}· {exportResult.corrections_applied} corrections applied
+                </span>
+              )}
+              <div style={{ marginTop: 6, display: 'flex', gap: 8 }}>
+                <a
+                  href={`/api/datasets/${encodeURIComponent(datasetName)}/download-sqlite`}
+                  className="ai-export-again-btn"
+                  download
+                >
+                  ↓ Download .sqlite
+                </a>
                 <button
                   className="ai-export-again-btn"
                   onClick={() => { setExportStatus('idle'); setExportResult(null) }}
@@ -249,25 +224,25 @@ export default function AIRepairPanel({ datasetName, dbConn }) {
                 </button>
               </div>
             </div>
-          )}
+          </div>
+        )}
 
-          {/* Export error */}
-          {exportStatus === 'error' && (
-            <div className="ai-repair-error" style={{ marginTop: 10 }}>
-              <span className="ai-repair-error-icon">⚠</span>
-              <div>
-                Export failed: {exportResult?.error}
-                <button
-                  className="ai-export-again-btn"
-                  onClick={() => { setExportStatus('idle'); setExportResult(null) }}
-                >
-                  Try again
-                </button>
-              </div>
+        {/* Export error */}
+        {exportStatus === 'error' && (
+          <div className="ai-repair-error" style={{ marginTop: 10 }}>
+            <span className="ai-repair-error-icon">⚠</span>
+            <div>
+              Export failed: {exportResult?.error}
+              <button
+                className="ai-export-again-btn"
+                onClick={() => { setExportStatus('idle'); setExportResult(null) }}
+              >
+                Try again
+              </button>
             </div>
-          )}
-        </div>
-      )}
+          </div>
+        )}
+      </div>
     </div>
   )
 }

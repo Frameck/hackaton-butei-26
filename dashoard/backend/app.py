@@ -885,9 +885,24 @@ _CORRECTION_SCHEMA = {
 }
 
 
+_CONTEXT_RADIUS = 2  # columns to include each side of an issue column
+
+
 def _build_repair_prompt(dataset_name: str, df: pd.DataFrame, issue_rows: list) -> str:
+    # Only reference columns that actually appear in the (already-trimmed) row data
+    col_list = list(df.columns)
+    referenced_cols = []
+    seen = set()
+    for r in issue_rows:
+        for col in r["data"]:
+            if col not in seen:
+                seen.add(col)
+                referenced_cols.append(col)
+    # Preserve original column order
+    referenced_cols = [c for c in col_list if c in seen]
+
     schema_lines = []
-    for col in list(df.columns[:20]):
+    for col in referenced_cols:
         dtype = str(df[col].dtype)
         sample = df[col].dropna().astype(str).head(50)
         dom_pat = ""
@@ -899,11 +914,11 @@ def _build_repair_prompt(dataset_name: str, df: pd.DataFrame, issue_rows: list) 
         )
 
     all_issue_idx = {r["row_index"] for r in issue_rows}
-    valid_rows = df[~df.index.isin(all_issue_idx)].head(5)
+    valid_rows = df[~df.index.isin(all_issue_idx)].head(3)
     valid_examples = []
     for _, row in valid_rows.iterrows():
         ex = {}
-        for col in list(df.columns[:15]):
+        for col in referenced_cols:
             v = row[col]
             ex[col] = None if pd.isna(v) else str(v)
         valid_examples.append(ex)
@@ -912,7 +927,7 @@ def _build_repair_prompt(dataset_name: str, df: pd.DataFrame, issue_rows: list) 
 
 Dataset: {dataset_name}
 
-Columns:
+Columns (only those relevant to the issues):
 {chr(10).join(schema_lines)}
 
 Reference valid rows (examples of correct data):
@@ -932,50 +947,6 @@ Rules:
 - original_value: exact value from the data (use "NULL" if the cell was null)"""
 
 
-@app.route("/api/db/test-connection", methods=["POST"])
-def test_db_connection():
-    """Test a SQL Server connection without writing any data."""
-    try:
-        from sqlalchemy import create_engine, text
-        import urllib.parse
-    except ImportError:
-        return safe_jsonify({"error": "sqlalchemy/pyodbc not installed"}), 500
-
-    body     = request.get_json(silent=True) or {}
-    server   = body.get("server", "").strip()
-    port     = int(body.get("port", 1433))
-    database = body.get("database", "").strip()
-    username = body.get("username", "").strip()
-    password = body.get("password", "")
-    driver   = body.get("driver", "SQL Server")
-    auth     = body.get("auth", "sql")
-
-    if not server or not database:
-        return safe_jsonify({"ok": False, "error": "server and database are required"}), 400
-
-    try:
-        driver_enc = urllib.parse.quote_plus(driver)
-        if auth == "windows":
-            conn_str = (
-                f"mssql+pyodbc://@{server},{port}/{database}"
-                f"?driver={driver_enc}&trusted_connection=yes"
-            )
-        else:
-            if not username:
-                return safe_jsonify({"ok": False, "error": "username required for SQL auth"}), 400
-            pw_enc   = urllib.parse.quote_plus(password)
-            conn_str = (
-                f"mssql+pyodbc://{username}:{pw_enc}@{server},{port}/{database}"
-                f"?driver={driver_enc}"
-            )
-
-        engine = create_engine(conn_str, connect_args={"timeout": 8})
-        with engine.connect() as con:
-            con.execute(text("SELECT 1"))
-
-        return safe_jsonify({"ok": True})
-    except Exception as e:
-        return safe_jsonify({"ok": False, "error": str(e)}), 200
 
 
 @app.route("/api/datasets/<path:name>/ai-repair", methods=["POST"])
@@ -996,29 +967,12 @@ def ai_repair(name: str):
         if not api_key:
             return safe_jsonify({"error": "ANTHROPIC_API_KEY env var not set"}), 400
 
-        # ── Collect issue rows ──────────────────────────────────────────────
+        # ── Detect issue columns ────────────────────────────────────────────
         wt_cols = set()
         for col in df.columns:
             wt, _ = detect_wrong_type(df[col], df[col].dtype)
             if wt:
                 wt_cols.add(col)
-
-        null_mask = df.isna().any(axis=1)
-
-        sent_mask = pd.Series(False, index=df.index)
-        for col in df.select_dtypes(include="object").columns:
-            sent = (df[col].dropna().astype(str).str.strip().str.lower()
-                    .isin(SENTINEL_VALUES))
-            sent_mask |= sent.reindex(df.index, fill_value=False)
-
-        wt_mask = pd.Series(False, index=df.index)
-        for col in wt_cols:
-            if df[col].dtype == object:
-                garbled = df[col].dropna().astype(str).apply(
-                    lambda v: bool(re.search(r"[a-zA-Z@#$%!*&]", v)
-                               and re.search(r"\d", v))
-                )
-                wt_mask |= garbled.reindex(df.index, fill_value=False)
 
         pid_col = find_patient_id_col(df)
         pid_invalid_set = set()
@@ -1026,41 +980,66 @@ def ai_repair(name: str):
             pid_stats = _analyze_patient_id(df, pid_col)
             pid_invalid_set = set(int(i) for i in pid_stats["invalid_indices"])
 
-        pid_mask = pd.Series(df.index.isin(pid_invalid_set), index=df.index)
+        # ── Collect individual cell-level issues, capped at max_rows ────────
+        col_list = list(df.columns)
+        all_cell_issues = []  # (row_idx, col, issue_type, value_or_None)
 
-        has_issue = null_mask | sent_mask | wt_mask | pid_mask
-        issue_indices = list(df[has_issue].head(max_rows).index)
-
-        display_cols = list(df.columns[:20])
-        issue_rows = []
-        for idx in issue_indices:
+        for idx in df.index:
             row = df.loc[idx]
-            issues = []
-            for col in df.columns:
+            for col in col_list:
                 val = row[col]
                 if pd.isna(val):
-                    issues.append({"col": col, "type": "null"})
+                    all_cell_issues.append((int(idx), col, "null", None))
                 elif is_sentinel(val):
-                    issues.append({"col": col, "type": "sentinel", "value": str(val)})
+                    all_cell_issues.append((int(idx), col, "sentinel", str(val)))
                 elif col in wt_cols:
                     sv = str(val)
                     if re.search(r"[a-zA-Z@#$%!*&]", sv) and re.search(r"\d", sv):
-                        issues.append({"col": col, "type": "wrong_type", "value": sv})
+                        all_cell_issues.append((int(idx), col, "wrong_type", sv))
             if pid_col and int(idx) in pid_invalid_set:
                 val = row[pid_col]
                 if not pd.isna(val):
-                    issues.append({"col": pid_col, "type": "invalid_patient_id",
-                                   "value": str(val)})
+                    # Avoid duplicate if already added above
+                    if not any(r == int(idx) and c == pid_col
+                               for r, c, *_ in all_cell_issues[-4:]):
+                        all_cell_issues.append(
+                            (int(idx), pid_col, "invalid_patient_id", str(val))
+                        )
+            if len(all_cell_issues) >= max_rows:
+                break
 
+        all_cell_issues = all_cell_issues[:max_rows]
+
+        # ── Group by row and build context-only row_data ────────────────────
+        from collections import defaultdict
+        rows_issues: dict = defaultdict(list)
+        rows_context_cols: dict = defaultdict(set)
+
+        for row_idx, col, issue_type, value in all_cell_issues:
+            entry = {"col": col, "type": issue_type}
+            if value is not None:
+                entry["value"] = value
+            rows_issues[row_idx].append(entry)
+            # Include the issue column + _CONTEXT_RADIUS neighbours
+            ci = col_list.index(col) if col in col_list else -1
+            if ci >= 0:
+                for offset in range(-_CONTEXT_RADIUS, _CONTEXT_RADIUS + 1):
+                    nb = ci + offset
+                    if 0 <= nb < len(col_list):
+                        rows_context_cols[row_idx].add(col_list[nb])
+
+        issue_rows = []
+        for row_idx in sorted(rows_issues.keys()):
+            row = df.loc[row_idx]
+            ctx_cols = sorted(rows_context_cols[row_idx], key=lambda c: col_list.index(c))
             row_data = {}
-            for col in display_cols:
+            for col in ctx_cols:
                 v = row[col]
                 row_data[col] = None if pd.isna(v) else str(v)
-
             issue_rows.append({
-                "row_index": int(idx),
+                "row_index": row_idx,
                 "data": row_data,
-                "issues": issues,
+                "issues": rows_issues[row_idx],
             })
 
         if not issue_rows:
@@ -1090,27 +1069,11 @@ def ai_repair(name: str):
 
 @app.route("/api/datasets/<path:name>/export-db", methods=["POST"])
 def export_db(name: str):
-    """Export the dataset (with optional AI corrections) to SQL Server."""
-    try:
-        from sqlalchemy import create_engine, text
-        import urllib.parse
-    except ImportError:
-        return safe_jsonify({"error": "sqlalchemy/pyodbc not installed"}), 500
+    """Export the dataset (with optional AI corrections) to a local SQLite file."""
+    import sqlite3
 
     body        = request.get_json(silent=True) or {}
     corrections = body.get("corrections", [])
-    conn_cfg    = body.get("connection", {})
-
-    server   = conn_cfg.get("server", "").strip()
-    port     = int(conn_cfg.get("port", 1433))
-    database = conn_cfg.get("database", "").strip()
-    username = conn_cfg.get("username", "").strip()
-    password = conn_cfg.get("password", "")
-    driver   = conn_cfg.get("driver", "SQL Server")
-    auth     = conn_cfg.get("auth", "sql")  # "sql" | "windows"
-
-    if not server or not database:
-        return safe_jsonify({"error": "server and database are required"}), 400
 
     try:
         df = get_dataset(name)
@@ -1125,55 +1088,28 @@ def export_db(name: str):
                 row_idx = int(corr["row_index"])
                 col     = corr["column"]
                 val     = corr["corrected_value"]
-                if col not in corrected_df.columns:
-                    continue
-                if row_idx not in corrected_df.index:
+                if col not in corrected_df.columns or row_idx not in corrected_df.index:
                     continue
                 corrected_df.at[row_idx, col] = (None if val == "NULL" else val)
                 applied += 1
             except Exception:
                 continue
 
-        # ── Derive table name ───────────────────────────────────────────────
+        # ── Derive table / file name ────────────────────────────────────────
         base       = os.path.splitext(name)[0]
         table_name = re.sub(r"[^\w]", "_", base).strip("_") or "dataset"
-        # SQL Server max identifier length = 128 chars
-        table_name = table_name[:128]
 
-        # ── Build SQLAlchemy connection string ──────────────────────────────
-        driver_enc = urllib.parse.quote_plus(driver)
-        if auth == "windows":
-            conn_str = (
-                f"mssql+pyodbc://@{server},{port}/{database}"
-                f"?driver={driver_enc}&trusted_connection=yes"
-            )
-        else:
-            if not username:
-                return safe_jsonify({"error": "username is required for SQL auth"}), 400
-            pw_enc = urllib.parse.quote_plus(password)
-            conn_str = (
-                f"mssql+pyodbc://{username}:{pw_enc}@{server},{port}/{database}"
-                f"?driver={driver_enc}"
-            )
+        # ── Write to SQLite ─────────────────────────────────────────────────
+        db_dir  = os.path.join(os.path.dirname(__file__), "databases")
+        os.makedirs(db_dir, exist_ok=True)
+        db_path = os.path.join(db_dir, f"{table_name}.sqlite")
 
-        engine = create_engine(conn_str, fast_executemany=True)
-
-        # ── Test connection before writing ──────────────────────────────────
-        with engine.connect() as con:
-            con.execute(text("SELECT 1"))
-
-        # ── Export to SQL Server ────────────────────────────────────────────
-        corrected_df.to_sql(
-            table_name, engine,
-            if_exists="replace",
-            index=True,
-            chunksize=500,
-        )
+        with sqlite3.connect(db_path) as con:
+            corrected_df.to_sql(table_name, con, if_exists="replace", index=False)
 
         return safe_jsonify({
             "success":             True,
-            "server":              server,
-            "database":            database,
+            "file_name":           f"{table_name}.sqlite",
             "table_name":          table_name,
             "rows_exported":       len(corrected_df),
             "corrections_applied": applied,
@@ -1181,6 +1117,18 @@ def export_db(name: str):
 
     except Exception as e:
         return safe_jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/datasets/<path:name>/download-sqlite", methods=["GET"])
+def download_sqlite(name: str):
+    """Download the previously exported SQLite file."""
+    from flask import send_file
+    base       = os.path.splitext(name)[0]
+    table_name = re.sub(r"[^\w]", "_", base).strip("_") or "dataset"
+    db_path    = os.path.join(os.path.dirname(__file__), "databases", f"{table_name}.sqlite")
+    if not os.path.exists(db_path):
+        return safe_jsonify({"error": "SQLite file not found — export first."}), 404
+    return send_file(db_path, as_attachment=True, download_name=f"{table_name}.sqlite")
 
 
 # ---------------------------------------------------------------------------

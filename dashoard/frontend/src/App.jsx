@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import Sidebar from './components/Sidebar.jsx'
 import DatasetView from './components/DatasetView.jsx'
 import CompareView from './components/CompareView.jsx'
-import DBConnectionModal from './components/DBConnectionModal.jsx'
-
 export default function App() {
   const [datasets, setDatasets]           = useState([])
   const [loadingList, setLoadingList]     = useState(true)
@@ -11,8 +9,6 @@ export default function App() {
   const [selected, setSelected]           = useState(null)
   const [compareMode, setCompareMode]     = useState(false)
   const [compareSelected, setCompareSelected] = useState([])
-  const [dbConn, setDbConn]               = useState(null)
-  const [showDBModal, setShowDBModal]     = useState(false)
 
   useEffect(() => {
     fetch('/api/datasets')
@@ -51,8 +47,6 @@ export default function App() {
         onToggleCompare={toggleCompare}
         compareSelected={compareSelected}
         onToggleCompareItem={toggleCompareItem}
-        dbConn={dbConn}
-        onOpenDBModal={() => setShowDBModal(true)}
       />
       <main className="main-content">
         {compareMode ? (
@@ -61,7 +55,7 @@ export default function App() {
             compareSelected={compareSelected}
           />
         ) : selected ? (
-          <DatasetView name={selected} dbConn={dbConn} />
+          <DatasetView name={selected} />
         ) : (
           <div className="empty-wrap">
             <div className="empty-icon">◈</div>
@@ -70,13 +64,6 @@ export default function App() {
         )}
       </main>
 
-      {showDBModal && (
-        <DBConnectionModal
-          current={dbConn}
-          onSave={conn => setDbConn(conn)}
-          onClose={() => setShowDBModal(false)}
-        />
-      )}
     </div>
   )
 }
