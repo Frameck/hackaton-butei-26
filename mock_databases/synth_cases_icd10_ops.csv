@@ -1,0 +1,1001 @@
+CaseID,PatientID,Station,Aufnahmedatum,Entlassungsdatum,Verweildauer_Tage,ICD10_Haupt,ICD10_Haupt_Bezeichnung,ICD10_Neben,ICD10_Neben_Bezeichnung,OPS_Code,OPS_Bezeichnung
+CASE-0095-01,patientnr0095,Neurologie,2025-06-12,08-Jul-2025,26,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,I63.9,"Cerebral infarction, unspecified",8-98f.0; 1-910,Pulmonology complex treatment; Diagnostic bronchoscopy
+CASE-0168-01,patientnr0168,Intensivstation,29.10.2025,04-Nov-2025,6,I50.1,Left ventricular failure,I50.1; G20%,Left ventricular failure; Parkinson disease,8-930,Monitoring of cerebral activity
+CASE-0064-01,,Pneumologie,05-Jan-2026,20260119,14,N17.9,"Acute kidney failure, unspecified",,,8-550.1,Early geriatric complex treatment
+CASE-0102-01,patientnr0102,Geriatrie,20251217,01_01_2026,999,I50.1,Left ventricular failure,I63.9,"Cerebral infarction, unspecified",,
+CASE-0138-01,patientnr0138,Pneumologie,13.04.2025,2025-May-08,25,C34.1,unknown,E11.9,Type 2 diabetes mellitus without complications,1-910; 8-800.90,Diagnostic bronchoscopy; Transfusion of erythrocyte concentrate
+CASE-0187-01,patientnr0187,Innere Medizin,2025.01.31,2025/02/09,9,N17.9,"Acute kidney failure, unspecified",I63.9; J44.1; K92.1,"Cerebral infarction, unspecified; Chronic obstructive pulmonary disease with acute exacerbation; Melena",5-470; 8-550.1,Appendectomy; Early geriatric complex treatment
+CASE-0158-01,patientnr0158,Neurologie,21_03_2025,22.03.2025,1,I50.1,Left ventricular failure,F32.1; J18.9,"Moderate depressive episode; Pneumonia, unspecified",8-800.90,Transfusion of erythrocyte concentrate
+CASE-0009-01ä,patientnr0009,Intensivstation,2024/00/12,2025-09-24,4,E11.9,Type 2 diabetes mellitus without complications,S72.0; J44.1; J18.9,"Fracture of neck of femur; Chronic obstructive pulmonary disease with acute exacerbation; Pneumonia, unspecified",8-930; 1-910,Monitoring of cerebral activity; Diagnostic bronchoscopy
+CASE-0122-01,missing,Neurologie,10/28/2025,31.10.2025,3,K92.1,Melena,E11.9; G20; S72.0,Type 2 diabetes mellitus without complications; Parkinson disease; Fracture of neck of femur,5-470,Appendectomyü
+CASE-0092-01,patientnr0092,Pneumologie,21_03_2025,99.99.9999,20,I50.1,Left ventricular failure,S72.0; I50.1,Fracture of neck of femur; Left ventricular failure,8-930,Monitoring of cerebral activity
+CASE-0015-01, ,Neurologie,06_01_2025,29-Jan-2025,23,E11.9,Type 2 diabetes mellitus without complications,E11.9; G20; M16.1,Type 2 diabetes mellitus without complications; Parkinson disease; Primary coxarthrosis,5-470,
+CASE-0163-01,patientnr0163,Geriatrie,20250203,20250227,24,I50.1,Left ventricular failure,E11.9,Type 2 diabetes mellitus without complications,5-470; 8-98f.0,Appendectomy; Pulmonology complex treatment
+CASE-0104-01,patientnr0104,Chirurgie,2025-May-10,2025/05/12,2,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,I50.1,Left ventricular failure,,
+CASE-0123-01,patientnr0123,Innere Medizin,Jul 08 2025,2025/07/20,12,G20,Parkinson disease,J18.9,"Pneumonia, unspecified",8-800.90,Transfusion of erythrocyte concentrate
+CASE-0108-01,patientnr0108ä,Chirurgie,2025/04/22,2025-Apr-24,2,M16.1,Primary coxarthrosis,C34.1; I50.1,"Malignant neoplasm of upper lobe, bronchus or lung; Left ventricular failure",8-800.90,Transfusion of erythrocyte concentrate
+n/a,patientnr0053,Kardiologie,29.04.2025,2025-May-20,21,N17.9,"Acute kidney failure, unspecified",,,NaN,Monitoring of cerebral activity
+CASE-0138-02,patientnr0138,Neurologie,Mar 14 2025,2025-Mar-21,7,J18.9,"Pneumonia, unspecified",J44.1; M16.1,Chronic obstructive pulmonary disease with acute exacerbation; Primary coxarthrosis,5-470; 8-800.90,Appendectomy; Transfusion of erythrocyte concentrate
+CASE-0008-01,patientnr0008,Intensivstation,2025-Feb-05,28_02_2025,23,S72.0,Fracture of neck of femur,,,,
+CASE-0085-01,patientnr0085,Chirurgie,2025-09-28,2025/10/23,25,N17.9,"Acute kidney failure, unspecified",K92.1; J18.9; G20,"Melena; Pneumonia, unspecified; Parkinson disease",,
+CASE-0070-01,patientnr0070,Neurologie,NULL,22_01_2025,2,J18.9,"Pneumonia, unspecified",S72.0,Fracture of neck of femur,,
+CASE-0070-02,patientnr0070,Kardiologie,2025-Apr-10,,19,I63.9%,"Cerebral infarction, unspecified",,,NULL,
+CASE-0070-03,,Kardiologie,2025.03.02,04_03_2025,2,J44.1,unknown,F32.1; I63.9; N17.9,"Moderate depressive episode; Cerebral infarction, unspecified; Acute kidney failure, unspecified",8-800.90,Transfusion of erythrocyte concentrate
+CASE-0015-02,patientnr0015,Chirurgie,02/19/2025,2025.02.28,9,I63.9,"Cerebral infarction, unspecified",,,8-550.1,Early geriatric complex treatment
+CASE-0087-01,patientnr0087,Intensivstation,2025/08/22,20250901,10,I63.9,"Cerebral infarction, unspecified",S72.0,Fracture of neck of femur,8-98f.0; 1-910,Pulmonology complex treatment; Diagnostic bronchoscopy
+CASE-0017-01,patientnr0017,Intensivstation,2025/10/03,2025.10.09,6,F32.1,Moderate depressive episode,E11.9; K92.1; J18.9,"Type 2 diabetes mellitus without complications; Melena; Pneumonia, unspecified",1-910; 8-550.1,Diagnostic bronchoscopy; Early geriatric complex treatment
+CASE-0015-03,patientnr0015,Pneumologie,2025/10/28,2025/11/15,18,J44.1,,I50.1,Left ventricular failure,8-550.1,Early geriatric complex treatment
+CASE-0146-01,NULL,Geriatrie,07/03/2025,2025/07/29,26,S72.0,Fracture of neck of femur,G20,Parkinson disease,5-470; 8-800.90,Appendectomy; Transfusion of erythrocyte concentrate
+CASE-0097-01,patientnr0097,Kardiologie,Jul 12 2025,00/00/0000,4ä,E11.9,Type 2 diabetes mellitus without complications,G20; M16.1,Parkinson disease; Primary coxarthrosis,,
+CASE-0139-01,patientnr0139,Intensivstation,2025.05.17,04_06_2025ä,18,I50.1,Left ventricular failure,n/a,,5-820.0,Implantation of hip joint prosthesis
+CASE-0198-01,patientnr0198,Geriatrie,13.11.2025,04-Dec-2025,21,J18.9,"Pneumonia, unspecified",NULL,"Chronic obstructive pulmonary disease with acute exacerbation; Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0128-01,patientnr0128,Intensivstation,01/27/2026,20260222,26,N17.9,"Acute kidney failure, unspecified",,,1-910,Diagnostic bronchoscopy
+CASE-0063-01,,Intensivstation,2025-Jun-25,15-13-2024,15,I10,Essential hypertension,J18.9,"Pneumonia, unspecified",1-910; 8-930, 
+CASE-0102-02,patientnr0102,Chirurgie,05/20/2025,2025.05.26,6,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",G20; J44.1,Parkinson disease; Chronic obstructive pulmonary disease with acute exacerbation,8-98f.0; 8-800.90,Pulmonology complex treatment; Transfusion of erythrocyte concentrate
+CASE-0039-01	,patientnr0039,Innere Medizin,2025-Jul-03, ,20,F32.1,Moderate depressive episode,M16.1,Primary coxarthrosis,8-550.1,N/A
+CASE-0102-03,patientnr0102,Chirurgie,2025-05-07,13_05_2025,6,M16.1,Primary coxarthrosis,I10,Essential hypertension,8-800.90; 5-470,Transfusion of erythrocyte concentrate; Appendectomy^
+CASE-0070-04,patientnr0070,Innere Medizin,Sep 02 2025,09/22/2025,20,I50.1,Left ventricular failure,C34.1; N17.9,"Malignant neoplasm of upper lobe, bronchus or lung; Acute kidney failure, unspecified",,
+CASE-0029-01,missing,Chirurgie,17-Sep-2025,21-Sep-2025,4,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",M16.1,NULL,,
+CASE-0173-01,patientnr0173,Intensivstation,Oct 07 2025,2025-Oct-18,11,G20,Parkinson disease#,I10,Essential hypertension,8-930; 1-910,Monitoring of cerebral activity; Diagnostic bronchoscopy
+CASE-0120-01,patientnr0120,Innere Medizin,10/09/2025,10/27/2025,18, ,Moderate depressive episode,,,8-800.90; 8-550.1,Transfusion of erythrocyte concentrate; Early geriatric complex treatment
+CASE-0015-04,patientnr0015,Pneumologie,08-Feb-2025,06-Mar-2025,26,J18.9,,,,8-550.1; 8-930,Early geriatric complex treatment; Monitoring of cerebral activity
+CASE-0129-01,patientnr0129,Innere Medizin,27-Dec-2025#,07.01.2026,11,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",,,8-550.1,Early geriatric complex treatment
+CASE-0173-02,,Pneumologie,03-Sep-2025,2025-09-08,5,K92.1,Melena,,,8-800.90, 
+CASE-0190-01,missing,Geriatrie,2025-Oct-17,Oct 21 2025,4,I63.9,"Cerebral infarction, unspecified",J18.9,"Pneumonia, unspecified",8-930,Monitoring of cerebral activity
+CASE-0158-02,patientnr0158,Chirurgie,02-Feb-2025,02/24/2025,22,J18.9,"Pneumonia, unspecified",I50.1; M16.1; I63.9,"Left ventricular failure; Primary coxarthrosis; Cerebral infarction, unspecified",5-470; 5-820.0,Appendectomy; Implantation of hip joint prosthesis
+CASE-0175-01,patientnr0175,Neurologie,2025-02-30,2025/10/30,30,E11.9,Type 2 diabetes mellitus without complications,G20%,Parkinson disease,,
+CASE-0167-01,patientnr0167,Chirurgie,2025/09/23,Sep 26 2025,3,N17.9,"Acute kidney failure, unspecified",,,8-98f.0,
+CASE-0015-05,patientnr0015,Innere Medizin,27-May-2025,23.06.2025,27,M16.1,Primary coxarthrosis,G20,Parkinson disease,1-910,Diagnostic bronchoscopy
+CASE-0108-02,patientnr0108,Geriatrie,05.04.2025,2024-13-10,21,E11.9,Type 2 diabetes mellitus without complications,N/A,,5-820.0,Implantation of hip joint prosthesis
+CASE-0102-04,patientnr0102,Intensivstation,2025-Aug-18,2025/09/02,15,K92.1,Melena,,,8-550.1; 8-98f.0,Early geriatric complex treatment; Pulmonology complex treatment
+CASE-0015-06,patientnr0015,Intensivstation,32.01.2024@,29_06_2025,11,E11.9,Type 2 diabetes mellitus without complicationsä,,,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0108-03,patientnr0108,Pneumologie,2025-Jan-30,2025/02/19,N/A,E11.9,Type 2 diabetes mellitus without complications,J18.9; N17.9; C34.1,"Pneumonia, unspecified; Acute kidney failure, unspecified; Malignant neoplasm of upper lobe, bronchus or lung",1-910; 8-550.1,Diagnostic bronchoscopy; Early geriatric complex treatment
+CASE-0143-01,patientnr0143,Pneumologie,2025-10-29,Nov 27 2025,29,J18.9,"Pneumonia, unspecified",,,8-930,Monitoring of cerebral activity
+CASE-0020-01,patientnr0020,Kardiologie,2025.07.29,22-Aug-2025,24,M16.1,Primary coxarthrosis,,,5-820.0,Implantation of hip joint prosthesis
+CASE-0009-02,patientnr0009,Intensivstation,2025-Sep-07,32.01.2024,3,E11.9,Type 2 diabetes mellitus without complications,K92.1; I63.9; M16.1,"Melena; Cerebral infarction, unspecified; Primary coxarthrosis",,
+CASE-0139-02,patientnr0139,Chirurgie,03/31/2025,04/11/2025,11,G20,Parkinson disease,M16.1,Primary coxarthrosis,,
+CASE-0085-02,patientnr0085,Chirurgie, ,22.12.2025,6,S72.0,Fracture of neck of femur,I63.9; K92.1,"Cerebral infarction, unspecified; Melena",,
+CASE-0086-01,patientnr0086,Chirurgie,13-Dec-2025,07.01.2026,25,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,E11.9,NaN,,
+CASE-0104-02,patientnr0104,Neurologie%,2026/01/04,20260119ü,15,E11.9,Type 2 diabetes mellitus without complications,,,1-910,Diagnostic bronchoscopy
+CASE-0194-01,patientnr0194,Kardiologie,2025.05.17,May 22 2025,5,I50.1,Left ventricular failure,F32.1; C34.1,"Moderate depressive episode; Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0063-02,patientnr0063,Neurologie,2025.02.21,2025/03/08,15,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",N17.9; S72.0,"Acute kidney failure, unspecified; Fracture of neck of femur",,
+CASE-0117-01,patientnr0117,missing,Oct 07 2025,2025.11.01,25,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,S72.0; E11.9,Fracture of neck of femur; Type 2 diabetes mellitus without complications,,
+CASE-0139-03,patientnr0139,Chirurgie,2025-11-04,19_11_2025,15,I50.1,Left ventricular failure,,,missing,
+CASE-0144-01,patientnr0144,Kardiologie,05/07/2025,05/21/2025,14,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",N17.9; G20,missing,,
+CASE-0198-02,patientnr0198,Pneumologie,09-Jan-2025,2025-01-18,9,S72.0,Fracture of neck of femur%,K92.1; F32.1; C34.1,"Melena; Moderate depressive episode; Malignant neoplasm of upper lobe, bronchus or lung",8-550.1,Early geriatric complex treatment
+CASE-0123-02,patientnr0123,Kardiologie,2025.01.22,2025-02-14,23,S72.0,Fracture of neck of femur,J18.9,"Pneumonia, unspecified",8-550.1; 1-910,Early geriatric complex treatment; Diagnostic bronchoscopy
+CASE-0063-03,patientrn0063,Chirurgie,20251105,NULL,10,J18.9ä,"Pneumonia, unspecified",E11.9; I63.9,"Type 2 diabetes mellitus without complications; Cerebral infarction, unspecified",,
+CASE-0190-02,patientnr0190,Chirurgie,09.02.2025,2025-02-18,9,I10,Essential hypertension,G20,Parkinson disease,8-930,Monitoring of cerebral activity
+CASE-0070-05,patientnr0070,Chirurgie,05/22/2025,06_06_2025,15,N17.9,"Acute kidney failure, unspecified",n/a,n/a,,
+CASE-0017-02,patientnr0017,Intensivstation,Jun 15 2025,unknown,1,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",C34.1; F32.1; S72.0,"Malignant neoplasm of upper lobe, bronchus or lung; Moderate depressive episode; Fracture of neck of femur",,
+CASE-0198-03,patientnr0198,Geriatrie,20250523	,2025/06/05,13,I50.1,Left ventricular failure,,,8-930,Monitoring of cerebral activity
+CASE-0104-03ß,patientnr0104	,Geriatrie,2025-06-30,21.07.2025,21,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,I63.9,"Cerebral infarction, unspecified",8-98f.0; 8-550.1,Pulmonology complex treatment; Early geriatric complex treatment
+CASE-0063-04,patientnr0063,Intensivstation,06/09/2025,2025-Jun-15,6,S72.0,Fracture of neck of femur,,,8-800.90; 8-930,Transfusion of erythrocyte concentrate; Monitoring of cerebral activity
+CASE-0065-01,patientnr0065,Pneumologie,17_03_2025,30-Mar-2025,13,J18.9,"Pneumonia, unspecified",E11.9; K92.1,Type 2 diabetes mellitus without complications; Melena,unknown,Monitoring of cerebral activity; Transfusion of erythrocyte concentrate
+CASE-0144-02,patientnr0144,Geriatrie,14-Jun-2025,20250619,5,F32.1,Moderate depressive episode,S72.0,Fracture of neck of femur,1-910,Diagnostic bronchoscopy
+CASE-0146-02,patientnr0146,Chirurgie,2025-02-30,20250617,22,F32.1,Moderate depressive episodeß,J18.9; I10,"Pneumonia, unspecified; Essential hypertension",5-470,N/A
+CASE-0037-01,patientnr0037 ,Neurologie,2025-Jul-29,20250731,2,E11.9,Type 2 diabetes mellitus without complications,I10; J44.1,Essential hypertension; Chronic obstructive pulmonary disease with acute exacerbation,8-550.1; 1-910,Early geriatric complex treatment; Diagnostic bronchoscopy
+CASE-0070-06,patientnr0070,Chirurgie,05.07.2025,07/24/2025,0,F32.1,Moderate depressive episode,E11.9; C34.1,"Type 2 diabetes mellitus without complications; Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0091-01,patientnr0091,Neurologie,2025/08/26,2025.09.02,7,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung$",J44.1; M16.1,Chronic obstructive pulmonary disease with acute exacerbation; Primary coxarthrosis, ,Implantation of hip joint prosthesis; Early geriatric complex treatment
+CASE-0168-02,patientnr0168,Chirurgie,2025/08/03,n/a,5,N17.9,"Acute kidney failure, unspecified",G20; I10,Parkinson disease; Essential hypertension,,
+CASE-0120-02,patientnr0120,Kardiologie,2025-05-10,2025-May-16$,6,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,N17.9; M16.1; I10,"Acute kidney failure, unspecified; Primary coxarthrosis; Essential hypertension",8-800.90,Transfusion of erythrocyte concentrate
+CASE-0129-02,patientnr0129@,Geriatrie,2025-12-14,2025.12.21,7,N17.9,"Acute kidney failure, unspecified",,,5-470; 1-910,Appendectomy; Diagnostic bronchoscopy
+CASE-0037-02,,Geriatrie,21-Mar-2025,22-Mar-2025,1,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",,,missing,
+CASE-0128-02,,Intensivstation,2025-09-28^,NULL,29,missing,Left ventricular failure,G20; I10; J44.1,Parkinson disease; Essential hypertension; Chronic obstructive pulmonary disease with acute exacerbation,5-470,Appendectomy
+CASE-0113-01,patientnr0113,Geriatrie,21-Sep-2025,2025.10.17,26,I10,Essential hypertension,I63.9; G20; S72.0,"Cerebral infarction, unspecified; Parkinson disease; Fracture of neck of femur",8-550.1; 5-470,Early geriatric complex treatment; Appendectomy
+CASE-0063-05,patientnr0063,Innere Medizin,2025-02-09,NaN,10,C34.1,NaN,J44.1; I50.1; C34.1,"Chronic obstructive pulmonary disease with acute exacerbation; Left ventricular failure; Malignant neoplasm of upper lobe, bronchus or lung",8-98f.0; 5-820.0,Pulmonology complex treatment; Implantation of hip joint prosthesis
+CASE-0108-04,patientnr0108,Intensivstation,2025-Dec-19,2025/12/30,11,F32.1,Moderate depressive episode,I10,Essential hypertension,,
+CASE-0029-02,patientnr0029,Innere Medizin,03.06.2025,26-Jun-2025,23,I10,Essential hypertension,,,,
+CASE-0097-02,patientnr0097,Pneumologie,Feb 23 2025,2025-03-07,12%,I63.9,"Cerebral infarction, unspecified",J44.1,Chronic obstructive pulmonary disease with acute exacerbation,NULL,Monitoring of cerebral activity; Appendectomy
+CASE-0143-02,patientnr0143#,Intensivstation,03_07_2025,2025/07/08,5,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",M16.1; I10; J44.1,Primary coxarthrosis; Essential hypertension; Chronic obstructive pulmonary disease with acute exacerbation,5-820.0,Implantation of hip joint prosthesis
+CASE-0070-07,patientnr0070,Intensivstation,2025-06-18,02_07_2025,14ä,K92.1,Melena,K92.1; J44.1^,Melena; Chronic obstructive pulmonary disease with acute exacerbation,,
+CASE-0102-05,patientnr0102,Chirurgie@,2025-Dec-30,20260119,20,I50.1,Left ventricular failure,,,,
+CASE-0092-02,patientnr0092,Geriatrie,NaN,04/24/2025,13,F32.1@,Moderate depressive episode,,,8-98f.0; 8-550.1,NaN
+CASE-0070-08,patientnr0070,Neurologie,20250205,27.02.2025,22,M16.1,Primary coxarthrosis,M16.1,Primary coxarthrosis,8-930,Monitoring of cerebral activity
+CASE-0122-02,patientnr0122,Innere Medizin,2025-Nov-18,Dec 06 2025,18,F32.1,Moderate depressive episode,,,8-98f.0; 8-550.1,Pulmonology complex treatment; Early geriatric complex treatment
+CASE-0065-02,patientnr0065@,Chirurgie,2025-05-22@,20250527,5,F32.1,Moderate depressive episode,C34.1; I63.9; N17.9,"Malignant neoplasm of upper lobe, bronchus or lung; Cerebral infarction, unspecified; Acute kidney failure, unspecified",8-930,Monitoring of cerebral activity
+CASE-0040-01,patientnr0040,Geriatrie,2025.01.31,2025-02-12,12,M16.1,Primary coxarthrosis,NULL,Fracture of neck of femur,,NULL
+CASE-0156-01,patientnr0156,Intensivstation,25_01_2025,2025.02.20,26,I10,Essential hypertension,F32.1; K92.1,Moderate depressive episode; Melena,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0113-02,patienntr0113,Geriatrie,15.06.2025,2025.06.26,11,F32.1,Moderate depressive episode,,,5-820.0,Implantation of hip joint prosthesis
+CASE-0173-03,patientnr0173,Kardiologie,Mar 01 2025,2025/03/05,unknown,I10,Essential hypertension,S72.0; K92.1,Fracture of neck of femur; Melena,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0134-01,patientnr0134,Chirurgie,20260103,2026-02-01,29,M16.1,Primary coxarthrosis,I63.9; I10; S72.0,"Cerebral infarction, unspecified; Essential hypertension; Fracture of neck of femur",N/A,Transfusion of erythrocyte concentrate
+CASE-0095-02,patientnr0095,Pneumologie,18-Apr-2025,2025-May-10,22,F32.1,Moderate depressive episode,I63.9; I50.1,"Cerebral infarction, unspecified; Left ventricular failure",,
+CASE-0015-07,patientnr0015,NULL,04/13/2025,23-Apr-2025,10,K92.1,Melena,J18.9,"Pneumonia, unspecified",8-800.90,Transfusion of erythrocyte concentrate
+CASE-0190-03,pateintnr0190,Kardiologie,20250722,20250809,N/A,E11.9,Type 2 diabetes mellitus without complications,S72.0; I10,Fracture of neck of femur; Essential hypertension,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0090-01,patientnr0090,Geriatrie,2025/01/22,2025-02-21,30,I10,Essential hypertension,F32.1,Moderate depressive episode,8-930; 8-98f.0,Monitoring of cerebral activity; Pulmonology complex treatment
+CASE-0063-06,patientnr0063#,Kardiologie,30.06.2025,2025/07/29,29,F32.1,Moderate depressive episode,G20,Parkinson disease,unknown,Monitoring of cerebral activity
+CASE-0065-03,patientnr0065,Innere Medizin,2025/03/10,2025.04.03,24,I10,Essential hypertension,M16.1,Primary coxarthrosis,8-98f.0; 5-820.0,Pulmonology complex treatment; Implantation of hip joint prosthesis
+CASE-0009-03,patientnr0009,Intensivstation,18-May-2025,2025.06.10,23,E11.9,Type 2 diabetes mellitus without complications,K92.1; S72.0,Melena; Fracture of neck of femur,8-930,Monitoring of cerebral activity
+CASE-0102-06,patientnr0102,Intensivstation,03/06/2025,2025/03/21ä,15,I10,Essential hypertension,,,8-550.1; 1-910,Early geriatric complex treatment; Diagnostic bronchoscopy%
+CASE-0001-01,patientnr0001,Innere Medizin,01/29/2025,2025/02/13,15,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,I63.9; K92.1,"Cerebral infarction, unspecified; Melena",,
+CASE-0163-02,patientnr0163,Intensivstation,29-Dec-2025,2026/01/23,25,G20,Parkinson disease,,,5-820.0; 8-930,Implantation of hip joint prosthesis; Monitoring of cerebral activity
+CASE-0053-02,patientnr0053,Innere Medizin,2025/07/22,2025/07/29,7,N17.9,"Acute kidney failure, unspecified",J44.1,Chronic obstructive pulmonary disease with acute exacerbation,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0037-03,missing,Geriatrie,05-Nov-2025,20-Nov-2025,15,M16.1,Primary coxarthrosis%,E11.9; S72.0; M16.1$,Type 2 diabetes mellitus without complications; Fracture of neck of femur; Primary coxarthrosis,,
+CASE-0053-03,patientnr0053,Intensivstation,2025.07.18,2025.08.15,28,S72.0,Fracture of neck of femur,J44.1; E11.9; I10,Chronic obstructive pulmonary disease with acute exacerbation; Type 2 diabetes mellitus without complications; Essential hypertension,8-800.90; 8-550.1,Transfusion of erythrocyte concentrate; Early geriatric complex treatment
+CASE-0108-05^,patientnr0108,Geriatrie,2025-Nov-03,2025-Nov-15,12,F32.1,Moderate depressive episode,I50.1; C34.1; S72.0,"Left ventricular failure; Malignant neoplasm of upper lobe, bronchus or lung; Fracture of neck of femurß",5-820.0,Implantation of hip joint prosthesis
+CASE-0115-01,patientnr0115,Geriatrie,20-Apr-2025,04.05.2025,14,E11.9,Type 2 diabetes mellitus without complications,I63.9; F32.1; N17.9,"Cerebral infarction, unspecified; Moderate depressive episode; Acute kidney failure, unspecified",5-470,Appendectomy
+CASE-0122-03,NaN,Chirurgie,2025.08.17,2025-Aug-31,14,F32.1,Moderate depressive episode,I50.1,N/A,,
+CASE-0033-01,patientnr0033,Innere Medizin,2025-Nov-09,Nov 11 2025,2ß,F32.1,Moderate depressive episode,N17.9; I63.9,"Acute kidney failure, unspecified; Cerebral infarction, unspecified",8-550.1; 5-470,NaN
+CASE-0115-02,patientnr0115,Innere Medizin,15.04.2025,05/14/2025,29,I10,Essential hypertension,,,8-930; 5-820.0,Monitoring of cerebral activity; Implantation of hip joint prosthesis
+CASE-0017-03,patientnr0017,Neurologie,2025-Jan-04,02_02_2025,29,N/A,Chronic obstructive pulmonary disease with acute exacerbation,S72.0,Fracture of neck of femur,8-930,Monitoring of cerebral activity
+CASE-0175-02,patientnr0175,Chirurgie,11/15/2025,2025/12/15, ,I10,Essential hypertension,I50.1,Left ventricular failure,,NaN
+CASE-0090-02,patientnr0090,Innere Medizin,03_06_2025,2025/06/11,8,K92.1,Melena,,,,
+CASE-0069-01,patientnr0069,Kardiologie,Dec 13 2025,25.12.2025,12,S72.0,Fracture of neck of femur,unknown,Essential hypertension; Moderate depressive episode; Left ventricular failure,5-820.0; 8-98f.0,Implantation of hip joint prosthesis; Pulmonology complex treatment
+CASE-0123-03,patientnr0123,Neurologie,10.04.2025,Apr 28 2025,18,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",missing,,,
+CASE-0120-03, ,Chirurgie,11.07.2025,missing,12,I63.9,"Cerebral infarction, unspecified",S72.0,Fracture of neck of femur,8-930,Monitoring of cerebral activity
+CASE-0143-03,patientnr0143,Kardiologie,2025.08.17,20250831,14ü,I63.9,"Cerebral infarction, unspecified",G20; M16.1,Parkinson disease; Primary coxarthrosis,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0087-02,patientnr0087,Innere Medizin%,2025-10-17,Oct 26 2025,9,NaN,Parkinson disease,S72.0; E11.9; K92.1,Fracture of neck of femur; Type 2 diabetes mellitus without complications; Melena,5-470,Appendectomy
+CASE-0015-08,patientnr0015,Kardiologie,2025-04-05,2025.04.26,21,F32.1,Moderate depressive episode,K92.1; I50.1; F32.1,Melena; Left ventricular failure; Moderate depressive episode,1-910; 8-930,missing
+CASE-0084-01,NaN,Intensivstation,2025/01/15,02/10/2025@,26,S72.0,Fracture of neck of femur,M16.1,Primary coxarthrosis,,
+CASE-0086-02,patientnr0086,Chirurgie,2026-01-01,01/12/2026,11,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",F32.1; J18.9,"Moderate depressive episode; Pneumonia, unspecified",,
+CASE-0153-01,patientnr0153,Kardiologie,2025-03-30,22_04_2025,23,I63.9,"Cerebral infarction, unspecified",,,8-550.1; 1-910,Early geriatric complex treatment; Diagnostic bronchoscopy
+CASE-0184-01,patientnr0184,Pneumologie,Sep 11 2025ü,32.01.2024,28,F32.1,Moderate depressive episode,,,5-820.0,Implantation of hip joint prosthesis
+CASE-0198-04,patientnr0198,Pneumologie,21.03.2025,30.03.2025,9,G20,Parkinson disease,J44.1; F32.1,Chronic obstructive pulmonary disease with acute exacerbation; Moderate depressive episode,,
+CASE-0194-02,patientnr0194,Chirurgie,02.10.2025,09_10_2025,7,I50.1,Left ventricular failure,,,,
+CASE-0113-03,patientnr0113,Neurologie,20251204,15.12.2025,11,N17.9,"Acute kidney failure, unspecified",M16.1,Primary coxarthrosis,,
+CASE-0115-03,patientnr0115,Chirurgie,2025-09-05,20250929,24,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",G20; J18.9; M16.1$,"Parkinson disease; Pneumonia, unspecified; Primary coxarthrosis",,
+CASE-0076-01,n/a,Innere Medizin,2025-02-03,,17,F32.1,Moderate depressive episode,,,1-910; 8-800.90,Diagnostic bronchoscopy; Transfusion of erythrocyte concentrate
+CASE-0070-09,patientnr0070,Geriatrie,17.05.2025,06/06/2025,20,I50.1,Left ventricular failure,E11.9; N17.9,"Type 2 diabetes mellitus without complications; Acute kidney failure, unspecified",,
+CASE-0167-02,patientnr0167,Innere Medizin,2025.04.19,2025-May-14,25,F32.1,Moderate depressive episode,,,8-98f.0; 8-930ä,Pulmonology complex treatment; Monitoring of cerebral activity@
+CASE-0122-04,,Chirurgie,25.10.2025,20251103,9,E11.9,Type 2 diabetes mellitus without complications,M16.1; S72.0,Primary coxarthrosis; Fracture of neck of femur,,
+CASE-0104-04ü,patientnr0104,n/a,2026-01-21,10_02_2026,999,F32.1,Moderate depressive episode,N17.9; M16.1; J18.9,"Acute kidney failure, unspecified; Primary coxarthrosis; Pneumonia, unspecified",5-470,Appendectomy
+CASE-0009-04,patientnr0009,Intensivstation,2025-10-22,2025.10.23,1,I10ß,Essential hypertension,S72.0; I50.1,Fracture of neck of femur; Left ventricular failure,5-820.0; 8-550.1,Implantation of hip joint prosthesis; Early geriatric complex treatment
+CASE-0015-09,patientnr0015	,Neurologie,06/01/2025,06/14/2025,13,E11.9,Type 2 diabetes mellitus without complications,S72.0; I10; K92.1,Fracture of neck of femur; Essential hypertension; Melena,8-98f.0; 5-820.0,Pulmonology complex treatment; Implantation of hip joint prosthesis
+CASE-0086-03,patientnr0086,Chirurgie,10/30/2025,2025.11.05,6,E11.9,Type 2 diabetes mellitus without complications,n/a,"Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0144-03,patientnr0144,Chirurgie,10.09.2025,Oct 03 2025ä,23,I10,Essential hypertension,J44.1; C34.1; M16.1,"Chronic obstructive pulmonary disease with acute exacerbation; Malignant neoplasm of upper lobe, bronchus or lung; Primary coxarthrosis	",8-550.1,Early geriatric complex treatment
+CASE-0133-01,patientnr0133,Chirurgie,2025-12-14,12/31/2025,17,S72.0,Fracture of neck of femur,,N/A,8-98f.0; 8-550.1,Pulmonology complex treatment; Early geriatric complex treatment
+CASE-0070-10,patientnr0070,Neurologie,2025-Jul-04,Aug 01 2025,28,S72.0,Fracture of neck of femur,J44.1; S72.0; G20,Chronic obstructive pulmonary disease with acute exacerbation; Fracture of neck of femur; Parkinson disease,,
+CASE-0039-02,patientnr0039,Geriatrie, ,2025/04/28,24,M16.1,Primary coxarthrosis,J18.9; F32.1; I63.9,"Pneumonia, unspecified; Moderate depressive episode; Cerebral infarction, unspecified",8-98f.0; 8-930,Pulmonology complex treatment; Monitoring of cerebral activity
+CASE-0070-11,patientnr0070,Kardiologie,08-Apr-2025,2025-05-01#,23,S72.0,Fracture of neck of femur,I50.1; I10; F32.1,Left ventricular failure; Essential hypertension; Moderate depressive episode,1-910,Diagnostic bronchoscopy
+CASE-0156-02,patientnr0156,Neurologie,2025.11.19,20251209,20,N17.9,"Acute kidney failure, unspecified", ,"Acute kidney failure, unspecified; Essential hypertension",8-550.1,Early geriatric complex treatment
+CASE-0163-03,aptientnr0163,Kardiologie,08_03_2025,Mar 28 2025,20,J18.9,"Pneumonia, unspecified",G20; I63.9; K92.1,"Parkinson disease; Cerebral infarction, unspecified; Melena",8-800.90,Transfusion of erythrocyte concentrate
+CASE-0153-02,patientnr0135,Intensivstation,20250613,08.07.2025,25,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",1-910; 8-98f.0,Diagnostic bronchoscopy; Pulmonology complex treatment
+CASE-0143-04,patientnr0143,Neurologie,09_04_2025,2025/05/08,29,J18.9,"Pneumonia, unspecified",,,8-98f.0; 1-910,Pulmonology complex treatment; Diagnostic bronchoscopy
+CASE-0048-01,patientnr0048,Kardiologie,2025-05-05,02.06.2025,28,E11.9,Type 2 diabetes mellitus without complications,,,,
+CASE-0139-04,patientnr0139,Intensivstation,2025-Apr-25,20250506,11,J44.1,Chronic obstructive pulmonary disease with acute exacerbation, ,Primary coxarthrosis; Melena; Parkinson disease,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0039-03,patientnr0039,Kardiologie,25-Feb-2025,03/19/2025,22,I50.1,Left ventricular failure,,,5-820.0; 8-550.1,Implantation of hip joint prosthesis; Early geriatric complex treatment
+CASE-0085-03,patientnr0085,Innere Medizin^,2025.08.21,02.09.2025,12,S72.0,Fracture of neck of femur,,,5-820.0; 1-910,Implantation of hip joint prosthesis; Diagnostic bronchoscopyö
+CASE-0123-04,patientnr0123,Kardiologie,2025-08-29,2025/09/06,8,K92.1,Melena@,,unknown,,
+CASE-0168-03,patientnr0168,Kardiologie,2025-06-06,20250616,10,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",J18.9; I63.9,"Pneumonia, unspecified; Cerebral infarction, unspecified",,
+CASE-0128-03,patientnr0128,Pneumologie,Apr 05 2025,16-Apr-2025,999,N17.9,"Acute kidney failure, unspecified",E11.9; I63.9,"Type 2 diabetes mellitus without complications; Cerebral infarction, unspecified",8-98f.0,Pulmonology complex treatment
+CASE-0158-03,patientnr0158,Innere Medizin,2025-May-14,19-May-2025,5,I10,Essential hypertension,M16.1,Primary coxarthrosis,NULL,Appendectomy$
+CASE-0017-04,patientnr0017,NULL,2025-02-18,2025-Feb-19,1,E11.9,Type 2 diabetes mellitus without complications,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,,
+CASE-0104-05,patientnr0104,Geriatrie,2025/10/03,Oct 05 2025,2,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,J18.9; C34.1,"Pneumonia, unspecified; Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0063-07,patientnr0063,Pneumologie,27.11.2025,2025.12.18,21,I50.1,missing,n/a,Fracture of neck of femur,8-98f.0; 1-910,Pulmonology complex treatment; Diagnostic bronchoscopy
+CASE-0063-08,patientnr0063,Geriatrie,2025-05-30,2025-Jun-17,18,I10,Essential hypertension,unknown,,,
+CASE-0063-09,patientnr0063,N/A,Sep 07 2025,2025.09.20,13^,I10,Essential hypertension,,,5-470,Appendectomy
+CASE-0092-03,patientnr0092,Neurologie,2025-Dec-12,missing,N/A,I50.1,Left ventricular failure,N17.9; C34.1,"Acute kidney failure, unspecified; Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0102-07,patientnr0102,Innere Medizin,Sep 09 2025,09/21/2025,12,N17.9,"Acute kidney failure, unspecifiedß",E11.9,Type 2 diabetes mellitus without complications,n/a,Early geriatric complex treatment
+CASE-0039-04,patientnr0039%,Chirurgie,20250606,Jun 22 2025,N/A,I10,Essential hypertension,I63.9,"Cerebral infarction, unspecified",8-98f.0; 5-470,Pulmonology complex treatment; Appendectomy
+CASE-0017-05,patientnr0017#,Intensivstation,Dec 19 2025,2026/01/06,18,S72.0,Fracture of neck of femur,K92.1; S72.0; N17.9,"Melena; Fracture of neck of femur; Acute kidney failure, unspecified",1-910,Diagnostic bronchoscopy
+CASE-0084-02,patientnr0084,Geriatrie,2025/08/11,2025.08.30,19,N17.9,"Acute kidney failure, unspecified",,,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0128-04,patientnr0128,Chirurgie,2025/08/05,NaN,-1,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",, ,8-800.90; 8-550.1,Transfusion of erythrocyte concentrate; Early geriatric complex treatment
+CASE-0147-01,,Chirurgie,2025.06.30,22_07_2025,22^,K92.1,Melena,F32.1; S72.0; I50.1,Moderate depressive episode; Fracture of neck of femur; Left ventricular failure,1-910,Diagnostic bronchoscopy
+CASE-0039-05,patientnr0039,Pneumologie,20250601,06/05/2025,4,G20,Parkinson disease,E11.9; N17.9; G20,"Type 2 diabetes mellitus without complications; Acute kidney failure, unspecified; Parkinson disease",5-820.0; 8-98f.0,NaN
+CASE-0122-05,patientnr0122#,Pneumologieä,2025/01/30,2025.02.28,-1,S72.0,Fracture of neck of femur,,,,
+CASE-0117-02,patientnr0117,Neurologie,2025.04.29,May 28 2025,29,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,K92.1,Melena,8-550.1; 1-910,Early geriatric complex treatment; Diagnostic bronchoscopy
+CASE-0113-04,patientnr0113,Geriatrie,27.05.2025,N/A,17,N17.9,"Acute kidney failure, unspecified",,,NaN,Diagnostic bronchoscopy; Pulmonology complex treatment
+CASE-0037-04,patientnr0037,Intensivstation,00/00/0000,13.02.2026,16,G20,Parkinson disease,E11.9; C34.1; J18.9ä,"Type 2 diabetes mellitus without complications; Malignant neoplasm of upper lobe, bronchus or lung; Pneumonia, unspecified",,
+CASE-0070-12,patientnr0070,Innere Medizin,05_04_2025,20250416,11,M16.1,Primary coxarthrosis,NaN,,5-820.0; 5-470,Implantation of hip joint prosthesis; Appendectomy
+CASE-0087-03,,Intensivstation,09/20/2025,24_09_2025,4,I10#,Essential hypertension,N17.9,"Acute kidney failure, unspecified",,
+CASE-0129-03,patientnr0129#,Pneumologie,2025-Sep-29,2025.10.21,22,S72.0,Fracture of neck of femur,,,5-820.0,Implantation of hip joint prosthesisß
+CASE-0175-03,,Intensivstation,Feb 19 2025,2025-02-27,8,NULL,"Acute kidney failure, unspecified",J18.9; I10,"Pneumonia, unspecified; Essential hypertension",NaN,Pulmonology complex treatment; Early geriatric complex treatment
+CASE-0097-03,patientnr0097,Neurologie,Jan 22 2025,01_02_2025,10,K92.1,Melena,G20; J44.1,Parkinson disease; Chronic obstructive pulmonary disease with acute exacerbation,5-470,Appendectomy
+CASE-0143-05,patientnr0143,Chirurgie,30-Apr-2025,05.05.2025,5^,K92.1,Melena,N17.9; I10; I63.9,"Acute kidney failure, unspecified; Essential hypertension; Cerebral infarction, unspecified",,
+CASE-0159-01,patientnr0159,Pneumologie,11.12.2025,2026-Jan-04,N/A,S72.0,Fracture of neck of femur,,,8-98f.0,Pulmonology complex treatment
+CASE-0133-02,patientnr0133,Chirurgie,20250115ö,2025.02.10,26,S72.0,Fracture of neck of femur,I10; J18.9,"Essential hypertension; Pneumonia, unspecified",,
+CASE-0198-05,patientnr0198,Innere Medizin,2025/01/10,2025-Jan-14,4,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",G20,Parkinson disease,5-470; 5-820.0,Appendectomy; Implantation of hip joint prosthesis
+CASE-0063-10,patientnr0063,Pneumologie^,2026/01/08,20260201$,24,I10,Essential hypertension,K92.1; J18.9,"Melena; Pneumonia, unspecified",,
+CASE-0015-10,patientnr0015,Innere Medizin,26.04.2025,2025.04.30,4,F32.1,Moderate depressive episode,n/a,"Pneumonia, unspecified; Chronic obstructive pulmonary disease with acute exacerbation",5-470, 
+CASE-0143-06,patientnr0143,Intensivstation,2025.06.23,Jun 25 2025,2,I63.9,"Cerebral infarction, unspecified",,,8-800.90; 1-910,Transfusion of erythrocyte concentrate; Diagnostic bronchoscopy
+CASE-0167-03,patientnr0167,Intensivstation,N/A,2025/07/14, ,I50.1,Left ventricular failure,C34.1; S72.0; F32.1,"Malignant neoplasm of upper lobe, bronchus or lung; Fracture of neck of femur; Moderate depressive episode",8-98f.0,Pulmonology complex treatment
+CASE-0175-04,patientnr0175,Kardiologie,2025/09/19,09-Oct-2025,20,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,I63.9; N17.9,"Cerebral infarction, unspecified; Acute kidney failure, unspecified",,
+CASE-0184-02,patientnr0184,Chirurgie,2025/10/22,2025-11-07,16,N17.9,"Acute kidney failure, unspecified",,,8-550.1; 5-470,Early geriatric complex treatment; Appendectomy
+CASE-0129-04,patientnr0129,Intensivstation,Jan 12 2026#,Jan 26 2026, ,M16.1,Primary coxarthrosis,E11.9,Type 2 diabetes mellitus without complications,8-550.1; 8-98f.0@,Early geriatric complex treatment; Pulmonology complex treatment
+CASE-0117-03,patientnr0117^,Neurologie,2025/09/05,18.09.2025,13,I50.1,Left ventricular failure,,"Cerebral infarction, unspecified; Fracture of neck of femur; Essential hypertension",8-550.1,Early geriatric complex treatment
+CASE-0158-04,patientnr0158,Geriatrie,2025-02-13,2025-Mar-01,16,I50.1,Left ventricular failure,,,5-470; 8-550.1,Appendectomy; Early geriatric complex treatment
+CASE-0009-05,patientnr0009,Chirurgie,May 31 2025,20250607,7,S72.0,Fracture of neck of femur,M16.1; I50.1; F32.1,Primary coxarthrosis; Left ventricular failure; Moderate depressive episode,8-930; 5-820.0,Monitoring of cerebral activity; Implantation of hip joint prosthesis
+CASE-0195-01,patientnr0195#,Innere Medizin,2025-08-05,26.08.2025,21,F32.1,Moderate depressive episode,E11.9; S72.0,Type 2 diabetes mellitus without complications; Fracture of neck of femur,,
+CASE-0198-06,patientnr0198,Neurologie,08/01/2025,2025/08/08,7,F32.1,Moderate depressive episode,J18.9,n/a,,
+CASE-0108-06,n/a,Kardiologie,2025-Sep-18,20251015,27,I63.9,"Cerebral infarction, unspecified",E11.9; I63.9; F32.1,"Type 2 diabetes mellitus without complications; Cerebral infarction, unspecified; Moderate depressive episode",,
+CASE-0040-02,patientnr0040,missing,2026.01.12,2026/01/16,4,S72.0,Fracture of neck of femur,,,5-470,Appendectomy
+CASE-0195-02,patientnr0195,Intensivstation,2025-01-25,Feb 15 2025,21,I50.1,Left ventricular failure,K92.1; F32.1; J44.1,Melena; Moderate depressive episode; Chronic obstructive pulmonary disease with acute exacerbation,,
+CASE-0198-07,patientnr0198,Innere Medizin,20250411,22-Apr-2025,11,J44.1ß,Chronic obstructive pulmonary disease with acute exacerbation,S72.0; M16.1; N17.9,"Fracture of neck of femur; Primary coxarthrosis; Acute kidney failure, unspecified",5-820.0,Implantation of hip joint prosthesis
+CASE-0091-02,patientnr0091,Intensivstation,20250917,NULL,8,F32.1,Moderate depressive episode,E11.9,Type 2 diabetes mellitus without complications,,
+CASE-0039-06,patientnr0039,Pneumologie,Aug 23 2025,14_09_2025,N/A,J44.1,missing,unknown,"Acute kidney failure, unspecified",5-820.0,Implantation of hip joint prosthesis
+CASE-0039-07,patientnr0039,Geriatrie,06/11/2025,02-Jul-2025,21,I50.1,Left ventricular failure,J18.9,"Pneumonia, unspecified",8-550.1,Early geriatric complex treatment
+CASE-0133-03,patientnr0133,Neurologie,2026-Jan-08,02_02_2026,25,F32.1,Moderate depressive episode,,,1-910; 5-820.0,Diagnostic bronchoscopy; Implantation of hip joint prosthesis
+CASE-0117-04,patientnr0117,Chirurgie,NaN,20250420,28,J18.9,"Pneumonia, unspecified",,,8-800.90; 8-98f.0,Transfusion of erythrocyte concentrate; Pulmonology complex treatment
+CASE-0063-11,patientnr0063,Innere Medizin,2026.01.04,Jan 26 2026,22,M16.1,Primary coxarthrosis,N17.9; I10,"Acute kidney failure, unspecified; Essential hypertensionä",8-98f.0; 8-930,Pulmonology complex treatment; Monitoring of cerebral activity
+CASE-0095-03,patientnr0095,Intensivstation,2025/03/16,03.04.2025,18,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",M16.1,Primary coxarthrosis,5-820.0,unknown
+CASE-0076-02,patientnr0076,Geriatrie,2025-Oct-27,18.11.2025,22,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",8-930; 5-470,Monitoring of cerebral activity; Appendectomy
+CASE-0097-04,patientnr0097ü,Kardiologie,2025-07-08,15.07.2025,7,E11.9,Type 2 diabetes mellitus without complications,,,,
+CASE-0113-05,patientnr0113$,Neurologie,11.06.2025,2025-07-04,23$,G20,Parkinson disease,I63.9; E11.9; K92.1,"Cerebral infarction, unspecified; Type 2 diabetes mellitus without complications; Melena",,
+CASE-0159-02,patientnr0159,Intensivstation,22_06_2025,12.07.2025,20,E11.9,Type 2 diabetes mellitus without complications,F32.1; I50.1; C34.1,"Moderate depressive episode; Left ventricular failure; Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0015-11,patientnr0015,n/a,03/05/2025,06_03_2025,1,N17.9ü,"Acute kidney failure, unspecified",E11.9; G20,Type 2 diabetes mellitus without complications; Parkinson disease,,
+CASE-0070-13,patientnr0070,Intensivstation,2025-08-25#,18_09_2025,24,S72.0,Fracture of neck of femur,M16.1,Primary coxarthrosis,5-470,Appendectomy
+CASE-0008-02,patientnr0008,Intensivstation,2025-Dec-02,16_12_2025,14,G20,Parkinson disease,I63.9; K92.1,"Cerebral infarction, unspecified; Melena",,
+CASE-0070-14,patientnr0007,Neurologie,02/23/2025,23_03_2025,28,F32.1,Moderate depressive episode,M16.1; C34.1,"Primary coxarthrosis; Malignant neoplasm of upper lobe, bronchus or lung",,
+ ,patientnr0076,Geriatrie,2025-May-03,26_05_2025,23,F32.1,Moderate depressive episode,I10; N17.9; E11.9,"Essential hypertension; Acute kidney failure, unspecified; Type 2 diabetes mellitus without complications",,
+CASE-0104-06,patientnr0104,missing,Jul 29 2025,08/05/2025,7,F32.1,Moderate depressive episode,,,,
+CASE-0163-04,patientnr0163,Intensivstation,2025/02/26@,22_03_2025,24,N17.9,"Acute kidney failure, unspecified",N17.9; E11.9,"Acute kidney failure, unspecified; Type 2 diabetes mellitus without complications",missing,Pulmonology complex treatment; Early geriatric complex treatment
+CASE-0102-08,patientnr0102,Kardiologie,20250606,2025-06-11,5,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",,,8-550.1,Early geriatric complex treatment
+CASE-0158-05,patientnr0158,Innere Medizin,2025/02/10,2025.02.21,11,J18.9,"Pneumonia, unspecified%",,,,
+CASE-0120-04,patientnr0120,Geriatrie,09_12_2025,2025/12/18,9,I10,Essential hypertension,E11.9,Type 2 diabetes mellitus without complications,,
+CASE-0048-02,patientnr0048,Chirurgie,2025-05-16,2025.05.26,10,E11.9,Type 2 diabetes mellitus without complications,K92.1; N17.9,NaN,,
+CASE-0108-07,patientnr0108,Intensivstation,01/26/2025,02/12/2025,17,N17.9,"Acute kidney failure, unspecified",,,8-930,Monitoring of cerebral activity
+CASE-0070-15,patientnr0070,Chirurgie,20250603,20250617,14,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",E11.9; J18.9; S72.0,"Type 2 diabetes mellitus without complications; Pneumonia, unspecified; Fracture of neck of femur",5-820.0,Implantation of hip joint prosthesis
+CASE-0129-05,patientnr0129,Pneumologie,05.08.2025,Aug 20 2025,missing,I63.9,"Cerebral infarction, unspecified",I50.1; I63.9; K92.1,"Left ventricular failure; Cerebral infarction, unspecified; Melenaü",5-470,Appendectomy
+CASE-0091-03,patientnr0091,Neurologie,24-Feb-2025,05.03.2025,9,J18.9,"Pneumonia, unspecified",,,1-910; 5-470,Diagnostic bronchoscopy; Appendectomy
+CASE-0092-04,patientnr0092,Chirurgie,2025-03-01,N/A,20,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,missing,,1-910,Diagnostic bronchoscopy
+CASE-0037-05,,Chirurgie,2025-03-31,99.99.9999,2,I63.9,"Cerebral infarction, unspecified",,,5-470,Appendectomy
+CASE-0104-07,patientnr0104,Pneumologie,11/25/2025,2025.11.26,1,E11.9,Type 2 diabetes mellitus without complications,I50.1,Left ventricular failure,8-550.1,Early geriatric complex treatment
+CASE-0146-03,N/A,Intensivstation,Aug 06 2025,2025-Aug-19,13,M16.1,Primary coxarthrosis,J18.9,"Pneumonia, unspecified",5-820.0,Implantation of hip joint prosthesis
+CASE-0037-06,patientnr0037,Intensivstation,20250108,2025-01-12,4,I50.1,Left ventricular failure,,,8-550.1; 5-820.0,Early geriatric complex treatment; Implantation of hip joint prosthesis
+CASE-0194-03,patientnr0194,Chirurgie,2025-02-24,2025-Mar-15,19,E11.9,Type 2 diabetes mellitus without complications,C34.1; S72.0,"Malignant neoplasm of upper lobe, bronchus or lung; Fracture of neck of femur",,
+CASE-0102-09,patientnr0102,Geriatrie,2025-07-04,2025-07-25,21,I10,Essential hypertension,M16.1; K92.1; I50.1,Primary coxarthrosis; Melena; Left ventricular failure,5-820.0,Implantation of hip joint prosthesis
+CASE-0095-04,patientnr0095@,Kardiologie,2025/11/13,2025-Dec-07,24,F32.1,Moderate depressive episode,I50.1; M16.1,Left ventricular failure; Primary coxarthrosis,,
+CASE-0015-12,patientnr0015,Pneumologie,2025/10/20,2025-Nov-03,14,K92.1,Melena,G20,Parkinson disease,8-98f.0,Pulmonology complex treatment
+CASE-0198-08,patientnr0198,Intensivstation,20_07_2025,26_07_2025,6,F32.1,Moderate depressive episode,I10; S72.0,Essential hypertension; Fracture of neck of femur,8-930,Monitoring of cerebral activity
+CASE-0063-12,patientnr0063,Neurologie,17-Jul-2025,03-Aug-2025,17,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",I63.9; C34.1; G20,"Cerebral infarction, unspecified; Malignant neoplasm of upper lobe, bronchus or lung; Parkinson disease",8-930,NULL
+CASE-0102-10,patientnr0102,Intensivstation,08/21/2025,2025-Sep-16,26,N17.9,"Acute kidney failure, unspecified",,,8-930; 8-800.90,Monitoring of cerebral activity; Transfusion of erythrocyte concentrate
+CASE-0156-03,patientnr0156,Geriatrie,2025-Aug-21,09-Sep-2025,19, ,"Acute kidney failure, unspecified",S72.0; G20; N17.9,NULL,8-550.1; 5-820.0,Early geriatric complex treatment; Implantation of hip joint prosthesis
+CASE-0087-04,patientnr0087,Chirurgie,Oct 22 2025,2025-Nov-15,24,I63.9,"Cerebral infarction, unspecified",C34.1; S72.0; I50.1,"Malignant neoplasm of upper lobe, bronchus or lung; Fracture of neck of femur; Left ventricular failure",5-470,Appendectomy
+CASE-0198-09,patientnr0198,Pneumologie,20250215,2025-Feb-18,3,N17.9,"Acute kidney failure, unspecified",K92.1; J44.1; I63.9,unknown,8-98f.0,Pulmonology complex treatmentä
+CASE-0074-01,patientnr0074,Kardiologie,15-13-2024,Oct 01 2025,17,K92.1,NaN,S72.0; I10; N17.9,"Fracture of neck of femur; Essential hypertension; Acute kidney failure, unspecified",8-800.90; 8-930,Transfusion of erythrocyte concentrate; Monitoring of cerebral activity
+CASE-0144-04,patientnr0144,Pneumologie,Jan 28 2025,2025/02/19,22,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",K92.1; N17.9,"Melena; Acute kidney failure, unspecified",,
+CASE-0064-02,patientnr0064,Kardiologieü,2025-03-26,04/10/2025ö,15,E11.9,Type 2 diabetes mellitus without complications,F32.1,Moderate depressive episode,5-820.0,Implantation of hip joint prosthesis
+CASE-0076-04,patinetnr0076,Innere Medizin,02/14/2025,20250222,8,S72.0,Fracture of neck of femur,,,,
+CASE-0091-04,patientnr0091,Kardiologie,17-Dec-2025,2025.12.23,6,I63.9,"Cerebral infarction, unspecified",F32.1; K92.1,Moderate depressive episode; Melena,,
+CASE-0113-06,patientnr0113,Intensivstation,2025-02-30,2025-Sep-30#,7,F32.1,unknown,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",8-930,Monitoring of cerebral activity
+CASE-0085-04,patientnr0085,Geriatrie,07/23/2025,05.08.2025,13,I63.9,"Cerebral infarction, unspecified",M16.1; N17.9,"Primary coxarthrosis; Acute kidney failure, unspecified",,
+CASE-0063-13,patientnr0063,Innere Medizin,05/28/2025,Jun 02 2025,5,F32.1,Moderate depressive episode,,,5-820.0; 1-910,Implantation of hip joint prosthesis; Diagnostic bronchoscopy
+CASE-0064-03,patientnr0064,Neurologie,05.09.2025,09/17/2025,12,J18.9,"Pneumonia, unspecified",C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",5-820.0; 8-98f.0,Implantation of hip joint prosthesis; Pulmonology complex treatment
+ ,patientnr0198,Chirurgie,2025.05.30,10-Jun-2025,11,F32.1,Moderate depressive episode,J44.1; I63.9; C34.1,,,
+CASE-0017-06,patientnr0017,Intensivstation,2025-11-02,NULL,4,F32.1,Moderate depressive episode,J18.9; J44.1,"Pneumonia, unspecified; Chronic obstructive pulmonary disease with acute exacerbation",5-470,Appendectomy
+n/a,patientnr0138,Innere Medizin,00/00/0000,20250709,28,I10,Essential hypertension,NaN,"Malignant neoplasm of upper lobe, bronchus or lung; Primary coxarthrosis; Acute kidney failure, unspecified",8-930,Monitoring of cerebral activity
+CASE-0146-04,patientnr0146,Intensivstation,03/24/2025,03.04.2025,10,E11.9,Type 2 diabetes mellitus without complications,I10; J44.1,Essential hypertension; Chronic obstructive pulmonary disease with acute exacerbation,,
+CASE-0173-04,patientnr0173,Kardiologie,20251020,2025.10.23,3,J18.9,"Pneumonia, unspecified",I10,Essential hypertension,5-820.0,Implantation of hip joint prosthesis
+CASE-0158-06,patientnr0158,Intensivstation,29-Oct-2025,2025.11.26,28,I63.9,"Cerebral infarction, unspecified",,,,
+CASE-0143-07,patientnr0143,Intensivstation,2025.04.11,08_05_2025,27,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",K92.1; E11.9; J18.9,"Melena; Type 2 diabetes mellitus without complications; Pneumonia, unspecified",5-470,Appendectomy
+CASE-0017-07,patientnr0017,Intensivstationü,2025.04.20,05_05_2025,15,I50.1$,Left ventricular failure,unknown,,5-470,Appendectomy
+CASE-0158-07,patientnr0158,Kardiologie,2025/09/17,2025-Oct-09,22,I63.9,"Cerebral infarction, unspecified",M16.1; I50.1,Primary coxarthrosis; Left ventricular failure,5-820.0; 8-98f.0,Implantation of hip joint prosthesis; Pulmonology complex treatment
+CASE-0122-06,patientnr0122,Pneumologie,2025/08/08,n/a,27,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",,,1-910,Diagnostic bronchoscopy
+CASE-0153-03,missing,Intensivstation,30_10_2025,2025.11.28,29,K92.1,Melena,F32.1; J18.9; N17.9,"Moderate depressive episode; Pneumonia, unspecified; Acute kidney failure, unspecified",,
+CASE-0064-04ä,patientnr0064,NULL,19_06_2025,12-Jul-2025ß,N/A,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,K92.1; I50.1; C34.1,"Melena; Left ventricular failure; Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0167-04,patientnr0167#,Kardiologie,2025/01/19,2025.01.20,1,M16.1,Primary coxarthrosis,K92.1,Melena,,
+CASE-0198-11,patientnr0198,Intensivstation,missing,11.07.2025,19,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung@",missing,Melena; Essential hypertension; Type 2 diabetes mellitus without complications,,
+CASE-0008-03,patientnr0008,Geriatrie,20250120,02/10/2025,21,E11.9,Type 2 diabetes mellitus without complications,N/A,,5-470,Appendectomy
+CASE-0143-08,patientnr0143,Neurologieü,2025-Feb-17,Feb 20 2025,3,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",,,1-910,Diagnostic bronchoscopy
+NaN,patientnr0138,Neurologie,2025.12.09,01/07/2026,29,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",,,8-98f.0; 5-820.0,Pulmonology complex treatment; Implantation of hip joint prosthesis
+CASE-0070-16,patientnr0070,Chirurgie,30.11.2025,2025/12/09,9,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",F32.1; N17.9,"Moderate depressive episode; Acute kidney failure, unspecified",,
+CASE-0144-05,missing,Geriatrie,2025/02/23,20250318,23,E11.9,Type 2 diabetes mellitus without complications,I63.9,"Cerebral infarction, unspecified",5-820.0,Implantation of hip joint prosthesis
+CASE-0063-14,patientnr0063,Geriatrie,2025.09.22,16.10.2025,24,I10,Essential hypertension,NULL,"Primary coxarthrosis; Malignant neoplasm of upper lobe, bronchus or lung; Type 2 diabetes mellitus without complications",8-930,Monitoring of cerebral activity
+CASE-0129-06,NaN,Geriatrie,2025-03-03,22.03.2025,19,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",G20; E11.9; S72.0,Parkinson disease; Type 2 diabetes mellitus without complications; Fracture of neck of femur,,
+CASE-0104-08,patientnr0104,Innere Medizin,10_06_2025,NaN,-1,J18.9,"Pneumonia, unspecified",,,1-910; 8-800.90,Diagnostic bronchoscopy; Transfusion of erythrocyte concentrate
+CASE-0117-05,patientnr0117,Geriatrie,27.11.2025,2025-02-30,22,J18.9,"Pneumonia, unspecified",G20; M16.1ö,Parkinson disease; Primary coxarthrosis,8-930,Monitoring of cerebral activity
+CASE-0143-09,patientnr0143,Intensivstation,06/13/2025,08.07.2025,25,I10,Essential hypertension,J18.9; M16.1,"Pneumonia, unspecified; Primary coxarthrosis",5-820.0; 8-930,Implantation of hip joint prosthesis; Monitoring of cerebral activity
+CASE-0039-08,patientnr0039,Kardiologie,09-Mar-2025,2025.03.25,16,I50.1,Left ventricular failure,G20; F32.1; S72.0,Parkinson disease; Moderate depressive episode; Fracture of neck of femur,8-800.90; 8-550.1,Transfusion of erythrocyte concentrate; Early geriatric complex treatment
+CASE-0108-08,patientnr0108,Kardiologie,04_11_2025,Nov 15 2025,11,J18.9$,"Pneumonia, unspecified",I50.1; M16.1; G20,Left ventricular failure; Primary coxarthrosis; Parkinson disease,5-470,Appendectomy
+CASE-0163-05,patientnr0163,Neurologie,2025.12.10,2025/12/11,1,G20,Parkinson disease,N17.9; J44.1,"Acute kidney failure, unspecified; Chronic obstructive pulmonary disease with acute exacerbation",1-910,Diagnostic bronchoscopy
+CASE-0153-04,patientnr0153,Pneumologie,N/A,2025/04/04,19,K92.1,Melena,F32.1; I10,Moderate depressive episode; Essential hypertension,1-910; 5-470,Diagnostic bronchoscopy; Appendectomy
+CASE-0198-12,patientnr0198,Geriatrie,02/28/2025,30_03_2025,30,I63.9,"Cerebral infarction, unspecified",S72.0; I50.1; G20,Fracture of neck of femur; Left ventricular failure; Parkinson disease,,
+CASE-0033-02,patientnr0033,Neurologie,2025/03/27,12.04.2025,16,G20,Parkinson disease,,,8-800.90; 1-910,Transfusion of erythrocyte concentrate; Diagnostic bronchoscopy
+CASE-0159-03,patientnr0159,Kardiologie,Aug 27 2025,unknown,3,S72.0,Fracture of neck of femur,C34.1; F32.1,"Malignant neoplasm of upper lobe, bronchus or lung; Moderate depressive episode",5-470; 1-910,Appendectomy; Diagnostic bronchoscopy
+CASE-0187-02,patientnr0187,Chirurgie,27.04.2025^,05/22/2025,0,I63.9,"Cerebral infarction, unspecified",S72.0; E11.9; J44.1,Fracture of neck of femur; Type 2 diabetes mellitus without complications; Chronic obstructive pulmonary disease with acute exacerbation,,
+CASE-0097-05,patientnr0097,Geriatrie,12/17/2025,15_01_2026,29,E11.9,Type 2 diabetes mellitus without complications,n/a,Primary coxarthrosis; Essential hypertension; Melena,8-550.1; 8-800.90,Early geriatric complex treatment; Transfusion of erythrocyte concentrate
+CASE-0063-15,patientnr0063,Geriatrie,13_01_2026,17_01_2026ß,4,I63.9,"Cerebral infarction, unspecified",,,,
+CASE-0175-05,patientnr0175,Intensivstation,06/12/2025,Jun 26 2025,14,K92.1,Melena,I10; C34.1; F32.1,"Essential hypertension; Malignant neoplasm of upper lobe, bronchus or lung; Moderate depressive episode",1-910,Diagnostic bronchoscopy
+CASE-0104-09,patientnr0104,Intensivstation,01/20/2025,2025.01.21,1,K92.1,Melena,K92.1; S72.0,unknown,,
+CASE-0187-03,patientnr0187,Innere Medizin,11.01.2025,2025/01/14,3,E11.9,Type 2 diabetes mellitus without complications,,,,
+CASE-0128-05,patientnr0128,Geriatrie,25_01_2026,20260211,N/A,F32.1,Moderate depressive episode,N17.9; J44.1; J18.9,"Acute kidney failure, unspecified; Chronic obstructive pulmonary disease with acute exacerbation; Pneumonia, unspecified",,
+CASE-0143-10,patientnr0143,Neurologie,05/27/2025,May 29 2025,2ä,S72.0,Fracture of neck of femur,,,,
+CASE-0134-02,patientnr0134,Pneumologie,N/A,2025/12/09,21,N17.9,"Acute kidney failure, unspecified",,,5-470,Appendectomy
+CASE-0065-04,patientnr0065,Intensivstation,2025-06-09,20250618,9,E11.9,Type 2 diabetes mellitus without complications,,,5-820.0,Implantation of hip joint prosthesis
+CASE-0143-11,patientnr0143,missing,Mar 10 2025,29-Mar-2025,19,E11.9,NULL,,,1-910,Diagnostic bronchoscopy
+CASE-0048-03,patientnr0048,Geriatrie,24-Oct-2025,11/08/2025,15,G20,Parkinson disease,I50.1; F32.1; S72.0,NULL,1-910; 8-930,Diagnostic bronchoscopy; Monitoring of cerebral activity
+CASE-0039-09,patientnr0039,Pneumologie,20251210,2025.12.29,19,N/A,"Cerebral infarction, unspecified",F32.1,Moderate depressive episode,8-800.90; 8-550.1,Transfusion of erythrocyte concentrate; Early geriatric complex treatment
+CASE-0063-16,patientnr0063,Geriatrie,2026-Feb-01,99.99.9999,28,S72.0,Fracture of neck of femur,,,8-930,Monitoring of cerebral activity
+CASE-0020-02,patientnr0020,Kardiologie,07/19/2025,2025/08/03,15,I63.9,"Cerebral infarction, unspecified",missing,missing,5-820.0; 8-550.1,Implantation of hip joint prosthesis; Early geriatric complex treatment
+CASE-0143-12,patientnr0143,Innere Medizin,2025-09-19,2025/10/18,29,J44.1,Chronic obstructive pulmonary disease with acute exacerbation	,,,,
+CASE-0128-06,patientnr0128,Chirurgie,22-Jun-2025,21.07.2025,29,J18.9,missing,S72.0,Fracture of neck of femur,,
+CASE-0095-05,patientnr0095ä,Pneumologie,2026-Jan-02ß,Jan 05 2026,3,K92.1,Melena,,,8-550.1,Early geriatric complex treatment
+CASE-0033-03,patientnr0033,Neurologie,2025/08/16,Aug 27 2025,11,I63.9,"Cerebral infarction, unspecified",I50.1; J44.1; I10,Left ventricular failure; Chronic obstructive pulmonary disease with acute exacerbation; Essential hypertension,,
+CASE-0195-03,patientnr0195,Chirurgie,22.08.2025,2025/09/10,19,I63.9,"Cerebral infarction, unspecified",N17.9,"Acute kidney failure, unspecified",8-930,Monitoring of cerebral activity
+CASE-0009-06,patientnr0009,Pneumologie,14-Mar-2025,2025-03-30,16,G20,Parkinson diseaseü,G20; M16.1; I10,Parkinson disease; Primary coxarthrosis; Essential hypertension,,
+CASE-0117-06,patientnr0117,Pneumologie,2026-Jan-24,08-Feb-2026,N/A,I50.1,Left ventricular failure,K92.1,Melena,8-98f.0; 5-820.0ß,Pulmonology complex treatment; Implantation of hip joint prosthesis
+CASE-0143-13,patientnr0143,Geriatrie,2025-Jun-11,07/01/2025,20,F32.1,Moderate depressive episode,K92.1; C34.1,"Melena; Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0017-08,patientnr0017,Neurologie,21_09_2025,2025/09/29,8ü,F32.1$,Moderate depressive episode,S72.0; M16.1; C34.1,"Fracture of neck of femur; Primary coxarthrosis; Malignant neoplasm of upper lobe, bronchus or lung",8-800.90,Transfusion of erythrocyte concentrateü
+CASE-0015-13,patientnr0015,Pneumologie,2025.04.12,05/01/2025,19,E11.9,Type 2 diabetes mellitus without complications,E11.9; G20; J44.1,Type 2 diabetes mellitus without complications; Parkinson disease; Chronic obstructive pulmonary disease with acute exacerbation,8-550.1,Early geriatric complex treatment
+CASE-0143-14,patientnr0143,Neurologie,20250718,2025-Aug-08,21,S72.0,Fracture of neck of femur,J18.9,"Pneumonia, unspecified",8-98f.0,N/A
+CASE-0123-05,patientnr0123,Innere Medizin,Nov 19 2025,2025-Dec-07,18,G20,Parkinson disease,F32.1; J44.1,Moderate depressive episode; Chronic obstructive pulmonary disease with acute exacerbation,,
+CASE-0085-05,missing,Intensivstation,2025-Sep-25,2025-Oct-19,24, ,Type 2 diabetes mellitus without complications,J44.1; K92.1,Chronic obstructive pulmonary disease with acute exacerbation; Melena,8-930,Monitoring of cerebral activity
+CASE-0102-11,patientnr0102,Kardiologie,unknown,06/10/2025,16,N17.9,"Acute kidney failure, unspecified",S72.0; G20; I63.9,"Fracture of neck of femur; Parkinson disease; Cerebral infarction, unspecified",8-930,Monitoring of cerebral activity
+CASE-0117-07,patientnr0117,Intensivstation,21-Feb-2025,Mar 10 2025,17,I63.9,"Cerebral infarction, unspecified",F32.1; I10; I63.9,"Moderate depressive episode; Essential hypertension; Cerebral infarction, unspecified",n/a,Diagnostic bronchoscopy; Transfusion of erythrocyte concentrate
+CASE-0194-04,patientnr0194%,Kardiologie,2025-09-04,2025/09/29,25,I10,Essential hypertension,S72.0; I63.9; I50.1,"Fracture of neck of femur; Cerebral infarction, unspecified; Left ventricular failure",,
+CASE-0143-15,patientnr0143,Innere Medizin,20250513,29_05_2025,NaN,K92.1,Melena,I50.1; I63.9; C34.1,"Left ventricular failure; Cerebral infarction, unspecified; Malignant neoplasm of upper lobe, bronchus or lung", ,Early geriatric complex treatment
+CASE-0143-16,patientnr0143,Neurologie, ,2025-Jun-12,28,I50.1,Left ventricular failure,I10; K92.1,Essential hypertension; Melena,,
+CASE-0120-05,patientnr0120,Neurologie,2025/11/27,05-Dec-2025,8,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",G20,Parkinson disease,8-98f.0; 5-820.0,Pulmonology complex treatment; Implantation of hip joint prosthesis
+CASE-0156-04,patientnr0156,Kardiologie,01_02_2026,2026/02/16	,15,I10,Essential hypertension,,,5-820.0,Implantation of hip joint prosthesis
+CASE-0037-07,patientnr0037,Geriatrie,20250327,08-Apr-2025,12,G20,Parkinson disease,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,,
+CASE-0198-13,patientnr0198,Geriatrie,2025/03/22,Apr 02 2025,11,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",E11.9; N17.9,"Type 2 diabetes mellitus without complications; Acute kidney failure, unspecified",5-470,Appendectomy
+CASE-0158-08,patientnr0158,Intensivstation,n/a,12/07/2025,15,S72.0,Fracture of neck of femur,G20,Parkinson disease,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0009-07,patientnr0009,Intensivstation,2025/06/26,13.07.2025,17,I50.1,Left ventricular failure,F32.1; K92.1; C34.1,"Moderate depressive episode; Melena; Malignant neoplasm of upper lobe, bronchus or lung",5-470,Appendectomy
+CASE-0139-05,patientnr0139,Intensivstation,20251113,20251205,22,F32.1,Moderate depressive episode,I10; F32.1,Essential hypertension; Moderate depressive episode,,
+CASE-0008-04,patientnr0008,Geriatrie,09/06/2025,2025-Oct-01,25,J18.9,"Pneumonia, unspecified",M16.1; J18.9; E11.9,"Primary coxarthrosis; Pneumonia, unspecified; Type 2 diabetes mellitus without complications",8-550.1; 5-820.0,Early geriatric complex treatment; Implantation of hip joint prosthesis
+CASE-0015-14,,Innere Medizin,2025/03/17,04/06/2025,20,S72.0,Fracture of neck of femur,I63.9; M16.1,"Cerebral infarction, unspecified; Primary coxarthrosis",8-800.90,Transfusion of erythrocyte concentrate
+CASE-0108-09,patientnr0108$,Intensivstation,09/17/2025,10/13/2025,26,F32.1,Moderate depressive episode,I50.1; G20,Left ventricular failure; Parkinson disease,8-550.1; 5-820.0,Early geriatric complex treatment; Implantation of hip joint prosthesis
+CASE-0074-02,patientnr0074,Intensivstation,20251210,13-Dec-2025,3,I50.1,Left ventricular failureä,,,,
+CASE-0095-06,patientnr0095,Neurologie,2025/08/07,09/06/2025,30,I10,Essential hypertension,C34.1; S72.0,"Malignant neoplasm of upper lobe, bronchus or lung; Fracture of neck of femur",5-820.0; 1-910,Implantation of hip joint prosthesis; Diagnostic bronchoscopy
+CASE-0037-08,patientnr0037,Geriatrie,2025.02.19,20250304,13,N17.9,"Acute kidney failure, unspecified",S72.0; I10; M16.1,Fracture of neck of femur; Essential hypertension; Primary coxarthrosis,,
+CASE-0120-06,patientnr0120,Kardiologie,05/18/2025,2025.05.29,0,S72.0,Fracture of neck of femur,M16.1; C34.1; S72.0,"Primary coxarthrosis; Malignant neoplasm of upper lobe, bronchus or lung; Fracture of neck of femur",8-800.90,Transfusion of erythrocyte concentrate
+CASE-0122-07,patientnr0122,Geriatrie,Feb 28 2025,2025-03-30,-1,N/A,Melena,I10; K92.1,Essential hypertension; Melena,,
+CASE-0001-02,patientnr0001,Neurologie,2025.01.07,Jan 27 2025,20,K92.1,Melena,J18.9,"Pneumonia, unspecified", ,Implantation of hip joint prosthesis
+CASE-0163-06, ,Pneumologie,2025-Mar-09,NaN,1,N17.9,"Acute kidney failure, unspecified",,,8-930,Monitoring of cerebral activity
+CASE-0053-04,patientnr0053,Kardiologie,20250718,2025-Aug-17,30,I10,Essential hypertension,K92.1; C34.1; I63.9,"Melena; Malignant neoplasm of upper lobe, bronchus or lung; Cerebral infarction, unspecified",8-550.1,Early geriatric complex treatment
+CASE-0168-04,patientnr0168,Chirurgie,07.02.2025%,2025-02-21,14,F32.1,Moderate depressive episode,F32.1; I63.9,"Moderate depressive episode; Cerebral infarction, unspecified",5-470; 8-98f.0,Appendectomy; Pulmonology complex treatment$
+CASE-0168-05,patientnr0168,Innere Medizin,99.99.9999,20260121,9,I50.1,Left ventricular failure,,,5-820.0; 8-98f.0,Implantation of hip joint prosthesis; Pulmonology complex treatment
+CASE-0108-10,patientnr0108,Innere Medizin,10.11.2025,Nov 14 2025,4,I63.9,"Cerebral infarction, unspecified",M16.1; I50.1; N17.9,"Primary coxarthrosis; Left ventricular failure; Acute kidney failure, unspecified",,
+CASE-0008-05,patientnr0008,Innere Medizin,10_06_2025,2025-06-22,12,S72.0,Fracture of neck of femur,,,8-550.1,Early geriatric complex treatment
+CASE-0097-06,patientnr0097,Chirurgie,20251223	,2026-Jan-12,20,E11.9,Type 2 diabetes mellitus without complications,C34.1; F32.1; I50.1,"Malignant neoplasm of upper lobe, bronchus or lung; Moderate depressive episode; Left ventricular failureö",,
+CASE-0187-04,patientnr0187,Innere Medizin,27-Dec-2025,24_01_2026,28,I10,Essential hypertension,N17.9,"Acute kidney failure, unspecified",8-98f.0; 8-550.1,Pulmonology complex treatment; Early geriatric complex treatment
+CASE-0123-06,patientnr0123,Innere Medizin,06-Jul-2025,31-Jul-2025^,25,NaN,"Cerebral infarction, unspecified",J44.1; N17.9,"Chronic obstructive pulmonary disease with acute exacerbation; Acute kidney failure, unspecified",8-550.1; 8-98f.0,Early geriatric complex treatment; Pulmonology complex treatment
+CASE-0040-03,patientnr0040,Chirurgie,14_11_2025,2025/11/27,missing,I63.9,"Cerebral infarction, unspecified",N17.9; K92.1,"Acute kidney failure, unspecified; Melena",5-820.0; 8-930,Implantation of hip joint prosthesis; Monitoring of cerebral activity
+CASE-0048-04,patientnr0048,Geriatrie,08/05/2025,Aug 28 2025,23,E11.9,Type 2 diabetes mellitus without complications,F32.1; I10,Moderate depressive episode; Essential hypertension,8-550.1,Early geriatric complex treatment
+CASE-0029-03,patientnr0029,Intensivstation,2025/05/09,05/23/2025,14,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",J44.1,Chronic obstructive pulmonary disease with acute exacerbation	,,
+CASE-0147-02,patientnr0147,Pneumologie,23_10_2025,2024-13-10,28,F32.1,Moderate depressive episode,, ,,
+CASE-0033-04,patientnr0033,Geriatrie,n/a,20250726,19,M16.1,Primary coxarthrosis,C34.1; N17.9,"Malignant neoplasm of upper lobe, bronchus or lung; Acute kidney failure, unspecified",5-820.0; 8-550.1,Implantation of hip joint prosthesis; Early geriatric complex treatment
+CASE-0029-04,patientnr0029,Chirurgie,19.03.2025,03/31/2025,12,J18.9,"Pneumonia, unspecified",K92.1; S72.0; N17.9,"Melena; Fracture of neck of femur; Acute kidney failure, unspecified",1-910,Diagnostic bronchoscopy
+CASE-0084-03,patientnr0084,Kardiologie,20251221,2026-Jan-07,17,K92.1,Melena,K92.1,Melena#,N/A,Transfusion of erythrocyte concentrate
+CASE-0104-10,patientnr0104,Intensivstation,06-Dec-2025,Dec 18 2025,12,N17.9,"Acute kidney failure, unspecified",,NULL,1-910; 8-98f.0,unknown
+CASE-0104-11,patienntr0104,Kardiologie,12.09.2025,2025/09/29,17,G20,Parkinson disease,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,,
+CASE-0053-05,patientnr0053,Pneumologie,12_11_2025,04.12.2025,22,I10,Essential hypertension,F32.1; N17.9; M16.1,"Moderate depressive episode; Acute kidney failure, unspecified; Primary coxarthrosis",5-820.0,Implantation of hip joint prosthesis
+CASE-0122-08,patientnr0122 ,Geriatrie,2026-Jan-11,2026/02/05,25,N17.9,"Acute kidney failure, unspecified",N17.9,"Acute kidney failure, unspecified",5-820.0; 5-470,Implantation of hip joint prosthesis; Appendectomy
+CASE-0020-03,,Neurologie,27_10_2025,2025-Nov-22,26,J18.9,"Pneumonia, unspecified",E11.9; J44.1; K92.1,N/A,5-470ö,Appendectomy
+CASE-0117-08,patientnr0117,Chirurgie,2025-10-09,11/06/2025@,28,,Type 2 diabetes mellitus without complications,,Type 2 diabetes mellitus without complications; Fracture of neck of femur; Left ventricular failure,1-910,Diagnostic bronchoscopy
+CASE-0194-05,patientnr0194,Neurologie,20251014,29-Oct-2025,15,E11.9,Type 2 diabetes mellitus without complications,K92.1,Melena,8-550.1,Early geriatric complex treatment
+CASE-0017-09,patientnr0017,Intensivstation,May 30 2025,2025-06-08,9,M16.1,Primary coxarthrosis,,,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0129-07,patientnr0129,Intensivstation,07/13/2025,Jul 16 2025,3,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",,,,
+CASE-0143-17,patientnr0143,Kardiologie,Mar 09 2025,05.04.2025,27,K92.1,Melena@,J18.9,"Pneumonia, unspecified",8-550.1,Early geriatric complex treatment
+CASE-0144-06,patientnr0144,Neurologie,2025/06/02,Jun 25 2025,23,K92.1,Melena,E11.9; I10; K92.1,Type 2 diabetes mellitus without complications; Essential hypertension; Melena,,
+CASE-0144-07,patientnr0144,Pneumologie,2025-10-21,2025.11.16,26,N17.9,"Acute kidney failure, unspecified",G20; F32.1; I63.9,n/a,,
+CASE-0070-17,,Pneumologie,2025-05-03,06/01/2025,29,I50.1,Left ventricular failure%,E11.9,Type 2 diabetes mellitus without complications,,
+CASE-0064-05,,Kardiologie,16.01.2026,20260127,11,S72.0,Fracture of neck of femur,S72.0; N17.9; J44.1,"Fracture of neck of femur; Acute kidney failure, unspecified; Chronic obstructive pulmonary disease with acute exacerbation$",8-800.90; 1-910,Transfusion of erythrocyte concentrate; Diagnostic bronchoscopy
+CASE-0063-17,patientnr0063,Kardiologie,20260129,2026-Feb-23,25,J18.9,"Pneumonia, unspecified",C34.1; E11.9,"Malignant neoplasm of upper lobe, bronchus or lung; Type 2 diabetes mellitus without complications",8-800.90,Transfusion of erythrocyte concentrate
+CASE-0090-03,patientnr0090,missing,27.07.2025,20250822,26,I50.1,Left ventricular failure,K92.1,Melena,8-98f.0; 5-820.0,Pulmonology complex treatment; Implantation of hip joint prosthesis
+CASE-0198-14,patientnr0198,Neurologie,06/20/2025,11-Jul-2025,21,E11.9,Type 2 diabetes mellitus without complications,I50.1; G20,Left ventricular failure; Parkinson disease,5-820.0; 5-470,Implantation of hip joint prosthesis; Appendectomy
+CASE-0144-08,patientnr0144,Geriatrie,Aug 04 2025,2025-08-06,2,F32.1,Moderate depressive episode,I50.1; J44.1,Left ventricular failure; Chronic obstructive pulmonary disease with acute exacerbation,8-930,Monitoring of cerebral activity
+CASE-0053-06,patientnr0053,Chirurgie,13.12.2025,20251221,8,F32.1,Moderate depressive episode,,,1-910,
+CASE-0159-04,,Geriatrie,2025-03-18,01-Apr-2025,14,I50.1,Left ventricular failure,J44.1; I10,Chronic obstructive pulmonary disease with acute exacerbation; Essential hypertension,8-98f.0; 5-470,Pulmonology complex treatment; Appendectomy
+CASE-0194-06,patientnr0194,Intensivstation,2025-Jun-04,01.07.2025,27,S72.0,Fracture of neck of femur,G20,Parkinson disease,,
+CASE-0063-18,patientnr0063,Neurologie,2025-10-20,00/00/0000,n/a,I50.1,Left ventricular failure,F32.1; J18.9,"Moderate depressive episode; Pneumonia, unspecified",8-550.1; 8-930,Early geriatric complex treatment; Monitoring of cerebral activity
+CASE-0015-15,patientnr0015,Geriatrie,Jun 29 2025,2025.07.09,10,I10,Essential hypertension,,"Acute kidney failure, unspecified$",8-930,Monitoring of cerebral activity
+CASE-0159-05,patientnr0159,Chirurgie,01/03/2025,2025-01-13,10,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,J18.9; J44.1; I10ä,"Pneumonia, unspecified; Chronic obstructive pulmonary disease with acute exacerbation; Essential hypertension",5-820.0,Implantation of hip joint prosthesis
+CASE-0102-12,patientnr0102,Chirurgie,29-Dec-2025,20260110,12,M16.1,Primary coxarthrosis,N17.9; J18.9; I10,"Acute kidney failure, unspecified; Pneumonia, unspecified; Essential hypertension",, 
+CASE-0122-09,patientnr0122,Innere Medizin,32.01.2024,06_06_2025,30,S72.0,Fracture of neck of femur,,,8-550.1,Early geriatric complex treatment
+CASE-0168-06,patientnr0168,missing,2025-10-13,11/03/2025,21,I50.1,Left ventricular failureü,,,8-98f.0,Pulmonology complex treatment
+CASE-0087-05,patientnr0087,Neurologie,Sep 07 2025,22_09_2025,15,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,J18.9; I50.1,"Pneumonia, unspecified; Left ventricular failure",1-910; 8-98f.0,Diagnostic bronchoscopy; Pulmonology complex treatment
+ ,patientnr0158,Kardiologie,09/04/2025,25.09.2025,21,C34.1ä,"Malignant neoplasm of upper lobe, bronchus or lung",M16.1; S72.0,Primary coxarthrosis; Fracture of neck of femur,,
+CASE-0097-07,patientnr0097,Neurologie,2025-Apr-16,04/27/2025,11,S72.0,Fracture of neck of femur,F32.1,Moderate depressive episode,8-930,Monitoring of cerebral activity
+CASE-0074-03,patientnr0074,Chirurgie,2026/01/19,16-Feb-2026,28,F32.1,Moderate depressive episode,unknown,,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0184-03,patientnr0184#,Chirurgie,2025-02-30,2025.11.24$,21,E11.9,Type 2 diabetes mellitus without complications,,,8-930; 8-550.1,Monitoring of cerebral activity; Early geriatric complex treatment
+CASE-0184-04,patientnr0184,Chirurgie,20251026,2025-Nov-09,14,F32.1,Moderate depressive episode,K92.1; F32.1,Melena; Moderate depressive episode, ,Early geriatric complex treatment; Transfusion of erythrocyte concentrate
+CASE-0102-13,patientnr0102,Geriatrie,2025-04-10,2025-Apr-17,7,F32.1,Moderate depressive episode,,,,
+CASE-0143-18,patientnr0143,Neurologie,31.03.2025,29-Apr-2025,29,J18.9,"Pneumonia, unspecified",I50.1; J18.9; I10,"Left ventricular failure; Pneumonia, unspecified; Essential hypertension",8-930; 5-470,Monitoring of cerebral activity; Appendectomy
+CASE-0198-15,patientnr0198,Innere Medizin,18.10.2025,10/30/2025,12,G20,Parkinson disease%,J44.1,,,
+CASE-0108-11,patientnr0108,Chirurgie,30_12_2025,15-Jan-2026,16,G20,Parkinson disease,I10; J44.1,Essential hypertension; Chronic obstructive pulmonary disease with acute exacerbation,8-550.1%,Early geriatric complex treatment
+CASE-0190-04,patientnr0190,Geriatrie,20260116,2026-Feb-02,17#,I10,Essential hypertension,F32.1; M16.1,Moderate depressive episode; Primary coxarthrosis,1-910; 5-470,Diagnostic bronchoscopy; Appendectomy
+CASE-0040-04,patientnr0040,Chirurgie,01/18/2025,2025-Jan-31,13,,"Acute kidney failure, unspecified",J44.1,Chronic obstructive pulmonary disease with acute exacerbation,8-930; 5-820.0,Monitoring of cerebral activity; Implantation of hip joint prosthesis
+CASE-0144-09,patientnr0144,Chirurgie,15.06.2025,24_06_2025,9,J18.9,"Pneumonia, unspecified",F32.1; I50.1,Moderate depressive episode; Left ventricular failure,,
+CASE-0184-05,patientnr0184,Chirurgie,2025.03.23,2025-Apr-17,25,N17.9,"Acute kidney failure, unspecified",J44.1; I10,Chronic obstructive pulmonary disease with acute exacerbation; Essential hypertension,8-800.90; 5-820.0,Transfusion of erythrocyte concentrate; Implantation of hip joint prosthesis
+NULL,patientnr0122,Geriatrie,2025/09/15,32.01.2024,12,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,C34.1; E11.9; G20,"Malignant neoplasm of upper lobe, bronchus or lung; Type 2 diabetes mellitus without complications; Parkinson disease",NULL,n/a
+CASE-0097-08,patientnr0097,Neurologie,20251012,NULL,3,S72.0,Fracture of neck of femur,G20; N17.9; K92.1,"Parkinson disease; Acute kidney failure, unspecified; Melena",,
+CASE-0017-10,patientnr0017,Pneumologie,20251208,20260107,30,F32.1,Moderate depressive episode,,missing,,
+CASE-0108-12,patientnr0108,Kardiologie,n/a,13_09_2025,19,K92.1,Melena,I50.1; J44.1; J18.9,"Left ventricular failure; Chronic obstructive pulmonary disease with acute exacerbation; Pneumonia, unspecified",8-800.90; 8-550.1,Transfusion of erythrocyte concentrate; Early geriatric complex treatment
+CASE-0194-07,patientnr0194,Geriatrie,27.04.2025,14.05.2025,17,n/a,"Malignant neoplasm of upper lobe, bronchus or lung",I63.9,"Cerebral infarction, unspecified",,
+CASE-0039-10,patientnr0039,Innere Medizin,03.07.2025,2025/07/28,25,F32.1,Moderate depressive episode,S72.0; N17.9,"Fracture of neck of femur; Acute kidney failure, unspecified",,
+CASE-0115-04,patientnr0115,Intensivstation,03/12/2025,2025/03/15,3,N/A,"Pneumonia, unspecified",C34.1; M16.1,"Malignant neoplasm of upper lobe, bronchus or lung; Primary coxarthrosis",8-930; 8-550.1,Monitoring of cerebral activity; Early geriatric complex treatment
+CASE-0087-06,patientnr0087,Kardiologie,Sep 04 2025,2025.09.15@,11,E11.9,Type 2 diabetes mellitus without complications,,,NaN,Monitoring of cerebral activity
+CASE-0144-10,patientnr0144,Innere Medizin,06/21/2025,13-Jul-2025ä,22,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",G20; N17.9; I10,"Parkinson disease; Acute kidney failure, unspecified; Essential hypertension",8-98f.0,Pulmonology complex treatment
+CASE-0143-19,patientnr0143,NaN,2025/07/10,02.08.2025,23,NaN,Fracture of neck of femur,I50.1; N17.9,unknown,1-910; 5-820.0,Diagnostic bronchoscopy; Implantation of hip joint prosthesis	
+CASE-0087-07,patientnr0087,Kardiologie,11-Feb-2025,27.02.2025,16,I50.1,Left ventricular failure,N17.9; I10; I50.1,"Acute kidney failure, unspecified; Essential hypertension; Left ventricular failure",8-98f.0; 8-550.1,Pulmonology complex treatment; Early geriatric complex treatment
+CASE-0104-12,patientnr0104,Kardiologie,31-Dec-2025,2026-01-06$,6,K92.1,Melena,F32.1,Moderate depressive episode,,
+CASE-0064-06,patientnr0064,Pneumologie,10_01_2026,2026.01.29,19,N17.9,"Acute kidney failure, unspecified",,,,
+CASE-0091-05,patientnr0091#,Chirurgie,19.04.2025,08.05.2025,19,K92.1,Melena,K92.1,Melena,,
+CASE-0076-05,patientnr0076,Chirurgie,12-Oct-2025,2025-Oct-15,3,E11.9,Type 2 diabetes mellitus without complications,unknown,Parkinson disease; Type 2 diabetes mellitus without complications,,
+CASE-0009-08,patientnr0009,Kardiologie,2025.07.19,Aug 07 2025,19,G20,Parkinson disease,G20; K92.1; E11.9,Parkinson disease; Melena; Type 2 diabetes mellitus without complications,,
+NULL,patientnr0168,Kardiologie$,20260119,2026/01/21,2,I50.1,Left ventricular failure,I50.1,Left ventricular failure,8-930,Monitoring of cerebral activity
+CASE-0159-06,patientnr0159,Geriatrie,08/05/2025,2025/08/14,9,S72.0,Fracture of neck of femur,I50.1,Left ventricular failureö,,
+CASE-0146-05,patientnr0146#,Intensivstation,01/18/2026,20260217,30,M16.1,Primary coxarthrosis,NaN,"Pneumonia, unspecified; Acute kidney failure, unspecified",8-98f.0,Pulmonology complex treatment
+CASE-0195-04,patientnr0195,Chirurgie,07_01_2025,2025-01-12,5,E11.9,Type 2 diabetes mellitus without complications,G20,Parkinson disease,5-820.0; 8-550.1,Implantation of hip joint prosthesis; Early geriatric complex treatment
+CASE-0065-05,patientnr0065ß,Intensivstation,20260119,2026-Feb-11,23,I50.1,Left ventricular failure,,,5-820.0,Implantation of hip joint prosthesis
+CASE-0097-09,patientnr0097,Neurologie,2025/02/10,2025-Mar-12,30,C34.1ß,"Malignant neoplasm of upper lobe, bronchus or lung",I63.9,"Cerebral infarction, unspecified",8-800.90,Transfusion of erythrocyte concentrate
+CASE-0095-07,patientnr0095,Pneumologie,02-Sep-2025,20250924,-1,E11.9,Type 2 diabetes mellitus without complications,,,8-98f.0; 5-820.0,Pulmonology complex treatment; Implantation of hip joint prosthesis
+CASE-0087-08,patientnr0087,Kardiologie,Aug 28 2025,2025/09/10,13,M16.1,Primary coxarthrosis,J18.9,"Pneumonia, unspecified", ,
+CASE-0040-05,,Innere Medizin,2025-Sep-18,2025-10-14,26,C34.1^,"Malignant neoplasm of upper lobe, bronchus or lung",,,5-470,Appendectomy
+CASE-0123-07,,Innere Medizin,20250531,2025.06.08,8,M16.1,,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,,
+CASE-0091-06,patientnr0091,Neurologie,01.06.2025,15-Jun-2025,14,S72.0,Fracture of neck of femur,F32.1; S72.0@,Moderate depressive episode; Fracture of neck of femur,1-910,Diagnostic bronchoscopy
+CASE-0187-05,patientnr0187,Geriatrie,26-Mar-2025,2025.04.06,11,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",C34.1; I10,"Malignant neoplasm of upper lobe, bronchus or lung; Essential hypertension",8-800.90; 8-930,Transfusion of erythrocyte concentrate; Monitoring of cerebral activity
+CASE-0144-11,patientnr0144,Innere Medizin,2025-Sep-06,32.01.2024,28,E11.9,Type 2 diabetes mellitus without complications,F32.1,Moderate depressive episode,,
+CASE-0095-08,patientnr0095,n/a,01/19/2026,2026-02-14,26,I63.9,"Cerebral infarction, unspecified",I63.9,"Cerebral infarction, unspecified",,
+CASE-0158-10,patientnr0158,Geriatrie,2025.10.24,2025.11.07,14,F32.1,Moderate depressive episode,,,,
+CASE-0144-12,patientnr0144,Geriatrie,18-Feb-2025^,Mar 20 2025,30,N17.9,"Acute kidney failure, unspecified",M16.1; N17.9,"Primary coxarthrosis; Acute kidney failure, unspecified",8-550.1,Early geriatric complex treatment
+CASE-0120-07,patientnr0120,Geriatrie,20250730,03_08_2025,4,I50.1,Left ventricular failure,S72.0; J44.1, ,,
+CASE-0070-18,patientnr0070,Chirurgie,2025-Oct-14,10/19/2025,5,G20,Parkinson disease,S72.0; I10; N17.9,"Fracture of neck of femur; Essential hypertension; Acute kidney failure, unspecifiedä",,
+CASE-0017-11,patientnr0017,Geriatrie,Jun 30 2025,25_07_2025,25,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,F32.1; I10; C34.1,"Moderate depressive episode; Essential hypertension; Malignant neoplasm of upper lobe, bronchus or lung",8-550.1; 5-820.0,N/A
+CASE-0040-06,patientnr0040,Neurologie,01.08.2025#,2025/08/29,28,G20,Parkinson disease,J18.9; I50.1; J44.1,"Pneumonia, unspecified; Left ventricular failure; Chronic obstructive pulmonary disease with acute exacerbation$",1-910; 5-820.0,Diagnostic bronchoscopy; Implantation of hip joint prosthesis
+CASE-0102-14,patientnr0102,Geriatrie,20250215,2025-02-22,7,S72.0,Fracture of neck of femur,M16.1; S72.0; I50.1,Primary coxarthrosis; Fracture of neck of femur; Left ventricular failure,,
+CASE-0069-02,patientnr0069,Intensivstation,2025-Apr-10,2025-05-10,n/a,I50.1,Left ventricular failure,,,5-470ö,Appendectomy
+CASE-0195-05,patientnr0195,Geriatrie,06.10.2025,11-Oct-2025,5,F32.1,Moderate depressive episode,,,5-470,Appendectomy
+CASE-0074-04,patientnr0074,Kardiologie,Mar 21 2025,Apr 09 2025,19,E11.9,Type 2 diabetes mellitus without complications,,,8-800.90; 5-820.0,Transfusion of erythrocyte concentrate; Implantation of hip joint prosthesis
+CASE-0147-03,patientnr0147,Pneumologie,09/18/2025,25.09.2025,7,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,N/A,"Malignant neoplasm of upper lobe, bronchus or lung; Moderate depressive episode",8-800.90,Transfusion of erythrocyte concentrate
+CASE-0198-16,patientnr0198,Geriatrie,11.10.2025,18-Oct-2025,7,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,J18.9,"Pneumonia, unspecified",,
+CASE-0108-13,patientnr0108,Geriatrie,2025-12-13,Jan 07 2026,NaN,K92.1,Melena,,,5-820.0; 8-98f.0,Implantation of hip joint prosthesis; Pulmonology complex treatment
+CASE-0113-07,patientnr0113,Intensivstation^,2025.08.19,2025-08-31,12,E11.9,Type 2 diabetes mellitus without complications,,,5-820.0,Implantation of hip joint prosthesis
+CASE-0122-11,ptaientnr0122,Kardiologie,2026/01/31,n/a,24,F32.1,Moderate depressive episode$,E11.9,Type 2 diabetes mellitus without complications,,
+CASE-0129-08,patientnr0129,Innere Medizin,2025-May-12,2025-06-01,20,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",1-910,missing
+CASE-0117-09,patientnr0117,Pneumologie,2025.11.24,20251224,30,I63.9,"Cerebral infarction, unspecified",F32.1; E11.9,Moderate depressive episode; Type 2 diabetes mellitus without complications,,
+CASE-0120-08,patientnr0120,Geriatrie,09/17/2025,2025.09.28,11,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",N17.9,unknown,,
+CASE-0187-06,patientnr0187,Pneumologie,2025-Jun-25,99.99.9999,19,S72.0,Fracture of neck of femurß,I10; J18.9; J44.1, ,,
+CASE-0091-07,patientnr0091,Intensivstation,2025.10.04,2025.10.10,6,M16.1,Primary coxarthrosis,J18.9; C34.1; J44.1,"Pneumonia, unspecified; Malignant neoplasm of upper lobe, bronchus or lung; Chronic obstructive pulmonary disease with acute exacerbation",1-910,Diagnostic bronchoscopy
+CASE-0194-08,patientnr0194,Neurologie,2025.07.14,Jul 16 2025,2,C34.1$,"Malignant neoplasm of upper lobe, bronchus or lung",S72.0,Fracture of neck of femur,8-98f.0,Pulmonology complex treatment
+CASE-0175-06,patientnr0175,Pneumologie,2025-Sep-04,2025.09.26,22,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",F32.1#,Moderate depressive episode,8-550.1; 5-820.0,Early geriatric complex treatment; Implantation of hip joint prosthesis
+CASE-0168-08,unknown,Neurologie^,2025/01/01,Jan 06 2025,5,I10,Essential hypertension,NaN,"Primary coxarthrosis; Malignant neoplasm of upper lobe, bronchus or lung",8-98f.0; 8-800.90,Pulmonology complex treatment; Transfusion of erythrocyte concentrate
+CASE-0017-12,patientnr0017ü,Innere Medizinü,2026.01.06,2026-02-03,28ü,N17.9,"Acute kidney failure, unspecified",N/A,Fracture of neck of femur; Moderate depressive episode,1-910,Diagnostic bronchoscopy
+CASE-0090-04,patientnr0090,Intensivstation,06/13/2025,2025/06/17,N/A,N17.9ß,"Acute kidney failure, unspecified",I50.1; G20; J18.9$,"Left ventricular failure; Parkinson disease; Pneumonia, unspecified",,
+CASE-0122-12,patientnr0122,Pneumologie,2025.12.26,03.01.2026,8,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",I10,Essential hypertension,1-910,Diagnostic bronchoscopy
+CASE-0129-09,patientnr0129,Chirurgie,2025-Jul-31,Aug 16 2025,N/A,K92.1,Melena,I50.1; I63.9; J44.1,"Left ventricular failure; Cerebral infarction, unspecified; Chronic obstructive pulmonary disease with acute exacerbation",1-910; 5-820.0,Diagnostic bronchoscopy; Implantation of hip joint prosthesis
+CASE-0138-05,patientnr0138,Innere Medizin,2025/05/04,20250525,21,M16.1,Primary coxarthrosis,I63.9; I50.1; S72.0,"Cerebral infarction, unspecified; Left ventricular failure; Fracture of neck of femur",8-800.90; 8-98f.0,Transfusion of erythrocyte concentrate; Pulmonology complex treatment
+CASE-0097-10,patientnr0097,Intensivstation,2025-02-06,2025/02/19,n/a,I10,Essential hypertension,n/a,"Parkinson disease; Acute kidney failure, unspecified",8-550.1; 8-800.90,Early geriatric complex treatment; Transfusion of erythrocyte concentrate
+CASE-0017-13,patientnr0017,Chirurgie,2025-Apr-09,2025-Apr-10,1,N/A,Primary coxarthrosis,,,,
+CASE-0128-07,patientnr0128,Geriatrie,15-13-2024,13.02.2026,15,J18.9,"Pneumonia, unspecified",F32.1; C34.1,"Moderate depressive episode; Malignant neoplasm of upper lobe, bronchus or lung",5-820.0,Implantation of hip joint prosthesis
+CASE-0029-05,patientnr0029,Neurologie,2025-12-27,Jan 25 2026,29,unknown,Chronic obstructive pulmonary disease with acute exacerbation,M16.1,Primary coxarthrosis,,
+CASE-0159-07,patientnr0159,Chirurgie,03-Nov-2025,18-Nov-2025,15^,I63.9,"Cerebral infarction, unspecified",,,5-470; 8-800.90,Appendectomy; Transfusion of erythrocyte concentrate
+CASE-0017-14,patientnr0017,Innere Medizin,2025/05/16,06/15/2025,30,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,M16.1; N17.9; S72.0,"Primary coxarthrosis; Acute kidney failure, unspecified; Fracture of neck of femur",5-470,Appendectomy
+CASE-0090-05,patientnr0090,Innere Medizin,2025/11/26,28-Nov-2025,2,K92.1,Melena,I50.1; J18.9,"Left ventricular failure; Pneumonia, unspecified",1-910; 8-800.90,N/A
+CASE-0163-07,patientnr0163	,Chirurgie,20250422,May 12 2025,20,N17.9,"Acute kidney failure, unspecified",J18.9; M16.1; N17.9,"Pneumonia, unspecified; Primary coxarthrosis; Acute kidney failure, unspecified$",1-910; 8-800.90,Diagnostic bronchoscopy; Transfusion of erythrocyte concentrate
+CASE-0158-11,patientnr0158,Geriatrie,20_10_2025,20251116,27,E11.9,Type 2 diabetes mellitus without complications	,C34.1; J44.1,"Malignant neoplasm of upper lobe, bronchus or lung; Chronic obstructive pulmonary disease with acute exacerbation",1-910,Diagnostic bronchoscopy
+CASE-0084-04,patientnr0084,Intensivstation,31_08_2025,09/07/2025,7@,F32.1,Moderate depressive episode,E11.9; C34.1; S72.0,"Type 2 diabetes mellitus without complications; Malignant neoplasm of upper lobe, bronchus or lung; Fracture of neck of femur",8-98f.0,Pulmonology complex treatment%
+CASE-0113-08,patientnr0113,Intensivstation,2026-01-08,2026-Jan-31,23,I10,Essential hypertension,M16.1; I63.9; N17.9,"Primary coxarthrosis; Cerebral infarction, unspecified; Acute kidney failure, unspecified",8-800.90,Transfusion of erythrocyte concentrate
+CASE-0015-16,patientnr0015,Pneumologie,10.04.2025,2025/04/17,7,I63.9,"Cerebral infarction, unspecified",I50.1,Left ventricular failure,missing,NULL
+CASE-0173-05,patientnr0173,Kardiologie,21_05_2025,26-May-2025,5,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,,,5-470,Appendectomy
+CASE-0129-10,patientnr0129,Geriatrie,2025-01-27,Feb 22 2025,26,E11.9,Type 2 diabetes mellitus without complications,I63.9,"Cerebral infarction, unspecified",,
+CASE-0076-06,patientnr0076,Pneumologie,2025.04.27,20250518,21,I63.9,"Cerebral infarction, unspecified",E11.9,NaN,,
+CASE-0087-09,patientnr0087,Kardiologie,20.01.2025,2025/02/13,24,N17.9,"Acute kidney failure, unspecified",F32.1; I63.9; C34.1,"Moderate depressive episode; Cerebral infarction, unspecified; Malignant neoplasm of upper lobe, bronchus or lung",8-930; 5-820.0,N/A
+CASE-0147-04,patientnr0147,Chirurgie,20251011,20251023,12,C34.1ä,N/A,,,,
+CASE-0144-13,patientnr0144,Neurologie,2025.03.12,15-13-2024,14,S72.0,Fracture of neck of femur,I63.9; J18.9; G20,"Cerebral infarction, unspecified; Pneumonia, unspecified; Parkinson disease",8-930,Monitoring of cerebral activity
+CASE-0020-04,paitentnr0020,Innere Medizin,2025/11/27,12/25/2025,999,I10,Essential hypertension,F32.1,Moderate depressive episode,n/a,Implantation of hip joint prosthesis
+CASE-0153-05,patientnr0153,Geriatrie,2025.04.26,2025-May-08,12,G20,Parkinson disease,,"Parkinson disease; Acute kidney failure, unspecified",,
+CASE-0053-07,patientnr0053,Chirurgie,20251204,20251230,26	,I50.1,Left ventricular failure,,,8-550.1; 1-910,Early geriatric complex treatment; Diagnostic bronchoscopy
+CASE-0139-06,patientnr0139,Intensivstation,N/A,2025-May-17ü,8,F32.1,Moderate depressive episode,,,8-930; 5-470,Monitoring of cerebral activity; Appendectomy
+CASE-0134-03,patientnr0134,Innere Medizin,2025.12.08,2025-12-25,17%,J18.9,"Pneumonia, unspecified",I63.9,"Cerebral infarction, unspecified",8-550.1,Early geriatric complex treatment
+CASE-0084-05,patientnr0084,Intensivstation@,2025-05-27,06/14/2025,18,I10,Essential hypertension,C34.1; F32.1,"Malignant neoplasm of upper lobe, bronchus or lung; Moderate depressive episode",,
+CASE-0134-04,patientnr0314,Innere Medizin,08.11.2025,13.11.2025	,5,J18.9,"Pneumonia, unspecified",J44.1,Chronic obstructive pulmonary disease with acute exacerbation,,
+CASE-0092-05,patientnr0092,Kardiologie,26_07_2025,2025-08-09,14,I50.1,Left ventricular failure,E11.9; N17.9; I50.1,"Type 2 diabetes mellitus without complications; Acute kidney failure, unspecified; Left ventricular failure",NaN,Appendectomy; Monitoring of cerebral activity
+CASE-0033-05,patientnr0033,Pneumologie,2025/05/13,2025.05.29,16,N17.9,"Acute kidney failure, unspecified", ,,1-910,Diagnostic bronchoscopy	
+CASE-0139-07,patientnr0139,Geriatrie,20-Jan-2025,2024/00/12,n/a,F32.1,Moderate depressive episode,F32.1; C34.1,"Moderate depressive episode; Malignant neoplasm of upper lobe, bronchus or lung",8-930; 8-550.1,Monitoring of cerebral activity; Early geriatric complex treatment
+CASE-0129-11,patientnr0129,Chirurgie,Mar 06 2025,01-Apr-2025,26,I50.1,Left ventricular failure,,,,
+CASE-0070-19,patientnr0070,Intensivstation,2025.02.18,2025.02.20,2,F32.1,Moderate depressive episode,I63.9,"Cerebral infarction, unspecified",5-470,Appendectomy
+CASE-0040-07,patientnr0040,Neurologie,12_03_2025,10_04_2025,29,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",S72.0,Fracture of neck of femur,1-910; 5-820.0,Diagnostic bronchoscopy; Implantation of hip joint prosthesis
+CASE-0017-15,patientnr0017,Chirurgie,25.01.2026,20260223,29,unknown,Melena,,N/A,5-820.0,Implantation of hip joint prosthesis
+CASE-0037-09,patientnr0037,Geriatrie,2025/12/16,30.12.2025,14,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",M16.1; F32.1,Primary coxarthrosis; Moderate depressive episode,5-820.0; 1-910,Implantation of hip joint prosthesis; Diagnostic bronchoscopy
+CASE-0117-10,patientnr0117,Geriatrie,2025/03/26,unknown,16,I63.9,"Cerebral infarction, unspecified",I50.1; G20; J18.9,"Left ventricular failure; Parkinson disease; Pneumonia, unspecified",5-820.0; 8-550.1,Implantation of hip joint prosthesis; Early geriatric complex treatment
+CASE-0187-07,patientnr0187,Intensivstation,23.12.2025,2026/01/14,22,N17.9,"Acute kidney failure, unspecified",,,8-550.1; 5-470,Early geriatric complex treatment; Appendectomy
+CASE-0108-14,patientnr0108,Neurologie,2025-Oct-15,2025-10-27,12,S72.0,Fracture of neck of femur,,,,
+CASE-0120-09,patientnr0120,Chirurgie, ,2025/03/14,6,J18.9,"Pneumonia, unspecified",,,,
+CASE-0139-08,patientnr0139,Pneumologie,04/26/2025,May 09 2025	,13,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,E11.9; K92.1,Type 2 diabetes mellitus without complications; Melena,5-470; 8-930,
+CASE-0009-09,missing,Neurologie,2025.01.08,2025-Jan-16,8,S72.0,Fracture of neck of femur,,,,
+CASE-0113-09,patientnr0113,Intensivstation,Aug 12 2025,2025-09-04,23,I63.9,"Cerebral infarction, unspecified",I10; G20; S72.0,Essential hypertension; Parkinson disease; Fracture of neck of femur,8-550.1; 8-98f.0,Early geriatric complex treatment; Pulmonology complex treatment
+CASE-0129-12,,Kardiologie,2025/07/16,20250729,13,I10,Essential hypertension,,,8-800.90; 5-820.0,Transfusion of erythrocyte concentrate; Implantation of hip joint prosthesis
+CASE-0095-09,patientnr0095,Kardiologie,Jan 25 2025,26.01.2025,1,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",F32.1; J18.9,"Moderate depressive episode; Pneumonia, unspecified",,
+CASE-0156-05,patientnr0156,Neurologie$,18.07.2025,2025-Aug-04#,17,N17.9,missing,S72.0; N17.9,"Fracture of neck of femur; Acute kidney failure, unspecified",,
+CASE-0053-08,patientnr0053,Intensivstation,14.01.2025,32.01.2024,6,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",F32.1,Moderate depressive episode,,
+CASE-0063-19,patientnr0063,Chirurgie,2025-10-09,2025.10.23,14,K92.1,Melena,M16.1; G20,Primary coxarthrosis; Parkinson disease,,
+CASE-0129-13,unknown,Neurologie,2025.01.13,2025-Feb-10,28,I10,Essential hypertension,I50.1; J18.9,"Left ventricular failure; Pneumonia, unspecified",8-800.90; 5-470,Transfusion of erythrocyte concentrate; Appendectomy
+CASE-0138-06,patientnr0138,Chirurgie,2025.04.04,Apr 19 2025,15,K92.1,Melena,C34.1; J18.9,"Malignant neoplasm of upper lobe, bronchus or lung; Pneumonia, unspecified",8-98f.0; 1-910,Pulmonology complex treatment; Diagnostic bronchoscopy
+CASE-0133-04,patientnr0133,Geriatrie,2025/02/13,Mar 09 2025,24,S72.0,Fracture of neck of femur,I63.9,"Cerebral infarction, unspecified",,
+CASE-0108-15,patientnr0108,Intensivstation,2026/01/29,2025-02-30,9,I63.9	,"Cerebral infarction, unspecified",G20; M16.1,Parkinson disease; Primary coxarthrosis,,
+CASE-0120-10,patientnr0120,Geriatrie,09/30/2025,12-Oct-2025,12,unknown,Primary coxarthrosis,C34.1; K92.1; M16.1,missing,,
+ ,patientnr0134,Pneumologie,01/07/2025,00/00/0000,17,I10,Essential hypertension,F32.1,Moderate depressive episode,,
+CASE-0129-14,,Chirurgie,06/05/2025,2025.06.11,6,J18.9,"Pneumonia, unspecified",NULL,,1-910; 8-800.90,Diagnostic bronchoscopy; Transfusion of erythrocyte concentrateß
+CASE-0128-08,patientnr0128,Kardiologie,2025-Apr-28,05/26/2025,28,I63.9,"Cerebral infarction, unspecified",I10,Essential hypertension,1-910; 8-98f.0,Diagnostic bronchoscopy; Pulmonology complex treatment
+CASE-0040-08,N/A,Kardiologie,16.07.2025,01_08_2025,16,G20,Parkinson disease,M16.1; K92.1,Primary coxarthrosis; Melena,,
+CASE-0070-20,patientnr0070,Kardiologie,2025-Nov-25,2025-Dec-01,6,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,,,5-820.0; 8-98f.0,Implantation of hip joint prosthesis; Pulmonology complex treatment
+CASE-0113-10,patientnr0113$,Pneumologie,2025.02.23,03/18/2025,23,J44.1#,Chronic obstructive pulmonary disease with acute exacerbation,,,1-910; 5-470@,Diagnostic bronchoscopy; Appendectomy
+CASE-0102-15,patientnr0102,Geriatrie,05_10_2025,2025/10/20,15,F32.1,Moderate depressive episode,,,5-820.0; 8-550.1,Implantation of hip joint prosthesis; Early geriatric complex treatment
+CASE-0037-10,patientnr0037,Intensivstation,30_05_2025,unknown,25,,Type 2 diabetes mellitus without complications,,,8-550.1; 5-470,Early geriatric complex treatment; Appendectomy
+CASE-0063-20,patientnr0063,Neurologie,2025-Apr-21,11.05.2025,20,M16.1,Primary coxarthrosis,I50.1; C34.1; F32.1,"Left ventricular failure; Malignant neoplasm of upper lobe, bronchus or lung; Moderate depressive episode",8-800.90; 1-910,Transfusion of erythrocyte concentrate; Diagnostic bronchoscopy
+CASE-0015-17,aptientnr0015,Innere Medizin,15_03_2025,20250409,25,G20,Parkinson disease,,,8-930,Monitoring of cerebral activity
+CASE-0070-21,patientnr0070,Chirurgie,20260114,2026.02.08,25,I10,Essential hypertension,,,,
+CASE-0091-08,patientnr0091,Neurologie,Dec 08 2025,2024-13-10,10,N17.9,"Acute kidney failure, unspecified",I63.9; F32.1; M16.1,"Cerebral infarction, unspecified; Moderate depressive episode; Primary coxarthrosis",8-550.1,Early geriatric complex treatment
+CASE-0113-11,patientnr0113,Innere Medizin,2025.04.13,2025-04-26,13,S72.0,Fracture of neck of femur,C34.1; J44.1,"Malignant neoplasm of upper lobe, bronchus or lung; Chronic obstructive pulmonary disease with acute exacerbation",1-910; 5-820.0,Diagnostic bronchoscopy; Implantation of hip joint prosthesis
+CASE-0087-10,patientnr0087,Intensivstation,missing,2025-Nov-07,999,E11.9,Type 2 diabetes mellitus without complications,I50.1; J44.1,Left ventricular failure; Chronic obstructive pulmonary disease with acute exacerbation,,
+CASE-0198-17,patientnr0198,Innere Medizin,2025.03.08,2025.03.27,19$,J44.1%,Chronic obstructive pulmonary disease with acute exacerbation,C34.1; I63.9,"Malignant neoplasm of upper lobe, bronchus or lung; Cerebral infarction, unspecified",8-98f.0,Pulmonology complex treatment
+CASE-0113-12,patientnr0113,Intensivstation,12-Jan-2025,16-Jan-2025,4,NaN,Melena,,unknown,,
+CASE-0037-11,patientnr0037,Neurologie,2025-04-21,17-May-2025,26,G20,Parkinson disease,E11.9,Type 2 diabetes mellitus without complications,8-930; 1-910,Monitoring of cerebral activity; Diagnostic bronchoscopy
+CASE-0128-09,patientnr0128,Pneumologie,29.12.2025,Jan 14 2026,16,n/a,Type 2 diabetes mellitus without complications,I63.9; M16.1; I10,"Cerebral infarction, unspecified; Primary coxarthrosis; Essential hypertension",8-800.90; 5-470,Transfusion of erythrocyte concentrate; Appendectomy
+CASE-0184-06,patientnr0184,Chirurgie,Aug 16 2025,23.08.2025,7,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",S72.0; J44.1,Fracture of neck of femur; Chronic obstructive pulmonary disease with acute exacerbation,,
+CASE-0175-07,patientnr0175,Chirurgie,2025-02-14,18-Feb-2025,4,M16.1,Primary coxarthrosis,I63.9,"Cerebral infarction, unspecified",,
+CASE-0095-10,unknown,Kardiologie,02/20/2025,15_03_2025,23,F32.1,Moderate depressive episode,F32.1,Moderate depressive episode,,
+CASE-0102-16,patientnr0102,Geriatrie,Aug 19 2025,09/15/2025,27,F32.1,Moderate depressive episode,J44.1; I63.9,"Chronic obstructive pulmonary disease with acute exacerbation; Cerebral infarction, unspecified%",8-930; 8-800.90,Monitoring of cerebral activity; Transfusion of erythrocyte concentrate
+CASE-0070-22,patientnr0070,Geriatrie,19.03.2025,20250405,17,F32.1,Moderate depressive episode,J18.9; I63.9; F32.1,n/a,8-550.1,Early geriatric complex treatment
+CASE-0070-23,patientnr0070,Chirurgie,00/00/0000,29_03_2025,22,S72.0,Fracture of neck of femur,C34.1; N17.9,"Malignant neoplasm of upper lobe, bronchus or lung; Acute kidney failure, unspecified",,
+CASE-0009-10,patientnr0009,Geriatrie,2024-13-10,2025-May-21,18,K92.1,Melena,I50.1,Left ventricular failure%,8-800.90; 8-930,Transfusion of erythrocyte concentrate; Monitoring of cerebral activity
+CASE-0064-07ö,patientnr0064,Chirurgie,17.12.2025,28_12_2025,11,J18.9,"Pneumonia, unspecified",,,,
+CASE-0091-09,patientnr0091,Neurologie,Apr 24 2025,2025-05-17,23,I50.1,Left ventricular failure,S72.0; G20; I10,Fracture of neck of femur; Parkinson disease; Essential hypertension,8-550.1; 5-470,Early geriatric complex treatment; Appendectomy
+CASE-0115-05,patientnr0115,Intensivstation,01-Jul-2025,24-Jul-2025,-1,C34.1,"Malignant neoplasm of upper lobe, bronchus or lungä",F32.1,Moderate depressive episode,8-550.1; 1-910,Early geriatric complex treatment; Diagnostic bronchoscopy
+CASE-0091-10,patientnr0091,Innere Medizin,04/25/2025^,2025/05/01,6,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,,,1-910,Diagnostic bronchoscopy
+CASE-0063-21,,Geriatrie,05/06/2025,22_05_2025,16,K92.1,Melena,G20; I10; J44.1,Parkinson disease; Essential hypertension; Chronic obstructive pulmonary disease with acute exacerbation,8-930; 8-800.90,Monitoring of cerebral activity; Transfusion of erythrocyte concentrate
+CASE-0037-12,patientnr0037,Innere Medizin,2025.10.02,2025-Oct-05,missing,S72.0,Fracture of neck of femur,E11.9,Type 2 diabetes mellitus without complications,5-470; 1-910,Appendectomy; Diagnostic bronchoscopy
+CASE-0020-05,,Neurologie,2025-05-28, ,-1,S72.0,Fracture of neck of femur,I50.1; J44.1; G20,Left ventricular failure; Chronic obstructive pulmonary disease with acute exacerbation; Parkinson disease,,
+CASE-0143-20,patientnr0143,Kardiologie,11/02/2025,04_11_2025,2,K92.1,Melena,M16.1@,Primary coxarthrosis,,
+CASE-0084-06,pateintnr0084,Neurologie^,30.12.2025,2026.01.15,16,I63.9,"Cerebral infarction, unspecified",N17.9; G20; J44.1,"Acute kidney failure, unspecified; Parkinson disease; Chronic obstructive pulmonary disease with acute exacerbation",5-470; 5-820.0,Appendectomy; Implantation of hip joint prosthesisß
+CASE-0087-11,patientnr0087,Geriatrie,08.11.2025,04.12.2025,26,S72.0,Fracture of neck of femur,I10; E11.9,Essential hypertension; Type 2 diabetes mellitus without complications,8-550.1; 5-820.0,Early geriatric complex treatment; Implantation of hip joint prosthesis
+CASE-0138-07,patientnr0138,Geriatrie,03/31/2025,00/00/0000,8,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,M16.1; S72.0; K92.1,Primary coxarthrosis; Fracture of neck of femur; Melena,8-98f.0; 1-910,Pulmonology complex treatment; Diagnostic bronchoscopy
+CASE-0070-24ö,patientnr0070,Pneumologie,2025.09.18,2025-Sep-21,3,I63.9,"Cerebral infarction, unspecified",S72.0; I63.9; G20,"Fracture of neck of femur; Cerebral infarction, unspecified; Parkinson disease",,
+CASE-0156-06,patientnr0156,Kardiologie,Jan 14 2026,29.01.2026,15,I63.9,"Cerebral infarction, unspecified",K92.1; E11.9; F32.1,Melena; Type 2 diabetes mellitus without complications; Moderate depressive episode,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0113-13,patientnr0113,Intensivstation,19_01_2026,13_02_2026,25$,S72.0,Fracture of neck of femur,,,,
+CASE-0122-13,patientnr0122,Pneumologie,20251206,20260105,30,unknown,"Pneumonia, unspecified",K92.1; M16.1,Melena; Primary coxarthrosis,,unknown
+CASE-0037-13,patientnr0037,Kardiologie,n/a,01/24/2025,18,G20,Parkinson disease,,,5-820.0,Implantation of hip joint prosthesis
+CASE-0102-17,patientnr0102,Chirurgie,00/00/0000,02_03_2025,13,E11.9,Type 2 diabetes mellitus without complications,J44.1; I10; E11.9,Chronic obstructive pulmonary disease with acute exacerbation; Essential hypertension; Type 2 diabetes mellitus without complications,,
+CASE-0063-22,patientnr0063,Chirurgie	,2025-Aug-20,2025-Sep-14,25,I63.9,"Cerebral infarction, unspecified",J18.9,"Pneumonia, unspecified",5-470,Appendectomyä
+CASE-0029-06,patientnr0029,Pneumologie,21-Aug-2025,2025/08/28,7,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",J44.1; C34.1,"Chronic obstructive pulmonary disease with acute exacerbation; Malignant neoplasm of upper lobe, bronchus or lung",8-800.90; 5-820.0,Transfusion of erythrocyte concentrate; Implantation of hip joint prosthesis
+CASE-0122-14,,Geriatrie,2025-May-01,28.05.2025,27,F32.1,Moderate depressive episode,F32.1; I63.9; G20,"Moderate depressive episode; Cerebral infarction, unspecified; Parkinson disease",,
+CASE-0053-09,patientnr0053,Chirurgie,20251027,2025.10.30,3,N17.9,"Acute kidney failure, unspecified",F32.1; J18.9; M16.1,"Moderate depressive episode; Pneumonia, unspecified; Primary coxarthrosis",5-470; 8-550.1,Appendectomy; Early geriatric complex treatment
+CASE-0102-18,patientnr0102,Pneumologie,11-Oct-2025,2025/10/17,6,G20,Parkinson disease,K92.1; N17.9,"Melena; Acute kidney failure, unspecified",1-910; 5-470,Diagnostic bronchoscopy; Appendectomy
+CASE-0001-03,patientnr0001,Geriatrie,99.99.9999,18-Jul-2025,13,E11.9,Type 2 diabetes mellitus without complications,,,8-550.1; 5-820.0,Early geriatric complex treatment; Implantation of hip joint prosthesis
+CASE-0120-11,patientnr0120,Pneumologie,05/27/2025,Jun 24 2025,28,K92.1,Melena,,,missing,Diagnostic bronchoscopy
+CASE-0070-25,patientnr0070	,Pneumologie,20250424,23_05_2025,29,N17.9,"Acute kidney failure, unspecified",unknown,,,
+CASE-0198-18,patientnr0198,Chirurgie,May 13 2025,32.01.2024,6,G20,Parkinson disease,F32.1,Moderate depressive episode,5-820.0,Implantation of hip joint prosthesis
+CASE-0122-15,patientnr0122,Pneumologie,08_08_2025,2025.08.27,19,I10,Essential hypertension,,,8-98f.0; 8-930,Pulmonology complex treatment; Monitoring of cerebral activity
+CASE-0015-18,patientnr0015,Kardiologie,08-Jun-2025,2025.06.11,3,J18.9,"Pneumonia, unspecified",F32.1; C34.1; N17.9,"Moderate depressive episode; Malignant neoplasm of upper lobe, bronchus or lung; Acute kidney failure, unspecified",5-470; 1-910,Appendectomy; Diagnostic bronchoscopy
+CASE-0173-06,patientnr0173,Chirurgie,May 09 2025,05/29/2025,20,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,I50.1; J18.9; K92.1,"Left ventricular failure; Pneumonia, unspecified; Melena",,
+CASE-0076-07,patientnr0076,Kardiologie,Jan 08 2025,2025.01.12,4,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,J44.1; I50.1; N17.9,"Chronic obstructive pulmonary disease with acute exacerbation; Left ventricular failure; Acute kidney failure, unspecified",1-910; 8-800.90,Diagnostic bronchoscopy; Transfusion of erythrocyte concentrate
+CASE-0122-16,patientnr0122,Intensivstation,18_07_2025,2025-08-13,26,M16.1,Primary coxarthrosis,,,8-930,Monitoring of cerebral activity
+CASE-0033-06,patientnr0033,Chirurgie,20251022,2024/00/12,9,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",M16.1,Primary coxarthrosis,8-930; 5-820.0ß,Monitoring of cerebral activity; Implantation of hip joint prosthesis
+CASE-0087-12,patientnr0087,Innere Medizin,2025.03.27#,2025-04-16,20,S72.0,Fracture of neck of femur,I63.9; M16.1,"Cerebral infarction, unspecified; Primary coxarthrosis",,
+CASE-0108-16,patientnr0108,Pneumologie,2025.09.25,2025/10/09,14,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,I10; C34.1,"Essential hypertension; Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0039-11,patientnr0039,Chirurgie,23_01_2025,16_02_2025,24,N17.9,"Acute kidney failure, unspecified",I50.1; E11.9,Left ventricular failure; Type 2 diabetes mellitus without complications,,
+CASE-0175-08,patientnr0175,Neurologie,20250916,20250923,7,I63.9,"Cerebral infarction, unspecified",,,8-98f.0; 8-800.90,Pulmonology complex treatment; Transfusion of erythrocyte concentrate
+CASE-0087-13ö,patientnr0087,Chirurgie,20250511,2025/06/02,22,I50.1,Left ventricular failure,J18.9,"Pneumonia, unspecified",5-820.0; 5-470,Implantation of hip joint prosthesis; Appendectomy
+n/a,patientnr0175,Geriatrie,20250622,00/00/0000,29,F32.1,Moderate depressive episode,I50.1,Left ventricular failure,unknown,Appendectomy; Diagnostic bronchoscopy
+CASE-0076-08,patientnr0076,Innere Medizin,06/04/2025,2025/06/24,N/A,S72.0,Fracture of neck of femur,F32.1; S72.0,Moderate depressive episode; Fracture of neck of femur,5-820.0,Implantation of hip joint prosthesis
+CASE-0009-11,patientnr0009,Chirurgie,2026/01/31,2026/02/23,-1,F32.1,Moderate depressive episode,N17.9; M16.1,"Acute kidney failure, unspecified; Primary coxarthrosis",,
+CASE-0138-08,patientnr0138,Chirurgie,08/24/2025,12-Sep-2025,19,M16.1,Primary coxarthrosis,S72.0,Fracture of neck of femur,,
+CASE-0134-06,patientnr0134,Kardiologie,2025-Oct-25,20251105,11,I50.1,Left ventricular failure,M16.1; C34.1; J44.1,"Primary coxarthrosis; Malignant neoplasm of upper lobe, bronchus or lung; Chronic obstructive pulmonary disease with acute exacerbation",8-550.1; 1-910,Early geriatric complex treatment; Diagnostic bronchoscopy
+CASE-0063-23,patientnr0063,Geriatrie,01/08/2026,2026-01-20,12,I10,Essential hypertension,NaN,"Pneumonia, unspecified; Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0063-24,patientnr0063,Kardiologie,20250813,20250908@,26,unknown,Primary coxarthrosis,M16.1,Primary coxarthrosis,,
+CASE-0108-17,patientnr0108ä, ,29.09.2025,99.99.9999,21,E11.9,Type 2 diabetes mellitus without complications,n/a,"Cerebral infarction, unspecified; Essential hypertension",8-930,Monitoring of cerebral activity
+CASE-0084-07,patientnr0084,Chirurgie,17.02.2025, ,5,E11.9,Type 2 diabetes mellitus without complications,F32.1; S72.0; J18.9,"Moderate depressive episode; Fracture of neck of femur; Pneumonia, unspecified",,
+CASE-0063-25,pateintnr0063,Kardiologie,03/02/2025,08-Mar-2025,-1,I63.9,"Cerebral infarction, unspecified",M16.1; I10,Primary coxarthrosis; Essential hypertension,8-98f.0,Pulmonology complex treatment
+CASE-0123-08,patientnr0123,Neurologie,2025-06-01,2025-Jun-22,21,J18.9,"Pneumonia, unspecified",F32.1; I63.9,NaN,,
+CASE-0198-19,patientnr0198,Geriatrie,11.11.2025,2024-13-10,1,I50.1,Left ventricular failure,,,8-550.1; 5-470,Early geriatric complex treatment; Appendectomy
+CASE-0173-07,patientnr0173#,Innere Medizin,27.08.2025,20250829,2,I50.1,Left ventricular failure%,N17.9; M16.1; F32.1,"Acute kidney failure, unspecified; Primary coxarthrosis; Moderate depressive episode",,
+CASE-0167-05,patientnr0167,Intensivstation,2025-09-21,16_10_2025,25,I10$,Essential hypertension,,,8-800.90; 5-470,Transfusion of erythrocyte concentrate; Appendectomy
+CASE-0184-07,patientnr0184,Neurologie,2025-Dec-13ß,05_01_2026,23,G20,Parkinson disease,,,,
+CASE-0143-21,patientnr0143,Innere Medizin,2025.02.28,2025/03/24,24,n/a,Left ventricular failure,,,5-820.0,Implantation of hip joint prosthesis
+CASE-0195-06,patientnr0195	,Geriatrie,16_10_2025,2025/10/20,4,N17.9,"Acute kidney failure, unspecified",N17.9; I50.1,"Acute kidney failure, unspecified; Left ventricular failure",,
+CASE-0198-20,paitentnr0198,Neurologie,21.12.2025,20260107,17,I63.9,"Cerebral infarction, unspecified",M16.1,Primary coxarthrosis,,
+CASE-0122-17,patientnr0122,Intensivstation,11.01.2026,Feb 06 2026,26,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",C34.1; I63.9; G20,"Malignant neoplasm of upper lobe, bronchus or lung; Cerebral infarction, unspecified; Parkinson disease",8-98f.0; 8-800.90,Pulmonology complex treatment; Transfusion of erythrocyte concentrate
+CASE-0144-14,patientnr0144,Innere Medizin,2025.10.11,10/18/2025, ,E11.9,Type 2 diabetes mellitus without complications,N17.9,"Acute kidney failure, unspecified",8-930,Monitoring of cerebral activity
+CASE-0017-16,patientnr0017,Kardiologie,2025/09/17,2025.09.18,1,I10,Essential hypertension,J18.9,"Pneumonia, unspecified",8-800.90,Transfusion of erythrocyte concentrate
+CASE-0129-15,patientnr0129,Kardiologie,Jul 04 2025,20.07.2025,16,S72.0,Fracture of neck of femur,I63.9,"Cerebral infarction, unspecified",1-910,Diagnostic bronchoscopy
+CASE-0144-15,patientnr0144,Neurologie,2025.03.25,unknown,25,I63.9,"Cerebral infarction, unspecified",,n/a,,
+ ,patientnr0147,Geriatrie,unknown,11/01/2025,NULL,N17.9,"Acute kidney failure, unspecified",I50.1; S72.0; K92.1,Left ventricular failure; Fracture of neck of femur; Melena,1-910,Diagnostic bronchoscopy
+CASE-0128-10,patientnr0128,Innere Medizin,02-Sep-2025,Sep 25 2025,23,E11.9,Type 2 diabetes mellitus without complications,I63.9; N17.9,"Cerebral infarction, unspecified; Acute kidney failure, unspecified",8-98f.0,Pulmonology complex treatment
+CASE-0020-06,patientnr0020,Neurologie,16_01_2025,19_01_2025,3,I50.1,Left ventricular failure,E11.9,Type 2 diabetes mellitus without complications,NaN,Diagnostic bronchoscopy
+CASE-0074-05,patientnr0074,Neurologie,2025-Feb-24,03_03_2025,7,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",S72.0; C34.1; I63.9,,1-910,Diagnostic bronchoscopy
+CASE-0063-26,patientnr0063,Neurologie,2025/11/25,2025/12/08,13,I10,Essential hypertension,J44.1; C34.1,"Chronic obstructive pulmonary disease with acute exacerbation; Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0123-09,patientnr0123,Geriatrie,02/19/2025,Feb 27 2025,8,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",1-910,Diagnostic bronchoscopy
+CASE-0084-08,patientnr0084,Intensivstation,2025.07.02ü,07/21/2025,19,I63.9,"Cerebral infarction, unspecified",N/A,Primary coxarthrosis,,
+CASE-0138-09,patientnr0138,Intensivstation,2026.01.24,2026/01/30,,I50.1,Left ventricular failure,I63.9,"Cerebral infarction, unspecified",8-800.90,Transfusion of erythrocyte concentrate
+CASE-0195-07,patientnr0195,Pneumologie,2025-02-20,12_03_2025,20ß,M16.1,Primary coxarthrosis,I50.1; N17.9; J44.1,"Left ventricular failure; Acute kidney failure, unspecified; Chronic obstructive pulmonary disease with acute exacerbation",5-820.0; 8-550.1	,Implantation of hip joint prosthesis; Early geriatric complex treatment
+CASE-0037-14,patientnr0037,N/A,01-Oct-2025,10_10_2025,9,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",NaN,"Cerebral infarction, unspecified",8-98f.0; 8-800.90,Pulmonology complex treatment; Transfusion of erythrocyte concentrate
+CASE-0104-13,patientnr0104,Intensivstation,2025/04/29,2025-05-23,-1,F32.1,Moderate depressive episodeä,N17.9; C34.1,"Acute kidney failure, unspecified; Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0173-08,patientnr0173,Intensivstation,16.08.2025,2025.08.20,4,I63.9,"Cerebral infarction, unspecified",,,unknown,Early geriatric complex treatment^
+CASE-0175-10,patientnr0175,Chirurgie,11-Apr-2025,14-Apr-2025,3,N17.9,"Acute kidney failure, unspecified",E11.9; J44.1,Type 2 diabetes mellitus without complications; Chronic obstructive pulmonary disease with acute exacerbation,1-910; 8-800.90,Diagnostic bronchoscopy; Transfusion of erythrocyte concentrate
+CASE-0198-21,patientnr0198,Pneumologie,06/28/2025,20250714,16,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,M16.1; K92.1ä,Primary coxarthrosis; Melena#,5-820.0,Implantation of hip joint prosthesis
+CASE-0167-06,patientnr0167,Innere Medizin,06_01_2025,Jan 27 2025,21,N17.9,"Acute kidney failure, unspecified",N17.9,"Acute kidney failure, unspecified",8-98f.0,Pulmonology complex treatment
+CASE-0134-07,patientnr0134,Kardiologie,19_10_2025,07_11_2025,19,I50.1,Left ventricular failure,J44.1; K92.1,Chronic obstructive pulmonary disease with acute exacerbation; Melena,1-910; 8-800.90,Diagnostic bronchoscopy; Transfusion of erythrocyte concentrate
+CASE-0175-11,patientnr0175,Intensivstation,2025-Oct-28,11/01/2025,4#,G20,Parkinson disease,E11.9,Type 2 diabetes mellitus without complications,8-800.90; 1-910,Transfusion of erythrocyte concentrate; Diagnostic bronchoscopy
+CASE-0108-18,patientnr0108,Innere Medizin,20251225,24_01_2026,30,M16.1,Primary coxarthrosis,N17.9; E11.9,"Acute kidney failure, unspecified; Type 2 diabetes mellitus without complications",8-930; 1-910,Monitoring of cerebral activity; Diagnostic bronchoscopy
+CASE-0090-06,patientnr0090,Geriatrie,Nov 05 2025,2025-02-30,2,F32.1,Moderate depressive episode,M16.1; I50.1,Primary coxarthrosis; Left ventricular failure,8-930,Monitoring of cerebral activity
+CASE-0173-09,patientnr0173,Chirurgie,2025/11/01,2025/11/20,19,I50.1,Left ventricular failure,,,8-930,Monitoring of cerebral activity
+CASE-0009-12,patientnr0009,Pneumologie,20251028,20251122,25ä,E11.9,Type 2 diabetes mellitus without complications,I10,Essential hypertension,1-910,Diagnostic bronchoscopy
+CASE-0020-07,patientnr0020,Pneumologie,05.05.2025,99.99.9999,6,S72.0,Fracture of neck of femur,J44.1; S72.0,Chronic obstructive pulmonary disease with acute exacerbation; Fracture of neck of femur,8-550.1; 8-800.90,Early geriatric complex treatment; Transfusion of erythrocyte concentrate
+CASE-0086-04,patientnr0086,Pneumologie,20251102,2025-11-21,19,I50.1,Left ventricular failure,I63.9; E11.9,"Cerebral infarction, unspecified; Type 2 diabetes mellitus without complications",1-910,Diagnostic bronchoscopy
+CASE-0198-22,patientnr1098,Intensivstation^, ,2024-13-10,5,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,M16.1,Primary coxarthrosis,5-820.0,Implantation of hip joint prosthesis
+CASE-0001-04,patientnr0001ö,Neurologie,12/30/2025,28.01.2026,29,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",E11.9; J18.9; J44.1,"Type 2 diabetes mellitus without complications; Pneumonia, unspecified; Chronic obstructive pulmonary disease with acute exacerbation",8-930; 8-550.1,Monitoring of cerebral activity; Early geriatric complex treatment
+CASE-0063-27,patientnr0063 ,Neurologie,2025-12-01,2025-12-15,14,J44.1,unknown,M16.1,Primary coxarthrosis,,
+CASE-0095-11,patientnr0095,Neurologie,2025-Dec-08,2024-13-10,13,M16.1,Primary coxarthrosis,K92.1; F32.1; C34.1,"Melena; Moderate depressive episode; Malignant neoplasm of upper lobe, bronchus or lung",1-910; 8-800.90,Diagnostic bronchoscopy; Transfusion of erythrocyte concentrate
+CASE-0070-26,patientnr0070,Geriatrie,30-Jun-2025,2025/07/14,14,K92.1,Melena,F32.1; I63.9,"Moderate depressive episode; Cerebral infarction, unspecified",8-550.1; 8-98f.0,Early geriatric complex treatment; Pulmonology complex treatment
+CASE-0001-05,patientnr0001,Geriatrie,20250509,2025-05-22,13,K92.1,Melena,I50.1; K92.1,Left ventricular failure; Melena,,
+CASE-0143-22,patientnr0143,Intensivstation,19-May-2025,2025/05/23,4,F32.1,Moderate depressive episode,,,5-820.0,Implantation of hip joint prosthesis
+CASE-0001-06,patientnr0001,Geriatrie,2026-01-02,2026/01/28,26,NULL,Parkinson disease,F32.1; I63.9,"Moderate depressive episode; Cerebral infarction, unspecifiedß",,
+CASE-0167-07,patientnr0167,Kardiologie,20250530,2025-Jun-21,22,S72.0,Fracture of neck of femur,I10; I50.1,Essential hypertension; Left ventricular failure,8-98f.0,Pulmonology complex treatment
+CASE-0184-08,patientnr0184,Chirurgie,2025-12-03,2025-Dec-22,19,I63.9,"Cerebral infarction, unspecified",G20; S72.0,Parkinson disease; Fracture of neck of femur,5-820.0,Implantation of hip joint prosthesis
+CASE-0063-28,patientnr0063,Kardiologie,05.02.2025,19_02_2025,14,S72.0,Fracture of neck of femur^,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,,
+CASE-0115-06,patientnr0115,Pneumologie,2025.06.28,2025-Jul-12,14,I10,NaN,S72.0; N17.9; I63.9,"Fracture of neck of femur; Acute kidney failure, unspecified; Cerebral infarction, unspecified",8-98f.0,Pulmonology complex treatment
+CASE-0184-09,patientnr0184,Geriatrie,20250726,2025/08/03,8,S72.0,Fracture of neck of femurö,J18.9,"Pneumonia, unspecified",5-470,Appendectomy
+CASE-0001-07,patientnr0001,Intensivstation,17_01_2026,2026-02-12,26,S72.0,Fracture of neck of femur,,,,
+CASE-0104-14,patientnr0104,Kardiologie,2025-Oct-23,20251024,1,J18.9,"Pneumonia, unspecified",K92.1; J18.9; S72.0,"Melena; Pneumonia, unspecified; Fracture of neck of femur",8-930,Monitoring of cerebral activity
+CASE-0015-19,patientnr0015,Innere Medizin,25.11.2025,2025-Dec-03,8,M16.1,Primary coxarthrosis,G20; I63.9,"Parkinson disease; Cerebral infarction, unspecified",5-820.0,Implantation of hip joint prosthesis
+CASE-0070-27,patientnr0070,Kardiologie,2026-Jan-04,2026-01-19,15,I10,Essential hypertension,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,5-820.0; 8-550.1,Implantation of hip joint prosthesis; Early geriatric complex treatment
+CASE-0115-07,,Geriatrie,2025/03/20,07_04_2025,18,I10@,Essential hypertension,,,5-820.0,Implantation of hip joint prosthesis
+CASE-0074-06,patientnr0074 ,Chirurgie,20250115ö,Feb 10 2025,26#,I10,Essential hypertension,N17.9,"Acute kidney failure, unspecified", ,Implantation of hip joint prosthesis; Monitoring of cerebral activity%
+CASE-0029-07,patientnr0029,n/a,18_08_2025,2024-13-10,15,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,S72.0,Fracture of neck of femur,,
+CASE-0173-10,,Neurologie,NULL,11.11.2025,22,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",F32.1; J44.1; S72.0,Moderate depressive episode; Chronic obstructive pulmonary disease with acute exacerbation; Fracture of neck of femur,n/a,Early geriatric complex treatment; Appendectomy
+CASE-0146-06,patientnr0146,n/a,15-13-2024,18.01.2025,13,F32.1,Moderate depressive episode,C34.1; S72.0,"Malignant neoplasm of upper lobe, bronchus or lung; Fracture of neck of femur",8-550.1; 8-930,Early geriatric complex treatment; Monitoring of cerebral activity
+CASE-0039-12,patientnr0039,Chirurgie,06.08.2025,28.08.2025,22,F32.1,Moderate depressive episode,F32.1,Moderate depressive episode,,
+ ,patientnr0029 ,Kardiologie,May 23 2025,unknown,7,S72.0,Fracture of neck of femur,K92.1,Melena,5-820.0,Implantation of hip joint prosthesis
+CASE-0084-09,patientnr0084,Intensivstation,2025/06/29,Jul 03 2025,4,J44.1%,Chronic obstructive pulmonary disease with acute exacerbation,E11.9; I10,Type 2 diabetes mellitus without complications; Essential hypertension,8-98f.0; 5-470,Pulmonology complex treatment; Appendectomy
+CASE-0029-09,patientnr0029,,20250525,2025-Jun-17#,23,K92.1,Melena,C34.1; I50.1; J18.9,"Malignant neoplasm of upper lobe, bronchus or lung; Left ventricular failure; Pneumonia, unspecified",N/A,Implantation of hip joint prosthesis
+CASE-0070-28,patientnr0070ü,Neurologie,2025-08-09,31.08.2025,22,I50.1,,I10; N17.9,"Essential hypertension; Acute kidney failure, unspecified",5-820.0,Implantation of hip joint prosthesis
+CASE-0020-08,patientnr0020,Kardiologie,2025-Jun-23,Jun 30 2025,7,S72.0,Fracture of neck of femur,I10; E11.9,Essential hypertension; Type 2 diabetes mellitus without complications,,
+,NaN,Intensivstation,Oct 21 2025,23.10.2025,2,I50.1,Left ventricular failure,J44.1; I63.9; I50.1,"Chronic obstructive pulmonary disease with acute exacerbation; Cerebral infarction, unspecified; Left ventricular failure",5-820.0; 1-910,Implantation of hip joint prosthesis; Diagnostic bronchoscopy
+CASE-0159-08,patientnr0159,Pneumologie,19.10.2025,2025.11.03,15,G20,Parkinson disease,I63.9; K92.1,"Cerebral infarction, unspecified; Melena",,
+CASE-0085-06,patientnr0085,Pneumologie,2025.06.14,unknown,24,J18.9, ,S72.0; C34.1; J18.9,"Fracture of neck of femur; Malignant neoplasm of upper lobe, bronchus or lung; Pneumonia, unspecified",,
+CASE-0129-16,patientnr0129,Kardiologie, ,2024/00/12,25,N17.9,"Acute kidney failure, unspecified",,, ,
+CASE-0029-10,patientnr0029,Chirurgie,09/02/2025,2025.09.04,2,I10,Essential hypertension,I63.9; E11.9,"Cerebral infarction, unspecified; Type 2 diabetes mellitus without complications",8-930; 8-800.90,n/a
+CASE-0095-12,patientnr0095,Geriatrie,2025/08/17,2025-Aug-30,13,S72.0,Fracture of neck of femur,,,,
+CASE-0090-07,patientnr0090,Neurologie,2025/05/25,99.99.9999,17,E11.9,Type 2 diabetes mellitus without complications,J18.9,"Pneumonia, unspecified",5-470,Appendectomy
+CASE-0097-11,NULL,Chirurgie,2025-11-04,2025-Nov-27,23,M16.1,Primary coxarthrosis,S72.0,Fracture of neck of femur,1-910; 5-820.0,Diagnostic bronchoscopy; Implantation of hip joint prosthesis
+CASE-0173-11,patientnr0173,Chirurgie,2024-13-10,2025-Dec-26,29,K92.1,Melena,J18.9; C34.1,"Pneumonia, unspecified; Malignant neoplasm of upper lobe, bronchus or lung",5-470,Appendectomy
+CASE-0175-12,patientnr0175,Intensivstation,Dec 08 2025,2025.12.22,14,I63.9,"Cerebral infarction, unspecified",J18.9; N17.9; K92.1,"Pneumonia, unspecified; Acute kidney failure, unspecified; Melena",,
+CASE-0039-13,missing,Intensivstation,18_02_2025,2025.02.20,2,M16.1,Primary coxarthrosis,C34.1; I50.1,"Malignant neoplasm of upper lobe, bronchus or lung; Left ventricular failure",8-800.90; 5-820.0,Transfusion of erythrocyte concentrate; Implantation of hip joint prosthesis
+CASE-0113-14,patientnr0113,Chirurgie,20260129,02/10/2026^,12,I50.1,Left ventricular failure,K92.1,Melena,5-820.0,Implantation of hip joint prosthesis
+CASE-0070-29,patientnr0070,Intensivstation,2025/01/07,21.01.2025ö,14,I50.1,Left ventricular failure,J44.1; I50.1,Chronic obstructive pulmonary disease with acute exacerbation; Left ventricular failure,8-930; 5-820.0,Monitoring of cerebral activity; Implantation of hip joint prosthesis
+CASE-0153-06,patientnr0153,Intensivstation,20250529,16-Jun-2025,18@,F32.1,Moderate depressive episode,K92.1; E11.9; J44.1,Melena; Type 2 diabetes mellitus without complications; Chronic obstructive pulmonary disease with acute exacerbation,8-550.1,Early geriatric complex treatment
+CASE-0104-15,patientnr0104,Neurologie,2025-Jul-22,2025-07-31,9,I10,Essential hypertension,I63.9,"Cerebral infarction, unspecified",missing,Pulmonology complex treatment
+CASE-0033-07,patientnr0033,Innere Medizin,2025.11.12,2025.11.21,-1,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,,, ,Transfusion of erythrocyte concentrate; Diagnostic bronchoscopy
+CASE-0163-08,patientnr0163,Kardiologie,00/00/0000,12/12/2025,9,M16.1,Primary coxarthrosis,,,,
+CASE-0015-20,patientnr0015,Geriatrieß,02/21/2025,Mar 22 2025,29,K92.1,Melena,M16.1; C34.1; K92.1,"Primary coxarthrosis; Malignant neoplasm of upper lobe, bronchus or lung; Melenaö",1-910; 8-800.90,Diagnostic bronchoscopy; Transfusion of erythrocyte concentrate
+CASE-0175-13,patientnr0175,Neurologie,2025.01.05,30_01_2025,25,E11.9,Type 2 diabetes mellitus without complications,n/a,Fracture of neck of femur,,
+CASE-0159-09,patientnr0159,Intensivstation,18.10.2025,2025-11-14ö,27,M16.1,Primary coxarthrosis,C34.1; E11.9,"Malignant neoplasm of upper lobe, bronchus or lung; Type 2 diabetes mellitus without complications",,
+CASE-0198-23,patientnr0198,Intensivstation,2025-11-10,Dec 07 2025,27,I10,Essential hypertension,I63.9,"Cerebral infarction, unspecified",8-930; 8-800.90,Monitoring of cerebral activity; Transfusion of erythrocyte concentrate
+CASE-0063-29,patientnr0063,Kardiologie,2025-Jul-20,08/15/2025^,26,N/A,Fracture of neck of femur,,,8-930; 8-98f.0,Monitoring of cerebral activity; Pulmonology complex treatment
+CASE-0029-11,patientnr0029,Neurologie,20260105,20260107,2,K92.1,Melena,K92.1,Melena@,,
+CASE-0074-07,patientnr0074,Chirurgie,20250417,20250429,12,I50.1,Left ventricular failure,,,,
+CASE-0037-15,patientnr0037,Neurologie,21.02.2025,03-Mar-2025,10,F32.1,Moderate depressive episode,missing,Primary coxarthrosis; Moderate depressive episode; Chronic obstructive pulmonary disease with acute exacerbation,5-820.0; 8-550.1,Implantation of hip joint prosthesis; Early geriatric complex treatment
+CASE-0092-06,patientnr0092,Pneumologie,13.07.2025,20250715,2,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",I63.9; N17.9,"Cerebral infarction, unspecified; Acute kidney failure, unspecified",1-910; 8-930,Diagnostic bronchoscopy; Monitoring of cerebral activity
+CASE-0138-10,patientnr0138,Innere Medizin,19_04_2025,May 11 2025,22,G20,Parkinson disease,I50.1; J44.1; K92.1,missing,8-930; 8-98f.0,Monitoring of cerebral activity; Pulmonology complex treatment
+CASE-0086-05ß,patientnr0086,Chirurgie,02_10_2025,2025-10-14,12,F32.1,Moderate depressive episode,G20,Parkinson disease,,
+CASE-0040-09,patientnr0040,Innere Medizin,2025-11-15,2025/12/02,17,M16.1,Primary coxarthrosis,K92.1; G20,Melena; Parkinson disease,8-98f.0; 8-930,Pulmonology complex treatment; Monitoring of cerebral activity
+CASE-0144-16,patientnr0144,Innere Medizin,20250328,20250403,6,J18.9,"Pneumonia, unspecified",J18.9,"Pneumonia, unspecified",8-98f.0,Pulmonology complex treatment
+CASE-0198-24,patientnr0198,Pneumologie,18_01_2026#,2026/01/30,12,M16.1,Primary coxarthrosis,I10; J18.9; S72.0,"Essential hypertension; Pneumonia, unspecified; Fracture of neck of femur",8-98f.0; 5-470,Pulmonology complex treatment; Appendectomy
+CASE-0084-10,patientnr0084,Innere Medizin#,2025.05.28ö,00/00/0000,27,I50.1,Left ventricular failure,G20,Parkinson disease,1-910,Diagnostic bronchoscopy
+CASE-0001-08,patientnr0001,Innere Medizin,2025-Nov-30,2025-12-05,5,K92.1,Melena,,,,
+CASE-0144-17,patientnr0144,Neurologieß,NULL,2025/03/12,30,J18.9,"Pneumonia, unspecified",M16.1,Primary coxarthrosis,5-820.0; 8-550.1,Implantation of hip joint prosthesis; Early geriatric complex treatment
+CASE-0175-14,patientnr0175,Innere Medizin,2025-May-27,10-Jun-2025,14,E11.9,Type 2 diabetes mellitus without complications,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,,
+CASE-0039-14,patientnr0039,Chirurgie,12/24/2025,2025.12.25,1,I63.9%,"Cerebral infarction, unspecified",K92.1,Melena,8-550.1,Early geriatric complex treatment
+CASE-0063-30,patientnr0063,NULL,Mar 20 2025,2025-04-08%,19,unknown,Moderate depressive episode,,,8-98f.0,Pulmonology complex treatment
+CASE-0159-10,patientnr0159,Chirurgieü,2025-11-10,04.12.2025,24,I63.9,"Cerebral infarction, unspecified",G20; E11.9; J18.9,"Parkinson disease; Type 2 diabetes mellitus without complications; Pneumonia, unspecified",8-800.90; 8-550.1,Transfusion of erythrocyte concentrate; Early geriatric complex treatment
+CASE-0129-17,patientnr0129,Neurologie,99.99.9999,2025-Sep-25,29,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,,,8-98f.0,Pulmonology complex treatment
+CASE-0146-08,patientnr0146,Chirurgie,2025-Jan-12,2025-01-19,7,K92.1,Melena,,,8-550.1,Early geriatric complex treatment
+CASE-0037-16,patientnr0037,Innere Medizin,2025-02-12,18.02.2025#,6,N17.9,"Acute kidney failure, unspecified",,,1-910; 5-820.0,Diagnostic bronchoscopy; Implantation of hip joint prosthesis
+CASE-0086-06,n/a,Geriatrie,99.99.9999,Apr 13 2025,29,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",,,1-910; 8-550.1,Diagnostic bronchoscopy; Early geriatric complex treatment
+CASE-0017-17,patientnr0017,Innere Medizin,2025/06/27,07/12/2025,15,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",,,5-470; 8-930,Appendectomy; Monitoring of cerebral activity
+CASE-0108-19,patientnr0108,Chirurgie,15-Feb-2025,2025.02.24,9,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,J44.1; G20,N/A,5-820.0,NaN
+CASE-0147-06,patientnr0147,Intensivstation,02/04/2025,2025.02.26,22,I50.1,Left ventricular failure,J44.1; K92.1,Chronic obstructive pulmonary disease with acute exacerbation; Melena,1-910,Diagnostic bronchoscopy
+CASE-0195-08,patientnr0195,Chirurgie,20260113,11.02.2026,29,M16.1,Primary coxarthrosis,,,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0108-20,patientnr0108,Neurologie,30_06_2025,07.07.2025,7,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,M16.1,Primary coxarthrosis,,
+CASE-0139-09,patientnr0139,Neurologieß,2026-01-04,20260131,27,G20,Parkinson disease,,,5-820.0,Implantation of hip joint prosthesis
+CASE-0040-10,patietnnr0040,Kardiologie,26_01_2025,2025-Feb-19,0,N17.9,"Acute kidney failure, unspecified",N17.9; I10,"Acute kidney failure, unspecified; Essential hypertensionö",8-550.1,Early geriatric complex treatment
+CASE-0104-16,patientnr0104,Chirurgie,18.01.2026,13.02.2026,26,K92.1,Melena,N17.9; S72.0; G20,"Acute kidney failure, unspecified; Fracture of neck of femur; Parkinson disease",8-930,Monitoring of cerebral activity
+CASE-0092-07,patientnr0092,Pneumologie,27.06.2025,2025.07.11,14,NaN,"Pneumonia, unspecified",C34.1; I10; G20,"Malignant neoplasm of upper lobe, bronchus or lung; Essential hypertension; Parkinson disease",5-470; 1-910,Appendectomy; Diagnostic bronchoscopy
+CASE-0108-21,patientnr0108,Kardiologie,20251026,11/19/2025,24@,K92.1,Melena,E11.9,Type 2 diabetes mellitus without complications,,
+CASE-0175-15,patientnr0175,Innere Medizin,Apr 25 2025	,02_05_2025,7,I50.1,Left ventricular failure,I10,Essential hypertension,8-800.90; 8-98f.0,Transfusion of erythrocyte concentrate; Pulmonology complex treatment
+CASE-0084-11,patientnr0084,Geriatrie,2025-07-10,2025-02-30,9,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",F32.1; I10; S72.0,Moderate depressive episode; Essential hypertension; Fracture of neck of femur,8-98f.0,Pulmonology complex treatment
+CASE-0029-12,patientnr0029,Geriatrie,22_04_2025,2025-05-07,15,J18.9	,"Pneumonia, unspecified",E11.9; N17.9,"Type 2 diabetes mellitus without complications; Acute kidney failure, unspecified",8-550.1; 5-470,Early geriatric complex treatment; Appendectomy
+CASE-0115-08,patientnr0115,Innere Medizin,05/11/2025,27_05_2025,16,unknown,Primary coxarthrosis,G20^,Parkinson disease,,
+CASE-0194-09,patientnr0194,Geriatrie,20250804,Aug 08 2025,4,S72.0,Fracture of neck of femur,,,8-800.90; 8-550.1,Transfusion of erythrocyte concentrate; Early geriatric complex treatment
+CASE-0108-22,patientnr0108,Neurologie,21.02.2025,2025-02-27,6,J18.9,"Pneumonia, unspecified",G20; M16.1,Parkinson disease; Primary coxarthrosis,5-470,Appendectomy
+CASE-0175-16,patientnr0175,Innere Medizin,2025/10/11,Oct 27 2025ö,16,J18.9,"Pneumonia, unspecified",N17.9; J44.1; G20,"Acute kidney failure, unspecified; Chronic obstructive pulmonary disease with acute exacerbation; Parkinson disease",8-930, 
+CASE-0129-18,patientnr0129 ,Intensivstation,19-Dec-2025%,2025-12-31,12,I10,Essential hypertension,M16.1; F32.1; C34.1,"Primary coxarthrosis; Moderate depressive episode; Malignant neoplasm of upper lobe, bronchus or lung",5-470,Appendectomy
+CASE-0063-31,patientnr0063,Kardiologie,15-13-2024, ,27,M16.1,Primary coxarthrosis,I10,Essential hypertension,8-550.1,Early geriatric complex treatment
+CASE-0168-09,patientnr0168,Chirurgie,03/25/2025,2025.04.09,15,I10,Essential hypertension,J18.9,"Pneumonia, unspecified", ,Early geriatric complex treatment
+CASE-0134-08,patientnr0134,Geriatrie,30.05.2025,21.06.2025,22,I63.9,"Cerebral infarction, unspecified",NaN,,8-800.90; 8-930,Transfusion of erythrocyte concentrate; Monitoring of cerebral activity
+CASE-0108-23,patientnr0108,Geriatrie,2024/00/12,03/25/2025,23,S72.0,Fracture of neck of femur,F32.1,Moderate depressive episode,8-98f.0; 5-470,Pulmonology complex treatment; Appendectomy
+CASE-0097-12,patientnr0097,Geriatrie,2025.09.30,10/28/2025	,28,S72.0,Fracture of neck of femur,,,5-820.0; 8-930,Implantation of hip joint prosthesis; Monitoring of cerebral activity
+CASE-0065-06,patientnr0065,Intensivstation,03/18/2025,21-Mar-2025,3,S72.0,Fracture of neck of femur,n/a,,,
+CASE-0029-13,patientnr0029#,Chirurgie,05/16/2025,2024-13-10,4,C34.1@,NaN,S72.0; J18.9; I10,"Fracture of neck of femur; Pneumonia, unspecified; Essential hypertension",8-800.90,Transfusion of erythrocyte concentrate
+CASE-0158-12,patientnr0158,Kardiologie,14-May-2025,NULL,23,I63.9,"Cerebral infarction, unspecified",K92.1,Melena,,
+CASE-0063-32@,patientnr0063,Kardiologie,2024/00/12,2026.02.03,0,I63.9,"Cerebral infarction, unspecified",E11.9,Type 2 diabetes mellitus without complications,,
+CASE-0037-17,patientnr0037,Intensivstation,22_06_2025,missing,27,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,,,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0175-17,aptientnr0175,Geriatrie,20250306,NaN,10,J18.9,"Pneumonia, unspecified",N17.9; F32.1,"Acute kidney failure, unspecified; Moderate depressive episode",8-550.1,Early geriatric complex treatment
+CASE-0001-09,patientnr0001,Kardiologie,2025-10-01,2025/10/19,18,K92.1,Melena,G20; S72.0; J44.1,Parkinson disease; Fracture of neck of femur; Chronic obstructive pulmonary disease with acute exacerbation,5-470; 8-930,missing
+CASE-0053-10,patientnr0053,Geriatrie,2025-10-07,17-Oct-2025,10,E11.9,Type 2 diabetes mellitus without complications,,,,
+CASE-0017-18,patientnr0017,Chirurgie,20250827,2025/09/03,7,I63.9,"Cerebral infarction, unspecified",NULL,Primary coxarthrosis,5-470; 8-930,
+CASE-0087-14,pateintnr0087,Intensivstation,2025/11/06,Nov 20 2025,14%,G20,Parkinson disease,I63.9; E11.9; J18.9, ,n/a,Implantation of hip joint prosthesis; Transfusion of erythrocyte concentrate
+CASE-0120-12ß,patientnr0120,Chirurgie,24-Mar-2025,04_04_2025,11,N17.9,"Acute kidney failure, unspecified",J18.9; F32.1,"Pneumonia, unspecified; Moderate depressive episode",5-820.0; 1-910,Implantation of hip joint prosthesis; Diagnostic bronchoscopy
+CASE-0198-25,patientnr0198,Intensivstation,Mar 31 2025,2025.04.28,28,J18.9,"Pneumonia, unspecified",unknown,Chronic obstructive pulmonary disease with acute exacerbation; Type 2 diabetes mellitus without complications; Primary coxarthrosis,8-550.1; 1-910,Early geriatric complex treatment; Diagnostic bronchoscopy
+CASE-0090-08,patientnr0090,Geriatrie,03/01/2025,2025-Mar-24,23,G20,Parkinson disease,K92.1,Melena,,
+CASE-0040-11,patientnr0040,Pneumologie,2025/01/12,01/22/2025,10,N17.9,"Acute kidney failure, unspecified",I50.1; I63.9,"Left ventricular failure; Cerebral infarction, unspecified",,
+CASE-0198-26,patientnr0198@,Neurologie,2025.04.01,Apr 21 2025,20,F32.1,Moderate depressive episode,G20; C34.1; I63.9,"Parkinson disease; Malignant neoplasm of upper lobe, bronchus or lung; Cerebral infarction, unspecified",1-910; 8-98f.0,missing
+CASE-0063-33,patientnr0063,Intensivstation,12.10.2025,22.10.2025,10,K92.1,Melena,,,8-930,Monitoring of cerebral activity
+CASE-0029-14,,Pneumologie,08/31/2025,09/29/2025,29,S72.0,Fracture of neck of femur,E11.9; F32.1,Type 2 diabetes mellitus without complications; Moderate depressive episode,5-470; 8-98f.0,Appendectomy; Pulmonology complex treatment
+CASE-0104-17,patientnr0104,Intensivstation,20251101,2025.11.18,17,F32.1,Moderate depressive episode,,,5-820.0; 1-910,Implantation of hip joint prosthesis; Diagnostic bronchoscopy
+CASE-0194-10,patientnr0194,Kardiologie,07.06.2025,2025.06.27,20,F32.1,Moderate depressive episode,,,,
+CASE-0008-06,patientnr0008,Geriatrie,2025-Jul-29,20250807,9@,I63.9,"Cerebral infarction, unspecified",I10; I50.1,Essential hypertension; Left ventricular failure,8-98f.0,Pulmonology complex treatment
+CASE-0053-11,patientnr0053,Innere Medizin,01/08/2026,2026.01.24,16,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",J44.1; G20,Chronic obstructive pulmonary disease with acute exacerbation; Parkinson disease,,
+CASE-0184-10,patientnr0184,Neurologie,23.03.2025,,14,I50.1,Left ventricular failure,N17.9; M16.1; G20,"Acute kidney failure, unspecified; Primary coxarthrosis; Parkinson disease",5-470,Appendectomy
+CASE-0159-11,patientnr0159,Chirurgie,02/18/2025,2025-02-22,0,S72.0,Fracture of neck of femur,,,8-550.1,Early geriatric complex treatment^
+CASE-0064-08,patientnr0064,Geriatrie,22_08_2025,14-Sep-2025,23,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",,,5-820.0; 8-98f.0,NaN
+CASE-0048-05,patientnr0048,Geriatrie,17.09.2025,10/08/2025,21,F32.1,Moderate depressive episode,I50.1,Left ventricular failure,,NULL
+CASE-0029-15,patientnr0029,Kardiologie,20250529,Jun 03 2025,5ö,S72.0,Fracture of neck of femur,M16.1,Primary coxarthrosis,NULL,
+CASE-0175-18,patientnr0175,Geriatrie,20250820,08-Sep-2025,19,K92.1$,Melena,N17.9; I50.1; I63.9,"Acute kidney failure, unspecified; Left ventricular failure; Cerebral infarction, unspecified",8-800.90; 8-98f.0,Transfusion of erythrocyte concentrate; Pulmonology complex treatment
+CASE-0134-09,patientnr0134,Neurologie,2025/01/23,02/10/2025,18,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",F32.1; I50.1; C34.1,"Moderate depressive episode; Left ventricular failure; Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0017-19,missing,Intensivstation,2025.10.12,13_10_2025,1,J18.9,"Pneumonia, unspecified",C34.1; J44.1,"Malignant neoplasm of upper lobe, bronchus or lung; Chronic obstructive pulmonary disease with acute exacerbation",,
+CASE-0198-27,patientnr0198,Intensivstation,13_10_2025,2025.11.06,24,K92.1,Melena,M16.1; J18.9; N17.9,"Primary coxarthrosis; Pneumonia, unspecified; Acute kidney failure, unspecified",,
+CASE-0159-12,patientnr0159,Geriatrie,03/02/2025,2025-Mar-11,9,unknown,Fracture of neck of femur,J44.1,unknown,8-98f.0,Pulmonology complex treatment
+CASE-0065-07,patientnr0065,Pneumologie,24-Feb-2025,15-13-2024,17,N17.9,"Acute kidney failure, unspecified",I63.9; M16.1; I50.1,"Cerebral infarction, unspecified; Primary coxarthrosis; Left ventricular failure",,
+CASE-0029-16,patientnr0029,Chirurgieö,20260129,22.02.2026,24,n/a,Type 2 diabetes mellitus without complications,N17.9; E11.9,"Acute kidney failure, unspecified; Type 2 diabetes mellitus without complications",,
+CASE-0074-08,patientnr0074,Chirurgie,22_01_2026,02/21/2026,30,I50.1,Left ventricular failure,,,8-550.1,Early geriatric complex treatment
+CASE-0102-19,patientnr0102,Neurologie,2025-03-30,Apr 11 2025,12,N17.9,"Acute kidney failure, unspecified",J44.1; C34.1,"Chronic obstructive pulmonary disease with acute exacerbation; Malignant neoplasm of upper lobe, bronchus or lung",1-910; 5-470,Diagnostic bronchoscopy; Appendectomy
+CASE-0190-05,patientnr0190,Pneumologie,20250408,21_04_2025,13,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,C34.1; I10; M16.1,"Malignant neoplasm of upper lobe, bronchus or lung; Essential hypertension; Primary coxarthrosis",8-800.90,Transfusion of erythrocyte concentrate
+CASE-0175-19,patientnr0175,Chirurgie,11.12.2025,2026.01.05,25,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",I50.1; K92.1,Left ventricular failure; Melena	,5-470ß,Appendectomy
+CASE-0143-23,patientnr0143,NULL,2025/06/11,06/23/2025,12,J44.1, ,J18.9; E11.9; C34.1,"Pneumonia, unspecified; Type 2 diabetes mellitus without complications; Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0175-20,patientnr0175,Chirurgie,10/31/2025,2025/11/25,25,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",C34.1; J18.9; N17.9,"Malignant neoplasm of upper lobe, bronchus or lung; Pneumonia, unspecified; Acute kidney failure, unspecified",8-550.1,Early geriatric complex treatment
+CASE-0097-13,patientnr0097,Neurologie,2025-02-30,02/01/2026,23,I63.9,"Cerebral infarction, unspecified",I63.9; G20; I10@,"Cerebral infarction, unspecified; Parkinson disease; Essential hypertension",5-820.0; 8-550.1,Implantation of hip joint prosthesis; Early geriatric complex treatment
+CASE-0198-28,patientnr0198,Pneumologie,11/22/2025,2025-02-30,21,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,G20,Parkinson disease,8-930,Monitoring of cerebral activity
+CASE-0138-11,patientnr0138,Pneumologie,2025/08/10,2025-08-14,4,F32.1,Moderate depressive episode,I63.9; E11.9; G20,"Cerebral infarction, unspecified; Type 2 diabetes mellitus without complications; Parkinson disease",8-550.1,Early geriatric complex treatment
+CASE-0146-09,pateintnr0146,Chirurgie,21.05.2025,n/a,-1,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",n/a,Essential hypertension; Primary coxarthrosis,8-800.90; 8-550.1,Transfusion of erythrocyte concentrate; Early geriatric complex treatment
+CASE-0065-08,patientnr0065,Kardiologie,2025.07.07,07/29/2025,22,E11.9,Type 2 diabetes mellitus without complications,F32.1; S72.0; E11.9,Moderate depressive episode; Fracture of neck of femur; Type 2 diabetes mellitus without complications,1-910^,Diagnostic bronchoscopy
+CASE-0033-08,patientnr0033,Intensivstation,2025.06.25,20250703,8,I10,Essential hypertension,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,,missing
+CASE-0070-30,patientnr0070,Kardiologie,2025.09.04,Sep 21 2025,17,G20,Parkinson disease,F32.1; K92.1,,8-930; 8-800.90,Monitoring of cerebral activity; Transfusion of erythrocyte concentrate
+CASE-0123-10,patientnr0123,Neurologie,2025.11.24,20251125,1,E11.9,Type 2 diabetes mellitus without complications,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,N/A,
+CASE-0144-18,patientnr0144@,Pneumologie,30-Jun-2025,27_07_2025,27,K92.1,Melena,C34.1; E11.9,"Malignant neoplasm of upper lobe, bronchus or lung; Type 2 diabetes mellitus without complications",8-800.90; 5-470,Transfusion of erythrocyte concentrate; Appendectomy
+CASE-0115-09,patientnr0115,Pneumologie,2025-09-09,08_10_2025,29,I50.1,Left ventricular failure,N17.9%,"Acute kidney failure, unspecified",,
+CASE-0144-19,patientnr0144,Chirurgie,2025-Jan-31,2025/02/17,17,N17.9,"Acute kidney failure, unspecified",M16.1; I63.9; J18.9,"Primary coxarthrosis; Cerebral infarction, unspecified; Pneumonia, unspecified",8-550.1,Early geriatric complex treatment
+CASE-0147-07,,Kardiologie,31_01_2026,2026/02/16,16,S72.0,Fracture of neck of femur,I50.1; M16.1; C34.1	,"Left ventricular failure; Primary coxarthrosis; Malignant neoplasm of upper lobe, bronchus or lung",NaN,Appendectomy; Implantation of hip joint prosthesis
+CASE-0198-29,patientnr0198,Intensivstation,,2025-06-27,22,J18.9,"Pneumonia, unspecified",F32.1; I63.9; I10,"Moderate depressive episode; Cerebral infarction, unspecified; Essential hypertension",unknown,Appendectomy; Monitoring of cerebral activity
+CASE-0063-34,patientnr0063,Chirurgie,27.07.2025,2025/08/16,20,N17.9,"Acute kidney failure, unspecified",M16.1,Primary coxarthrosis,8-550.1; 1-910,Early geriatric complex treatment; Diagnostic bronchoscopy
+CASE-0102-20,patientnr0102,Chirurgie,2025-05-09,Jun 07 2025,29,I63.9,NULL,G20; K92.1,Parkinson disease; Melena,,
+CASE-0194-11^,patientnr0194,Chirurgieß,2025-Nov-12,00/00/0000,9,E11.9,Type 2 diabetes mellitus without complications,N17.9,"Acute kidney failure, unspecified",5-470; 8-800.90,N/A
+CASE-0198-30,patientnr0198,Intensivstation,2025.08.10,Sep 06 2025,27,J18.9,"Pneumonia, unspecified",,,,
+CASE-0017-20,patientnr0017,Geriatrie,15_06_2025,07/08/2025,23,K92.1,Melena,,,,
+CASE-0017-21,patientnr0017,Kardiologie,10_03_2025,unknown,9,K92.1,Melena,S72.0; N17.9,"Fracture of neck of femur; Acute kidney failure, unspecified",5-820.0,Implantation of hip joint prosthesis
+missing,patientnr0143,Chirurgie,2026-01-26,14_02_2026,19,G20,Parkinson disease,NULL,Essential hypertension; Left ventricular failure; Parkinson disease,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0156-07,patientnr0156,Chirurgie,20250203,03_03_2025,28,I10,Essential hypertension,F32.1,Moderate depressive episode,5-470^,Appendectomy
+CASE-0123-11,patientnr0123,Intensivstation,2025-Mar-21,19-Apr-2025,29,N/A,"Cerebral infarction, unspecified",,,,
+CASE-0146-10,patientnr0146,Innere Medizin,2025.09.15,2025-10-08,23,E11.9#,Type 2 diabetes mellitus without complications	,J44.1; I63.9,"Chronic obstructive pulmonary disease with acute exacerbation; Cerebral infarction, unspecified",8-930,Monitoring of cerebral activity
+CASE-0158-13,patientnr0158,Innere Medizin,2024-13-10,2025-May-28,11,E11.9,Type 2 diabetes mellitus without complications,K92.1,Melena,8-98f.0; 5-820.0,Pulmonology complex treatment; Implantation of hip joint prosthesis
+CASE-0146-11,patientnr0146,Kardiologie,04/04/2025,08.04.2025,4,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",I63.9,"Cerebral infarction, unspecified",,
+CASE-0063-35,patientnr0063,Chirurgie,2025-Apr-04,01_05_2025,27,J18.9@,"Pneumonia, unspecified",C34.1; K92.1,"Malignant neoplasm of upper lobe, bronchus or lung; Melena",8-550.1; 5-820.0,Early geriatric complex treatment; Implantation of hip joint prosthesis
+CASE-0175-21,patientnr0175,Neurologie,18.10.2025,Oct 31 2025,13,N17.9,"Acute kidney failure, unspecified",,,,
+CASE-0129-19,patientnr0129,Pneumologie,2025.07.06,Aug 04 2025,29,S72.0,Fracture of neck of femur,K92.1,Melena,5-820.0; 5-470,Implantation of hip joint prosthesis; Appendectomy
+CASE-0143-25,patientnr0143,Innere Medizin,2025-09-16,2025/10/13,27,unknown,"Cerebral infarction, unspecified",M16.1; G20; I63.9,"Primary coxarthrosis; Parkinson disease; Cerebral infarction, unspecified",1-910; 8-550.1,Diagnostic bronchoscopy; Early geriatric complex treatment
+CASE-0158-14,patientnr0158,Kardiologie,18_09_2025,2025/10/17,29,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",I63.9,"Cerebral infarction, unspecified",8-930; 5-820.0,Monitoring of cerebral activity; Implantation of hip joint prosthesis
+unknown,patientnr0143 ,Kardiologie,2025-Jan-17,2025/01/23,6,N17.9,"Acute kidney failure, unspecified",G20,Parkinson disease,,
+CASE-0173-12,patientnr0173,Geriatrie,Apr 28 2025,2025/05/15,17,,"Pneumonia, unspecified",,,1-910,Diagnostic bronchoscopy
+CASE-0039-15,patientnr0039,Kardiologie,2025/12/10,Dec 29 2025,19,N17.9,"Acute kidney failure, unspecified",I63.9; I10; J44.1,"Cerebral infarction, unspecified; Essential hypertension; Chronic obstructive pulmonary disease with acute exacerbation",1-910; 8-550.1,Diagnostic bronchoscopy; Early geriatric complex treatment
+CASE-0015-21,patientnr0015,Innere Medizin,Jun 17 2025,19_06_2025,2,M16.1,Primary coxarthrosis,J44.1; I50.1,Chronic obstructive pulmonary disease with acute exacerbation; Left ventricular failure,8-98f.0; 8-800.90,Pulmonology complex treatment; Transfusion of erythrocyte concentrate
+CASE-0001-10,patientnr0001,Geriatrie,2025.12.29,20260120,22,E11.9,Type 2 diabetes mellitus without complications%,,,,
+CASE-0198-31,patientnr0198,Intensivstation,2025/01/07,2025/01/13,6,J18.9,"Pneumonia, unspecified",,,,
+CASE-0163-09,patientnr0163,Chirurgie,2026-01-20,06.02.2026,17,I50.1,Left ventricular failure,,,,
+CASE-0009-13,patientnr0009,Chirurgie,08.01.2025,2025-01-29,21,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",F32.1; M16.1; J44.1,Moderate depressive episode; Primary coxarthrosis; Chronic obstructive pulmonary disease with acute exacerbation,NaN,Appendectomy
+CASE-0168-10,patientnr0168,Intensivstation,13-Mar-2025,20250411,29,F32.1,Moderate depressive episode,I10; J18.9; K92.1,"Essential hypertension; Pneumonia, unspecified; Melena",,
+CASE-0063-36^,patientnr0063,Kardiologie,21_05_2025^,18-Jun-2025,28,M16.1,Primary coxarthrosis,I63.9; C34.1,"Cerebral infarction, unspecified; Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0108-24,patientnr0108,Neurologie,n/a,13.06.2025,999,S72.0,Fracture of neck of femur,I10; J44.1; C34.1,"Essential hypertension; Chronic obstructive pulmonary disease with acute exacerbation; Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0167-08,patientnr0167,Chirurgie,2026-01-04,2026/01/20,-1,E11.9,Type 2 diabetes mellitus without complications,S72.0,Fracture of neck of femur,8-930; 5-820.0,Monitoring of cerebral activity; Implantation of hip joint prosthesis
+CASE-0108-25,patientnr0108,Chirurgie,22_04_2025,30.04.2025,8,J18.9,"Pneumonia, unspecified",N17.9; C34.1,"Acute kidney failure, unspecified; Malignant neoplasm of upper lobe, bronchus or lung",5-820.0; 5-470,Implantation of hip joint prosthesis; Appendectomy
+CASE-0138-12ä,patientnr0138 ,Pneumologie,May 28 2025,16_06_2025,N/A,I10,Essential hypertension,I50.1,Left ventricular failure,8-98f.0; 8-550.1,Pulmonology complex treatment; Early geriatric complex treatment
+CASE-0156-08,patientnr0156,Kardiologie,2025/01/02	,Jan 24 2025,22ö,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",F32.1,Moderate depressive episode,8-98f.0,Pulmonology complex treatment
+CASE-0084-12,,Chirurgie,2025/06/25,N/A,8,N17.9,"Acute kidney failure, unspecified",S72.0, ,,
+CASE-0029-17,patientnr0029,Geriatrie,04_12_2025,2025/12/31,27,G20,Parkinson disease,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0198-32,patientnr0198,Intensivstation,2025/08/03,21.08.2025,18,E11.9,Type 2 diabetes mellitus without complications,missing,"Cerebral infarction, unspecified; Left ventricular failure",5-820.0,Implantation of hip joint prosthesis
+CASE-0122-18,patientnr0122,Pneumologie,03/06/2025,25.03.2025,19,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,N17.9; C34.1,missing,,
+CASE-0053-12,patientnr0053,Kardiologie,May 18 2025,2025/05/29,11,M16.1,unknown,J44.1; I63.9,"Chronic obstructive pulmonary disease with acute exacerbation; Cerebral infarction, unspecified",,
+CASE-0102-21,patientnr0102,Kardiologie,2025/01/20,2025-Feb-01,12,I10,Essential hypertension,J44.1; E11.9; N17.9,"Chronic obstructive pulmonary disease with acute exacerbation; Type 2 diabetes mellitus without complications; Acute kidney failure, unspecified",8-550.1,Early geriatric complex treatment
+CASE-0104-18ä,patientnr0104,Neurologie,2025/09/16,NULL,25,E11.9,Type 2 diabetes mellitus without complications,,,1-910; 8-550.1,Diagnostic bronchoscopy; Early geriatric complex treatment
+CASE-0065-09,patientnr0065,Geriatrie,2025/09/14,15-Sep-2025,1,E11.9,Type 2 diabetes mellitus without complications,I10,Essential hypertension,8-930; 8-800.90,Monitoring of cerebral activity; Transfusion of erythrocyte concentrate
+CASE-0184-11,patientnr0184,Neurologie$,2025-07-15,2025-07-27,12,F32.1,Moderate depressive episode,J18.9; E11.9,"Pneumonia, unspecified; Type 2 diabetes mellitus without complications",8-550.1,Early geriatric complex treatment
+CASE-0168-11,patientnr0168,Neurologie,2025-Nov-15,,6,I63.9,n/a,E11.9; F32.1,Type 2 diabetes mellitus without complications; Moderate depressive episode,,
+CASE-0063-37,patientnr0063,Intensivstation,04.05.2025ö,2025-Jun-02,29,E11.9,Type 2 diabetes mellitus without complications,S72.0; I50.1,Fracture of neck of femur; Left ventricular failure,,
+CASE-0063-38ö,patientnr0063@,Kardiologie,20250402ö,Apr 06 2025,4,n/a,"Acute kidney failure, unspecified",E11.9; G20; I10,Type 2 diabetes mellitus without complications; Parkinson disease; Essential hypertension,,
+CASE-0017-22,patientnr0017,Geriatrie,2025.02.04,2025-03-03,27,M16.1,Primary coxarthrosis,M16.1; K92.1; C34.1,"Primary coxarthrosis; Melena; Malignant neoplasm of upper lobe, bronchus or lung",5-470,Appendectomy
+CASE-0102-22,patientnr0102,Neurologie,08/01/2025,20250819,18,I50.1,Left ventricular failure,S72.0; K92.1; I50.1,Fracture of neck of femur; Melena; Left ventricular failure,5-820.0,Implantation of hip joint prosthesis
+CASE-0008-07,patientnr0008,Chirurgie,20260103,2026.02.02,30,I10,Essential hypertension,I63.9,"Cerebral infarction, unspecified",1-910,Diagnostic bronchoscopy
+CASE-0129-20,patientnr0129,Chirurgie,2025-Sep-22,10/01/2025,9,,Melena,missing,,8-930,Monitoring of cerebral activity
+NaN,,Kardiologie,27_01_2025,2024/00/12,28,G20,Parkinson disease,,,,
+CASE-0139-10,patientnr0139,Innere Medizin,32.01.2024,2025/07/20,4,J18.9,"Pneumonia, unspecified",,,5-820.0; 8-550.1,Implantation of hip joint prosthesis; Early geriatric complex treatment
+CASE-0033-09,patientnr0033,Chirurgie,2025-03-27,unknown,28,I10,Essential hypertension,I63.9,"Cerebral infarction, unspecified",5-470; 8-800.90,Appendectomy; Transfusion of erythrocyte concentrate
+CASE-0033-10,patientnr0033,Pneumologie,04-May-2025,28_05_2025,24,J18.9,"Pneumonia, unspecified",M16.1; E11.9; N17.9,"Primary coxarthrosis; Type 2 diabetes mellitus without complications; Acute kidney failure, unspecified$",5-820.0,Implantation of hip joint prosthesis
+CASE-0097-14,patientnr0097,Kardiologie,30.10.2025,06.11.2025,-1,K92.1,Melena,I63.9,"Cerebral infarction, unspecified",,
+CASE-0015-22,,Neurologie,2025-12-15,2025-12-22,7,M16.1,Primary coxarthrosis,,,8-98f.0; 1-910,Pulmonology complex treatment; Diagnostic bronchoscopy
+CASE-0029-18,patientnr0029,Neurologie,20250820,00/00/0000,16,G20,Parkinson disease,N17.9; M16.1,"Acute kidney failure, unspecified; Primary coxarthrosis",8-800.90; 1-910,Transfusion of erythrocyte concentrate; Diagnostic bronchoscopy
+CASE-0084-13,patientnr0084,Innere Medizin,2025/09/21,n/a,23,I50.1,Left ventricular failure,,,,Implantation of hip joint prosthesis; Transfusion of erythrocyte concentrate
+CASE-0104-19,patientnr0104,Pneumologie,,2025.10.19,12,E11.9,Type 2 diabetes mellitus without complications,,,5-820.0; 5-470,Implantation of hip joint prosthesis; Appendectomy
+CASE-0091-11,patientnr0091,Chirurgie,2025/05/23,13.06.2025,21@,N17.9,"Acute kidney failure, unspecified",G20,Parkinson disease,,
+CASE-0128-11,NaN,Intensivstation,2025.07.16,2025-Aug-10,25,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,N17.9,"Acute kidney failure, unspecified",8-800.90; 5-470,missing
+CASE-0113-15,patientnr0113,Neurologie,Apr 22 2025,18.05.2025,26,N17.9,"Acute kidney failure, unspecified",M16.1,Primary coxarthrosis,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0015-23,patientnr0015,Innere Medizin,2025/08/03,unknown,5,I63.9,"Cerebral infarction, unspecified",,,8-930; 5-470,N/A
+CASE-0015-24,patientnr0015,NULL,10/27/2025,2025-Nov-19,23,J18.9,"Pneumonia, unspecified",,,,
+CASE-0076-09,patientnr0076,Kardiologie,2025.06.22,27.06.2025,5,J18.9,"Pneumonia, unspecified",F32.1; E11.9; J18.9,"Moderate depressive episode; Type 2 diabetes mellitus without complications; Pneumonia, unspecified",,
+CASE-0147-08,patientnr0147,Chirurgie,03/21/2025,2025-Apr-20,30,S72.0,Fracture of neck of femur, ,"Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0147-09,patientnr0147,Intensivstation,2025-01-21,02/16/2025,26,N17.9,"Acute kidney failure, unspecified",N17.9,"Acute kidney failure, unspecified",8-550.1; 5-820.0,Early geriatric complex treatment; Implantation of hip joint prosthesis
+CASE-0037-18,patientnr0037,Neurologie,20250826,2025.09.02,7,J18.9,"Pneumonia, unspecified",E11.9,Type 2 diabetes mellitus without complications,,
+CASE-0117-11,patientnr0117,Neurologie,2025.11.12,2025-Nov-15,3,I50.1,Left ventricular failure,N/A,Moderate depressive episode,8-98f.0,Pulmonology complex treatment
+CASE-0175-22,patientnr0175,Kardiologie,31-Jan-2025,Feb 01 2025,1,I10,Essential hypertension, ,Primary coxarthrosis; Moderate depressive episode,,
+CASE-0102-23,patientnr0102,Pneumologie,n/a,06/30/2025,10,K92.1,Melena,I10; E11.9; J18.9,"Essential hypertension; Type 2 diabetes mellitus without complications; Pneumonia, unspecified",8-98f.0,Pulmonology complex treatment
+CASE-0144-20,patientnr0144,Intensivstation,2025.11.03,2025.11.18,15,I10,Essential hypertension%,G20; F32.1,Parkinson disease; Moderate depressive episode,1-910; 8-930,Diagnostic bronchoscopy; Monitoring of cerebral activity
+CASE-0070-31,patientnr0070,Kardiologie,27.10.2025,2025-11-10,14,S72.0,Fracture of neck of femur,I50.1; F32.1; G20,Left ventricular failure; Moderate depressive episode; Parkinson disease,,
+N/A,patientnr0091,Intensivstation,unknown,NULL,28,N17.9,"Acute kidney failure, unspecified",N17.9,"Acute kidney failure, unspecified",5-820.0,Implantation of hip joint prosthesis
+CASE-0122-19,NULL,Geriatrie,Jul 23 2025,27.07.2025,4,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,C34.1; I63.9; F32.1,NULL,5-820.0,
+CASE-0104-20,patientnr0104,Geriatrie,2025.12.25,20260108,14,I10#,Essential hypertension,,,8-98f.0,Pulmonology complex treatment
+CASE-0104-21,patientnr0104,Intensivstation,26-Jan-2025,2025-Feb-09,14,S72.0,Fracture of neck of femur,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,,
+CASE-0198-33,patientnr0198,Kardiologie,,2025.01.23,20,K92.1,Melena,G20,Parkinson disease,,
+CASE-0108-26,patientnr0108,Geriatrie,Aug 11 2025,n/a,13,J18.9,"Pneumonia, unspecified",J18.9,"Pneumonia, unspecified",5-470,Appendectomy
+CASE-0175-23,patientnr0175,Kardiologie,2025-06-03,2025.06.13,10,S72.0,Fracture of neck of femur,,,5-820.0; 8-98f.0,Implantation of hip joint prosthesis; Pulmonology complex treatment
+CASE-0198-34,NaN,Chirurgie,2025/04/28,05/26/2025,28,J18.9,"Pneumonia, unspecified",I10; C34.1,"Essential hypertension; Malignant neoplasm of upper lobe, bronchus or lung",8-550.1,Early geriatric complex treatment
+CASE-0120-13,patientnr0120,Neurologie,2025-11-14,22_11_2025,NaN,G20,missing,M16.1; K92.1,Primary coxarthrosis; Melena,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0063-39,patientnr0063,Geriatrie,14.05.2025,2025-06-13,30,N17.9,"Acute kidney failure, unspecified",F32.1; J18.9,"Moderate depressive episode; Pneumonia, unspecified",5-470; 8-800.90,Appendectomy; Transfusion of erythrocyte concentrate
+CASE-0095-13,patientnr0095,Intensivstation,2025-12-05,06_12_2025,1,J44.1,Chronic obstructive pulmonary disease with acute exacerbationö,,,8-930,Monitoring of cerebral activity
+CASE-0074-09,patientnr0074,,31_01_2025,26_02_2025,26,G20,Parkinson disease,F32.1; G20,Moderate depressive episode; Parkinson disease,,
+CASE-0039-16#,patientnr0039,Innere Medizinä,2025/02/01,24-Feb-2025,23,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",,,5-820.0; 8-800.90,Implantation of hip joint prosthesis; Transfusion of erythrocyte concentrate
+CASE-0198-35,patientnr0198,Geriatrie,20250410,17_04_2025,7,K92.1$,Melena,I63.9,"Cerebral infarction, unspecified",8-550.1; 8-98f.0ü,Early geriatric complex treatment; Pulmonology complex treatment
+CASE-0017-23,patientnr0017,Intensivstation,20250824,20250831,7,J18.9,N/A,,,,
+CASE-0001-11,patientnr0001,Pneumologie,21_03_2025, ,27,I63.9,"Cerebral infarction, unspecified",G20,Parkinson disease,,
+CASE-0146-12,N/A,Neurologie,2024/00/12,28_01_2026,14,E11.9,Type 2 diabetes mellitus without complications,S72.0; M16.1; I50.1,Fracture of neck of femur; Primary coxarthrosis; Left ventricular failure,,
+CASE-0168-12,patientnr0168,Innere Medizin,,31-Mar-2025,missing,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",S72.0; I63.9; G20,"Fracture of neck of femur; Cerebral infarction, unspecified; Parkinson disease",8-800.90; 1-910,Transfusion of erythrocyte concentrate; Diagnostic bronchoscopy
+CASE-0146-13,patientnr0146,Intensivstation,19-Nov-2025,Dec 15 2025,26,I10,Essential hypertension,S72.0; I63.9; G20,"Fracture of neck of femur; Cerebral infarction, unspecified; Parkinson disease",5-470; 8-98f.0,Appendectomy; Pulmonology complex treatment
+CASE-0095-14,patientnr0095,Innere Medizin,01/16/2025$,12-Feb-2025,27,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",,,5-820.0,Implantation of hip joint prosthesis
+CASE-0129-21,patientnr0129,Neurologie,07_06_2025,2025.06.22,15,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",G20; M16.1; K92.1,Parkinson disease; Primary coxarthrosis; Melena,1-910; 8-930,Diagnostic bronchoscopy; Monitoring of cerebral activity
+CASE-0070-32,,Innere Medizin,2025.07.13,2025/08/02,20,F32.1,Moderate depressive episode,J18.9,"Pneumonia, unspecified",,
+CASE-0040-12,,Neurologie,20250429,2025-May-26,27,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",M16.1,Primary coxarthrosis,8-930,Monitoring of cerebral activity
+CASE-0143-27,patientnr0143,Innere Medizin,27-Jan-2026,Jan 28 2026,1,K92.1,Melena,I10; E11.9,Essential hypertension; Type 2 diabetes mellitus without complications,5-470,Appendectomy
+CASE-0128-12,patientnr0128,Neurologie,06/27/2025,07_07_2025,10,M16.1,Primary coxarthrosis,M16.1,Primary coxarthrosis,5-820.0; 8-930,Implantation of hip joint prosthesis; Monitoring of cerebral activity
+CASE-0053-13,patientnr0053,Pneumologie,03.01.2025,Jan 26 2025ü,23,F32.1,Moderate depressive episode,E11.9; I63.9,"Type 2 diabetes mellitus without complications; Cerebral infarction, unspecified",5-820.0,Implantation of hip joint prosthesis
+CASE-0129-22,patientnr0129,Intensivstation,2025-07-24,,20,K92.1,Melena,I63.9; E11.9; J18.9,"Cerebral infarction, unspecified; Type 2 diabetes mellitus without complications; Pneumonia, unspecified",,
+CASE-0015-25,patientnr0015,Neurologie,27-Sep-2025,10/16/2025,19,I50.1,Left ventricular failure,,,,
+CASE-0053-14,patientnr0053,Intensivstation,20260125,,12,I50.1,Left ventricular failure,I10,Essential hypertension,5-470,Appendectomy
+CASE-0108-27,patientnr0108,Innere Medizin#,2025-12-20,12/23/2025,3,J18.9,"Pneumonia, unspecified",NULL,Fracture of neck of femur; Primary coxarthrosis^,8-800.90; 8-550.1,NULL
+CASE-0190-06,patientnr0190,Geriatrie,2025-Sep-08,20250928,20,E11.9,Type 2 diabetes mellitus without complications,K92.1,Melenaü,8-98f.0; 8-930,Pulmonology complex treatment; Monitoring of cerebral activity
+CASE-0139-11,patientnr0139,Intensivstation,2025.01.29,Feb 15 2025,17,M16.1,Primary coxarthrosis,F32.1,Moderate depressive episode,8-550.1,Early geriatric complex treatment
+CASE-0092-08,,Pneumologie,Feb 13 2025,Feb 14 2025,N/A,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",G20; E11.9; C34.1,"Parkinson disease; Type 2 diabetes mellitus without complications; Malignant neoplasm of upper lobe, bronchus or lung",8-550.1; 1-910,Early geriatric complex treatment; Diagnostic bronchoscopy
+CASE-0029-19,patientnr0029,Intensivstation,missing,2025-10-15,5,I63.9,missing,J18.9,"Pneumonia, unspecified",,
+CASE-0173-13,patientnr0173,Kardiologie,2025-Apr-09^,22.04.2025,13,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,J18.9; G20; I50.1,"Pneumonia, unspecified; Parkinson disease; Left ventricular failure",8-800.90; 5-820.0,Transfusion of erythrocyte concentrate; Implantation of hip joint prosthesis
+CASE-0156-09,patientnr0156,unknown,10/03/2025,Oct 10 2025,7,S72.0,Fracture of neck of femurö,F32.1; M16.1,Moderate depressive episode; Primary coxarthrosis,5-470; 5-820.0,Appendectomy; Implantation of hip joint prosthesis
+CASE-0184-12,patientnr0184,Innere Medizin,Nov 05 2025,15-Nov-2025,NaN,N17.9,"Acute kidney failure, unspecified",S72.0; M16.1,Fracture of neck of femur; Primary coxarthrosis,8-98f.0; 8-550.1,Pulmonology complex treatment; Early geriatric complex treatment
+CASE-0175-24,patientnr0175,Geriatrie,02/28/2025,20250324,24,I63.9,"Cerebral infarction, unspecified",,,8-800.90; 8-930,Transfusion of erythrocyte concentrate; Monitoring of cerebral activity
+CASE-0123-12,patientnr0123,Geriatrie,unknown,15-13-2024,12,J18.9,"Pneumonia, unspecified",J18.9,"Pneumonia, unspecified",,
+CASE-0128-13,patientnr0128,Chirurgie,18-Mar-2025,2025.04.12,25,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",8-930; 5-470,Monitoring of cerebral activity; Appendectomy
+CASE-0117-12,patientnr0117,Intensivstation,06_09_2025,2025/09/10,4,F32.1,Moderate depressive episode,K92.1; F32.1,Melena; Moderate depressive episode,,
+CASE-0159-13,patientnr0159,Innere Medizin,10/02/2025,Oct 13 2025,11,I10,Essential hypertension,E11.9; I50.1,Type 2 diabetes mellitus without complications; Left ventricular failure,,Diagnostic bronchoscopy
+CASE-0029-20,patientnr0029,Pneumologie,2024-13-10,08-Apr-2025,30,K92.1,Melena,N17.9; K92.1; I63.9,"Acute kidney failure, unspecified; Melena; Cerebral infarction, unspecified",8-800.90,N/A
+CASE-0143-28,patientnr0143,Kardiologie,2025-Sep-02,2025.09.19,17,G20,Parkinson disease,,,1-910; 5-470,Diagnostic bronchoscopy; Appendectomy
+CASE-0173-14,patientnr0173,Innere Medizin,2025.06.30,07/11/2025,11,I50.1,Left ventricular failure,J44.1; C34.1; J18.9,"Chronic obstructive pulmonary disease with acute exacerbation; Malignant neoplasm of upper lobe, bronchus or lung; Pneumonia, unspecified",8-800.90,Transfusion of erythrocyte concentrate
+CASE-0117-13,patientnr0117,missing,03.11.2025,NULL,16,C34.1ö,missing,K92.1; S72.0; F32.1,Melena; Fracture of neck of femur; Moderate depressive episode,,
+CASE-0064-09,patientnr0064,Geriatrie,2025/12/22,2025.12.30,8,M16.1,Primary coxarthrosis,,,8-550.1; 8-800.90,Early geriatric complex treatment; Transfusion of erythrocyte concentrate
+CASE-0070-33$,patientnr0070,Pneumologie,16-Nov-2025,2025.11.20,4,I10,Essential hypertension,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,5-470; 1-910,Appendectomy; Diagnostic bronchoscopy
+CASE-0138-13,patientnr0138,Chirurgie,Mar 28 2025,20250422,25,N17.9^,"Acute kidney failure, unspecified",J18.9; M16.1,"Pneumonia, unspecified; Primary coxarthrosis",,
+CASE-0184-13,patientnr0184,,2025.03.27,2025/04/24,28,G20,Parkinson disease,,,,
+CASE-0070-34,patientnr0070,Kardiologie,04/13/2025,20250428,15,E11.9ß,Type 2 diabetes mellitus without complications,J18.9; M16.1,"Pneumonia, unspecified; Primary coxarthrosis",8-930,Monitoring of cerebral activity
+CASE-0138-14,patientnr0138,Kardiologie,2025.05.27,07-Jun-2025,11,J18.9,"Pneumonia, unspecifiedü",I10; I50.1,Essential hypertension; Left ventricular failure,,
+CASE-0190-07ß,patientnr0190,Innere Medizin,2025-Sep-25,2025-02-30,19,G20,Parkinson disease,M16.1,Primary coxarthrosis,,
+CASE-0001-12,patientnr0001,Geriatrie,07.07.2025,2025/07/14, ,F32.1,Moderate depressive episode,,,8-930,Monitoring of cerebral activity
+CASE-0143-29,patientnr0143,Innere Medizin,30-Apr-2025,2025-May-03,3,E11.9,Type 2 diabetes mellitus without complicationsü,,,,
+CASE-0084-14,patientnr0084,Chirurgie,2025/05/15,30_05_2025,15,F32.1,Moderate depressive episode,I10; I63.9; S72.0,"Essential hypertension; Cerebral infarction, unspecified; Fracture of neck of femur",,
+CASE-0065-10,patientnr0065,Intensivstation,Dec 04 2025,2025/12/15,11,K92.1,Melena,J44.1; I10,Chronic obstructive pulmonary disease with acute exacerbation; Essential hypertension#,8-98f.0; 5-820.0,Pulmonology complex treatment; Implantation of hip joint prosthesis
+CASE-0070-35,patientnr0070,Pneumologie,06_05_2025,20250603,28,M16.1,Primary coxarthrosis,K92.1; M16.1,Melena; Primary coxarthrosis,,
+CASE-0168-13,patientnr0168ä,Innere Medizin,10/26/2025,2025-11-09,14,G20,Parkinson disease,,,,
+CASE-0108-28,patientnr0108,Innere Medizin,26.01.2026,2026/01/31,5,N17.9,"Acute kidney failure, unspecified",I10; F32.1; C34.1#,"Essential hypertension; Moderate depressive episode; Malignant neoplasm of upper lobe, bronchus or lung",8-98f.0,Pulmonology complex treatment
+CASE-0015-26,patientnr0015,Intensivstation,2025-Feb-18,missing,14,missing,Melena,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",,
+CASE-0156-10,patientnr0156,Kardiologie,Jan 25 2026,2026/02/05,11,E11.9,Type 2 diabetes mellitus without complications,N17.9,"Acute kidney failure, unspecified",,
+CASE-0122-20,patientnr0122,Intensivstation,2025-06-14,Jul 02 2025,-1,E11.9,Type 2 diabetes mellitus without complications,,,5-820.0,Implantation of hip joint prosthesis
+CASE-0175-25,patientnr0175,Kardiologie,22.05.2025,06/20/2025,29,M16.1,Primary coxarthrosis,,,,
+CASE-0076-10,patientn0r076,Innere Medizin,Sep 17 2025,02-Oct-2025,15,I50.1,Left ventricular failure,E11.9,Type 2 diabetes mellitus without complications,8-98f.0; 8-550.1,Pulmonology complex treatment; Early geriatric complex treatment
+CASE-0175-26,,Neurologie,29-Jul-2025,2025-08-12,14,M16.1,Primary coxarthrosis,,,5-470; 8-800.90,Appendectomy; Transfusion of erythrocyte concentrate
+CASE-0074-10,patientnr0074,Chirurgie,20_01_2026,02/07/2026,18,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,S72.0,NaN,8-98f.0,Pulmonology complex treatment
+CASE-0074-11,patientnr0074,Intensivstation,20250924,20251013,19,N17.9,"Acute kidney failure, unspecified",,,,
+CASE-0173-15,patientnr0173,Geriatrie,2025.04.20,20250426,6,J18.9,"Pneumonia, unspecified",,,8-930; 1-910,Monitoring of cerebral activity; Diagnostic bronchoscopy
+CASE-0037-19,patientnr0037,unknown,2025.04.17,2025-May-07,20,N17.9,"Acute kidney failure, unspecified",J18.9; N17.9; I10,"Pneumonia, unspecified; Acute kidney failure, unspecified; Essential hypertension",1-910,Diagnostic bronchoscopy
+CASE-0009-14,patientnr0009,Intensivstation,29.04.2025,02.05.2025,999,M16.1,Primary coxarthrosis$,K92.1; E11.9,Melena; Type 2 diabetes mellitus without complications,,
+CASE-0167-09,patientnr0167,Kardiologie,09_05_2025,20250511,n/a,N17.9,"Acute kidney failure, unspecified",K92.1,Melena,,
+CASE-0074-12,patientnr0074,Neurologie,20250215,2025-03-09,22,G20,Parkinson disease,,,,
+CASE-0194-12,,Neurologie,20250812,09/07/2025,26,M16.1,Primary coxarthrosis,,,8-550.1,Early geriatric complex treatment
+CASE-0039-17,patientnr0039,Pneumologie,2025-05-30,2025.06.21,22,E11.9,Type 2 diabetes mellitus without complications,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,8-550.1,Early geriatric complex treatment
+CASE-0184-14,patientnr0184,Chirurgie,2025/06/24,11-Jul-2025,17,K92.1,Melena,,,,
+CASE-0048-06,patientnr0048#,Pneumologie,01/05/2026,2026-Jan-25,20,J18.9,"Pneumonia, unspecified",,,5-470,Appendectomy
+CASE-0053-15,patientnr0053,Kardiologie,01_06_2025,Jun 29 2025,28,M16.1,Primary coxarthrosis,G20; S72.0; F32.1,Parkinson disease; Fracture of neck of femur; Moderate depressive episode,5-820.0; 8-800.90%,Implantation of hip joint prosthesis; Transfusion of erythrocyte concentrate
+CASE-0134-10,patientnr0134,Geriatrie,,32.01.2024,1,F32.1,Moderate depressive episode,K92.1,Melena,8-98f.0,Pulmonology complex treatment
+CASE-0158-15,patientnr0158,,20250106,2025-Jan-14,8,E11.9,n/a,,,8-98f.0; 8-550.1,Pulmonology complex treatment; Early geriatric complex treatment
+CASE-0147-10,patientnr0147,Neurologie,2026-01-23,2026.02.02,10	,M16.1,Primary coxarthrosis,J44.1; K92.1; I10,Chronic obstructive pulmonary disease with acute exacerbation; Melena; Essential hypertension,1-910; 8-800.90,Diagnostic bronchoscopy; Transfusion of erythrocyte concentrate
+CASE-0143-30,patientnr0143,Kardiologie,Aug 21 2025$,20250826,5,G20,Parkinson disease,,,1-910,Diagnostic bronchoscopy
+CASE-0053-16,patientnr0053,Kardiologie,15_10_2025,25_10_2025,10,S72.0,Fracture of neck of femur,I50.1,Left ventricular failure,1-910,Diagnostic bronchoscopy
+CASE-0069-03,patientnr0069,Innere Medizin,26-May-2025,2025-06-05,10,K92.1,Melena,J44.1; N17.9,"Chronic obstructive pulmonary disease with acute exacerbation; Acute kidney failure, unspecified",8-98f.0,Pulmonology complex treatment
+CASE-0175-27,patientnr0175,Pneumologie,2025-03-29,2025.04.01,3,F32.1,Moderate depressive episode,,,5-470; 8-800.90,Appendectomy; Transfusion of erythrocyte concentrate
+CASE-0063-40,patientnr0063,NULL,2025-07-30,15.08.2025,16,I63.9,"Cerebral infarction, unspecified",S72.0; J18.9; G20,"Fracture of neck of femur; Pneumonia, unspecified; Parkinson disease",,
+CASE-0085-07,patientnr0085,Geriatrie,05_09_2025,2025-09-29,24,S72.0,Fracture of neck of femur,I63.9,"Cerebral infarction, unspecified",8-550.1; 8-800.90,Early geriatric complex treatment; Transfusion of erythrocyte concentrate
+CASE-0063-41,patientnr0063,Innere Medizin,20250917,10/04/2025,17,I63.9,"Cerebral infarction, unspecified",M16.1; I10,Primary coxarthrosis; Essential hypertension,8-930; 8-800.90,Monitoring of cerebral activity; Transfusion of erythrocyte concentrate
+CASE-0104-22,patientnr0104,Chirurgie,29.09.2025,20251012,13,I50.1,Left ventricular failure,C34.1; K92.1,"Malignant neoplasm of upper lobe, bronchus or lung; Melena",1-910; 8-800.90,Diagnostic bronchoscopy; Transfusion of erythrocyte concentrate
+CASE-0092-09,patientnr0092,Innere Medizin,2024-13-10,25-Aug-2025,21,E11.9,Type 2 diabetes mellitus without complicationsö,E11.9; J44.1,Type 2 diabetes mellitus without complications; Chronic obstructive pulmonary disease with acute exacerbation,,
+CASE-0122-21,patientnr0122@,Pneumologie,28-Jul-2025,08/07/2025,10,G20,Parkinson disease,,,8-550.1; 8-800.90,
+CASE-0198-36,patientnr0198,Innere Medizin,07_02_2025,26_02_2025,19,G20,Parkinson disease,J18.9,"Pneumonia, unspecified",8-98f.0; 8-800.90,NULL
+CASE-0053-17,patientnr0053,Geriatrie,12.02.2025,2025-02-24,12,M16.1,Primary coxarthrosis^,,,8-550.1,Early geriatric complex treatment
+CASE-0153-07,patientnr0153,Pneumologie,14_09_2025,2025-09-19,5,F32.1,Moderate depressive episode,I63.9,"Cerebral infarction, unspecified",N/A,
+CASE-0092-10#,patientnr0092,Geriatrie,23-Oct-2025,99.99.9999,12,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",M16.1; I63.9; G20,"Primary coxarthrosis; Cerebral infarction, unspecified; Parkinson disease",5-470,Appendectomy
+CASE-0053-18,patientnr0053,Chirurgie,20250628,2025/07/16,18,S72.0,Fracture of neck of femur,M16.1,Primary coxarthrosis%,8-98f.0,Pulmonology complex treatment
+CASE-0129-23,patientnr0129,Pneumologie,20251209,Dec 21 2025,12,I10,Essential hypertension,G20,Parkinson disease,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0108-29,patientnr0108,Kardiologie,00/00/0000,18-Oct-2025,23,I50.1,Left ventricular failure,E11.9,Type 2 diabetes mellitus without complications,,
+CASE-0008-08,patientnr0008,Neurologie,22-Jun-2025,20250624,2,K92.1,Melena,G20; I50.1; M16.1,Parkinson disease; Left ventricular failure; Primary coxarthrosis,,
+CASE-0037-20,patientnr0037,Geriatrie,20260125,2026/02/19,25,I63.9@,"Cerebral infarction, unspecified",,,,
+CASE-0091-13,patientnr0091ß,Innere Medizin,20250315,2024-13-10,0,I50.1,Left ventricular failure,unknown,"Acute kidney failure, unspecified",8-98f.0; 8-550.1,Pulmonology complex treatment; Early geriatric complex treatment
+CASE-0102-24,patientnr0102,Innere Medizin,20250316,20250318,2,S72.0,Fracture of neck of femur,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,,
+CASE-0163-10,patientnr0163@,Geriatrie,2025.03.01,04_03_2025,3,C34.1,,F32.1; J44.1; E11.9,Moderate depressive episode; Chronic obstructive pulmonary disease with acute exacerbation; Type 2 diabetes mellitus without complications,,
+CASE-0063-42,patientnr0063,Kardiologie,2025/04/08,20250429,21,I50.1,Left ventricular failure,,,1-910,Diagnostic bronchoscopy
+CASE-0175-28,NULL,Innere Medizin,21-Jan-2026ß,2026.01.29,8,S72.0,Fracture of neck of femur,F32.1,Moderate depressive episode,8-98f.0,Pulmonology complex treatment
+CASE-0009-15,patientnr0009,Chirurgie,2025.02.28,03/21/2025,21,I50.1,Left ventricular failure,I63.9; M16.1,"Cerebral infarction, unspecified; Primary coxarthrosis",,NULL
+CASE-0017-24,,Intensivstation,10/03/2025,2025.10.06,3,M16.1,Primary coxarthrosis,,,8-800.90; 8-98f.0,Transfusion of erythrocyte concentrate; Pulmonology complex treatment
+CASE-0086-07,patientnr0086,Geriatrie,2025-02-30,14-Aug-2025,21,I63.9,"Cerebral infarction, unspecified",M16.1,Primary coxarthrosis,,
+CASE-0037-21,patientnr0037,Geriatrie,06/21/2025,29-Jun-2025,8,I50.1,Left ventricular failure,N17.9,"Acute kidney failure, unspecified",8-550.1; 1-910,Early geriatric complex treatment; Diagnostic bronchoscopy
+CASE-0147-11,patientnr0147,Innere Medizin,00/00/0000,12_05_2025,24ä,G20,Parkinson disease,,,8-800.90; 8-930,Transfusion of erythrocyte concentrate; Monitoring of cerebral activity
+CASE-0065-11,patientnr0065,Chirurgie,2025-Feb-20,27-Feb-2025,7,J18.9,"Pneumonia, unspecified",I10; C34.1,"Essential hypertension; Malignant neoplasm of upper lobe, bronchus or lung",8-550.1; 8-98f.0,Early geriatric complex treatment; Pulmonology complex treatment
+CASE-0108-30,patientnr0108,Innere Medizin,20250430,29-May-2025,29,J18.9,"Pneumonia, unspecified",J44.1; I10; C34.1,"Chronic obstructive pulmonary disease with acute exacerbation; Essential hypertension; Malignant neoplasm of upper lobe, bronchus or lung",8-98f.0; 8-800.90,Pulmonology complex treatment; Transfusion of erythrocyte concentrate
+CASE-0009-16,patientnr0009,Neurologie,03_11_2025,11.11.2025,8,N17.9,"Acute kidney failure, unspecified",,,1-910; 8-98f.0,Diagnostic bronchoscopy; Pulmonology complex treatment
+CASE-0069-04,patientnr0069,Intensivstation,20251016,2025-10-24,8,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",I10; N17.9; K92.1,"Essential hypertension; Acute kidney failure, unspecified; Melena",8-930,Monitoring of cerebral activity
+CASE-0117-14,patientnr0117,Intensivstation,20250427,17.05.2025,20,N17.9,"Acute kidney failure, unspecified",I10; C34.1; S72.0,NULL,5-470,Appendectomy
+CASE-0108-31,patientnr0108,Neurologie,2025/09/24,2025.10.16,22,F32.1,Moderate depressive episode,I50.1; E11.9; N17.9,"Left ventricular failure; Type 2 diabetes mellitus without complications; Acute kidney failure, unspecified",5-820.0,Implantation of hip joint prosthesis
+CASE-0113-16,patientnr0113@,Neurologie,00/00/0000,09/16/2025%,16,S72.0,Fracture of neck of femur,E11.9; I10,Type 2 diabetes mellitus without complications; Essential hypertension,8-930; 8-800.90,Monitoring of cerebral activity; Transfusion of erythrocyte concentrate
+CASE-0198-37,patientnr0198,Innere Medizin,N/A,04/06/2025,14@,J18.9,"Pneumonia, unspecified",I50.1; G20; I63.9,"Left ventricular failure; Parkinson disease; Cerebral infarction, unspecified",8-98f.0; 5-820.0,N/A
+CASE-0017-25,patientnr0017,Kardiologie,Apr 26 2025,23-May-2025,27,K92.1,Melena,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,8-930; 5-820.0,Monitoring of cerebral activity; Implantation of hip joint prosthesis
+CASE-0069-05,patientnr0069,Kardiologie,20251209ä,,6,M16.1,Primary coxarthrosis,I50.1; E11.9,Left ventricular failure; Type 2 diabetes mellitus without complications,8-550.1,Early geriatric complex treatment
+CASE-0128-14,patientnr0128,Geriatrie,2025/01/21,18_02_2025,28,J18.9,"Pneumonia, unspecified",,,,
+CASE-0029-21,patientnr0029,Pneumologie,20250528,99.99.9999,unknown,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,M16.1; F32.1,Primary coxarthrosis; Moderate depressive episode,,
+CASE-0184-15,patientnr0184,Innere Medizin,2025-12-19,2026-Jan-04ü,16,E11.9,Type 2 diabetes mellitus without complications,J44.1; N17.9; S72.0,"Chronic obstructive pulmonary disease with acute exacerbation; Acute kidney failure, unspecified; Fracture of neck of femur",8-98f.0,Pulmonology complex treatment
+CASE-0173-16,patientnr0173,Intensivstation,22-Jan-2026,Jan 31 2026,9,I50.1,Left ventricular failure,I50.1,Left ventricular failure,8-800.90; 8-930#,Transfusion of erythrocyte concentrate; Monitoring of cerebral activity
+CASE-0040-13,patientnr0040,Geriatrie, ,2025-Apr-16,29#,I50.1,Left ventricular failure,S72.0; E11.9,Fracture of neck of femur; Type 2 diabetes mellitus without complications,8-930,Monitoring of cerebral activity
+CASE-0085-08,patientnr0085%,Pneumologie,02-Nov-2025,2025/12/01,29,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,C34.1; K92.1; I10,"Malignant neoplasm of upper lobe, bronchus or lung; Melena; Essential hypertension",,
+CASE-0108-32,patientnr0108,Kardiologie,11/23/2025,unknown,20,I63.9,"Cerebral infarction, unspecified",J44.1,Chronic obstructive pulmonary disease with acute exacerbation,8-800.90; 8-930,Transfusion of erythrocyte concentrate; Monitoring of cerebral activity
+CASE-0074-13,patientnr0074,Neurologie,13.08.2025,00/00/0000,11,M16.1,Primary coxarthrosis,K92.1; N17.9; J44.1,"Melena; Acute kidney failure, unspecified; Chronic obstructive pulmonary disease with acute exacerbation",,
+CASE-0173-17,,Pneumologie,08/09/2025,06-Sep-2025,28,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",,,,
+CASE-0133-05,patientnr0133,Innere Medizinä,2025/10/24,2025-Nov-14,21,I50.1,Left ventricular failure,I50.1; G20,Left ventricular failure; Parkinson disease,5-470,Appendectomy
+CASE-0129-24,patientnr0129,Neurologie,n/a,Oct 05 2025,13,I10,Essential hypertension,missing,Moderate depressive episode; Essential hypertension; Primary coxarthrosis,8-800.90,Transfusion of erythrocyte concentrate
+CASE-0074-14,patientnr0074,Neurologie,2025-04-24,2025-05-06,12,M16.1,Primary coxarthrosis,J18.9; J44.1; I63.9,"Pneumonia, unspecified; Chronic obstructive pulmonary disease with acute exacerbation; Cerebral infarction, unspecified",,
+CASE-0123-13,patientnr0123,Kardiologie,08.01.2026,2026/01/13,5,K92.1,Melena,N17.9; E11.9; J44.1,"Acute kidney failure, unspecified; Type 2 diabetes mellitus without complications; Chronic obstructive pulmonary disease with acute exacerbation",8-800.90; 8-550.1,Transfusion of erythrocyte concentrate; Early geriatric complex treatment
+CASE-0091-14,patientnr0091,Pneumologie,19_03_2025,21_03_2025,2,M16.1,Primary coxarthrosis, ,"Cerebral infarction, unspecified",8-98f.0,Pulmonology complex treatment
+CASE-0065-12,patientnr0065,Kardiologie,2026.01.27,31-Jan-2026,4,M16.1,Primary coxarthrosis,G20,Parkinson disease,1-910; 8-930,Diagnostic bronchoscopy; Monitoring of cerebral activity
+CASE-0039-18,patientnr0039,Innere Medizin,2025-07-07,05.08.2025,29,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,N/A,,n/a,Monitoring of cerebral activity; Diagnostic bronchoscopy
+CASE-0069-06,patientnr0069,Kardiologie,2025-Jan-23,2025.02.20,28,F32.1,Moderate depressive episode,E11.9; F32.1,Type 2 diabetes mellitus without complications; Moderate depressive episode,8-930,Monitoring of cerebral activity
+CASE-0070-36,patientnr0070,Neurologie,missing,2025-10-16,20,F32.1,Moderate depressive episode,S72.0; G20,Fracture of neck of femur; Parkinson disease,missing,Implantation of hip joint prosthesis
+N/A,patientnr0113,Chirurgie,12_12_2025,00/00/0000,25,S72.0,Fracture of neck of femurü,I63.9; M16.1; I10,"Cerebral infarction, unspecified; Primary coxarthrosis; Essential hypertension",8-800.90; 5-470,Transfusion of erythrocyte concentrate; Appendectomy
+CASE-0097-15,unknown,Neurologie,00/00/0000,2025.07.01ö,15,F32.1,Moderate depressive episode,N17.9; K92.1,"Acute kidney failure, unspecified; Melena",8-550.1,Early geriatric complex treatment
+CASE-0143-31,patientnr0143,Intensivstation,2025/02/24^,14-Mar-2025,18,G20,Parkinson disease,,,,
+CASE-0092-11,,missing,20250518,26_05_2025,8,I63.9,"Cerebral infarction, unspecified",K92.1; I63.9,"Melena; Cerebral infarction, unspecified",missing,Transfusion of erythrocyte concentrate
+CASE-0108-33,pateintnr0108,Intensivstation, ,07-Jan-2026,16,N17.9,"Acute kidney failure, unspecified",J44.1; M16.1,Chronic obstructive pulmonary disease with acute exacerbation; Primary coxarthrosis,5-470,Appendectomy
+CASE-0015-27,patientnr0015,Neurologie,2026.01.12,09_02_2026,28,I50.1,N/A,,,5-470; 8-98f.0,Appendectomy; Pulmonology complex treatment
+CASE-0159-14,patientnr0159,Intensivstation,2025.12.21,2026-Jan-17,27,K92.1,Melena,K92.1; F32.1,Melena; Moderate depressive episode,8-800.90; 5-470,Transfusion of erythrocyte concentrate; Appendectomy
+CASE-0144-21,patientnr0144,Geriatrie,20250711,Jul 23 2025,12,N17.9,"Acute kidney failure, unspecified",I10; F32.1,Essential hypertension; Moderate depressive episode^,,
+CASE-0187-08,patientnr0187,Innere Medizin,08/17/2025,Sep 04 2025,18,G20,Parkinson disease,N17.9; I50.1,"Acute kidney failure, unspecified; Left ventricular failure",,
+CASE-0017-26,patientnr0017,Intensivstation,03/05/2025,2025/03/27,22,I63.9,"Cerebral infarction, unspecified",N17.9; S72.0,"Acute kidney failure, unspecified; Fracture of neck of femur",,
+CASE-0033-11,patientnr0033,Geriatrie,2025-12-28,20260116,19,I50.1,Left ventricular failure$,S72.0; J18.9,"Fracture of neck of femur; Pneumonia, unspecified",8-930; 8-550.1,Monitoring of cerebral activity; Early geriatric complex treatment
+CASE-0074-15,patientnr0074,Chirurgie,20250822,2025.08.27,5,S72.0,Fracture of neck of femur,unknown,Parkinson disease; Left ventricular failure; Primary coxarthrosis,,
+CASE-0020-09,patientnr0020,Intensivstation,Nov 06 2025,20251111,5$,N17.9,"Acute kidney failure, unspecified",J18.9; G20; I63.9,"Pneumonia, unspecified; Parkinson disease; Cerebral infarction, unspecified",,
+CASE-0144-22,patientnr0144@,Chirurgie,21-Jan-2025,17_02_2025,27,J18.9,"Pneumonia, unspecified",N17.9,"Acute kidney failure, unspecified",,
+CASE-0143-32,patientnr0143ß,Neurologie,NaN,18-May-2025,10#,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,K92.1; M16.1; F32.1,Melena; Primary coxarthrosis; Moderate depressive episode,8-98f.0,Pulmonology complex treatment
+CASE-0175-29,patientnr0175,Kardiologie,23_09_2025,2025-10-23,30ß,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,J44.1; N17.9,"Chronic obstructive pulmonary disease with acute exacerbation; Acute kidney failure, unspecified",8-98f.0,Pulmonology complex treatment
+CASE-0129-25,patientnr0129,Geriatrie,16.02.2025,20250221$,5,I10,Essential hypertension,I63.9; S72.0$,"Cerebral infarction, unspecified; Fracture of neck of femur",8-800.90; 8-550.1,Transfusion of erythrocyte concentrate; Early geriatric complex treatmentä
+CASE-0064-10,patientnr0064,Intensivstation,21.03.2025,2025-03-27,6,F32.1	,Moderate depressive episode,C34.1; I10; S72.0,"Malignant neoplasm of upper lobe, bronchus or lung; Essential hypertension; Fracture of neck of femur",5-470,Appendectomy
+CASE-0198-38,patientnr0198,Geriatrie,2025/06/27,07/26/2025,29,F32.1,Moderate depressive episode,K92.1; I50.1; E11.9,Melena; Left ventricular failure; Type 2 diabetes mellitus without complications,,
+CASE-0108-34,patienntr0108,Neurologie,2025.05.24,20250528,4ö,S72.0,Fracture of neck of femur,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",NaN,
+CASE-0158-16,patientnr0158,Neurologie,00/00/0000,21.05.2025,22,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",J44.1,Chronic obstructive pulmonary disease with acute exacerbation,8-930,Monitoring of cerebral activity
+CASE-0143-33,patientnr0143,Innere Medizin,2025/01/20,08-Feb-2025,19,I10,Essential hypertension$,M16.1; G20; E11.9,Primary coxarthrosis; Parkinson disease; Type 2 diabetes mellitus without complications,,
+CASE-0134-11,patientnr0134,Intensivstation,Jun 05 2025,03.07.2025,28,E11.9,Type 2 diabetes mellitus without complications,,,,
+CASE-0153-08,patientnr0153,Innere Medizin,14_03_2025,21-Mar-2025,7,S72.0,Fracture of neck of femur,C34.1; M16.1,"Malignant neoplasm of upper lobe, bronchus or lung; Primary coxarthrosis",5-470; 8-800.90,Appendectomy; Transfusion of erythrocyte concentrate
+CASE-0143-34,patientnr0143,Innere Medizin,11/03/2025,23.11.2025,unknown,S72.0,Fracture of neck of femur,K92.1; M16.1; I63.9,"Melena; Primary coxarthrosis; Cerebral infarction, unspecified",1-910,Diagnostic bronchoscopy
+CASE-0001-13,patientnr0001,Intensivstation,2025/05/15,2025.06.11,27,E11.9,Type 2 diabetes mellitus without complications,I63.9; K92.1; C34.1,"Cerebral infarction, unspecified; Melena; Malignant neoplasm of upper lobe, bronchus or lung",8-930,Monitoring of cerebral activity
+CASE-0070-37ö,patientnr0070,Neurologie,24_06_2025,Jul 14 2025,20,G20,NULL,I50.1; J18.9; J44.1,"Left ventricular failure; Pneumonia, unspecified; Chronic obstructive pulmonary disease with acute exacerbation",5-470; 1-910,Appendectomy; Diagnostic bronchoscopy
+CASE-0063-43,patientnr0063ö,Pneumologie,22_02_2025,2025.03.12,18,C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",I63.9,"Cerebral infarction, unspecified",8-800.90,Transfusion of erythrocyte concentrate
+CASE-0144-23,patientnr0144,Chirurgie,2025.04.20,2025-Apr-29,9,E11.9,Type 2 diabetes mellitus without complications,I10^,Essential hypertension,1-910,Diagnostic bronchoscopy
+CASE-0128-15,patientnr0128,Neurologie,2025.10.26,2025-Nov-05,10,J18.9,"Pneumonia, unspecified",N17.9; G20,"Acute kidney failure, unspecified; Parkinson disease",,
+CASE-0144-24,patientnr0144,Geriatrie,missing,21.10.2025,29,N17.9,"Acute kidney failure, unspecified",,,5-470,Appendectomy
+CASE-0092-12,patientnr0092@,Pneumologie,2026.01.22ö,17.02.2026,26,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,N17.9; I50.1,"Acute kidney failure, unspecified; Left ventricular failure",8-98f.0; 1-910,N/A
+CASE-0037-22,patientnr0037,Neurologie,20250501,May 26 2025@,25,K92.1,Melena,I63.9,"Cerebral infarction, unspecified",8-550.1; 5-470,Early geriatric complex treatment; Appendectomy
+CASE-0122-22,patientn0r122,Neurologie,06/08/2025,20250617,9,E11.9,Type 2 diabetes mellitus without complications,J44.1; S72.0; J18.9,"Chronic obstructive pulmonary disease with acute exacerbation; Fracture of neck of femur; Pneumonia, unspecified",,
+CASE-0017-27,patientnr0017,Chirurgie,13-Apr-2025,05/01/2025,18,NULL,"Malignant neoplasm of upper lobe, bronchus or lung",,,5-820.0,Implantation of hip joint prosthesis
+CASE-0008-09,patientnr0008,Intensivstation,2026.02.01,2026/02/20,19,E11.9,Type 2 diabetes mellitus without complications,,,5-470,Appendectomy
+CASE-0153-09,patientnr0153,Chirurgie,18-Apr-2025,20250424,6,S72.0,Fracture of neck of femur,K92.1; I10,,1-910; 8-98f.0,NaN
+CASE-0074-16,patientnr0074,Innere Medizin,Jan 06 2025,04-Feb-2025,29,J18.9,"Pneumonia, unspecified",M16.1,Primary coxarthrosis,1-910,Diagnostic bronchoscopy
+CASE-0143-35,patientnr0143,Innere Medizin,32.01.2024,Oct 12 2025,25,J18.9,"Pneumonia, unspecified",,missing,,
+CASE-0001-14,patientnr0001,Neurologie,07_04_2025,12_04_2025,5,unknown,"Acute kidney failure, unspecified",C34.1,"Malignant neoplasm of upper lobe, bronchus or lung",8-930,Monitoring of cerebral activity
+CASE-0122-23,patientnr0122 ,Kardiologie,02/13/2025,99.99.9999,26,N17.9,"Acute kidney failure, unspecified",,,8-930,Monitoring of cerebral activity

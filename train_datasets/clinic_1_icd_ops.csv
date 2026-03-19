@@ -1,0 +1,3 @@
+case_id,patient_id,ward,admission_date,discharge_date,length_of_stay_days,primary_icd10_code,primary_icd10_description_en,secondary_icd10_codes,secondary_icd10_descriptions_en,ops_codes,ops_descriptions_en
+CASE-198,PAT-6412,Innere Medizin,2026-02-06,2026-02-07,2,E11.9,Type 2 diabetes mellitus without complications,R54; Z74.1,Age-related physical debility; Need for assistance with personal care,8-800.c0,Intravenous medication administration
+CASE-255,PAT-1666,Pneumologie,2026-02-19,2026-02-21,3,J44.1,Chronic obstructive pulmonary disease with acute exacerbation,Z74.1,Need for assistance with personal care,8-98f.0,Pulmonology complex treatment
