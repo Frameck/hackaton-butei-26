@@ -3,7 +3,6 @@ import StatsRow from './StatsRow.jsx'
 import CompletenessChart from './CompletenessChart.jsx'
 import ColumnCard from './ColumnCard.jsx'
 import DataPreview from './DataPreview.jsx'
-import RowIssuesView from './RowIssuesView.jsx'
 import MLPanel from './MLPanel.jsx'
 import MissingRowsPanel from './MissingRowsPanel.jsx'
 import PatientIDCard from './PatientIDCard.jsx'
@@ -39,7 +38,7 @@ export default function DatasetView({ name }) {
   // tabs: 'columns' | 'rows' | 'ml'
   const [activeTab, setActiveTab] = useState('columns')
   // which groups are collapsed
-  const [collapsed, setCollapsed] = useState({})
+  const [collapsed, setCollapsed] = useState({ complete: true, partial: true, incomplete: true })
   // missing rows panel
   const [showMissing, setShowMissing]   = useState(false)
   // patient id panel
@@ -51,7 +50,7 @@ export default function DatasetView({ name }) {
     setError(null)
     setData(null)
     setActiveTab('columns')
-    setCollapsed({})
+    setCollapsed({ complete: true, partial: true, incomplete: true })
     setShowMissing(false)
     setShowPatientID(false)
 
@@ -129,12 +128,6 @@ export default function DatasetView({ name }) {
           <span className="tab-count">{data.column_details?.length || 0}</span>
         </button>
         <button
-          className={`tab-btn ${activeTab === 'rows' ? 'active' : ''}`}
-          onClick={() => setActiveTab('rows')}
-        >
-          ⚠ ROW ISSUES
-        </button>
-        <button
           className={`tab-btn ${activeTab === 'ml' ? 'active' : ''}`}
           onClick={() => setActiveTab('ml')}
         >
@@ -189,15 +182,10 @@ export default function DatasetView({ name }) {
         </>
       )}
 
-      {/* ── Row Issues tab ─────────────────────────────────────── */}
-      {activeTab === 'rows' && (
-        <RowIssuesView datasetName={name} totalRows={data.rows} />
-      )}
-
-      {/* ── ML tab ─────────────────────────────────────────────── */}
-      {activeTab === 'ml' && (
-        <MLPanel datasetName={name} />
-      )}
+      {/* ── ML tab — always mounted so scan results survive tab switches ── */}
+      <div style={{ display: activeTab === 'ml' ? 'block' : 'none' }}>
+        <MLPanel key={name} datasetName={name} />
+      </div>
 
       {/* ── AI Repair tab ───────────────────────────────────────── */}
       {activeTab === 'ai' && (

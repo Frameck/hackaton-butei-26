@@ -49,15 +49,10 @@ export default function CompletenessChart({ columns }) {
 
   if (!data.length) return null
 
-  // Dynamic width so it scrolls horizontally for many columns
-  const barWidth  = 28
-  const minWidth  = Math.max(600, data.length * (barWidth + 4))
-
   return (
     <div className="chart-section">
       <div className="section-heading">Completeness Per Column</div>
-      <div style={{ overflowX: 'auto' }}>
-        <div style={{ width: minWidth, height: 220 }}>
+      <div style={{ width: '100%', height: 220 }}>
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data} margin={{ top: 5, right: 10, left: -10, bottom: 60 }}>
               <CartesianGrid
@@ -82,14 +77,13 @@ export default function CompletenessChart({ columns }) {
                 tickFormatter={v => `${v}%`}
               />
               <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(245,158,11,0.06)' }} />
-              <Bar dataKey="completeness" radius={[3, 3, 0, 0]} maxBarSize={barWidth}>
+              <Bar dataKey="completeness" radius={[3, 3, 0, 0]} maxBarSize={32}>
                 {data.map((entry, index) => (
                   <Cell key={index} fill={barColor(entry.completeness)} />
                 ))}
               </Bar>
             </BarChart>
           </ResponsiveContainer>
-        </div>
       </div>
     </div>
   )
