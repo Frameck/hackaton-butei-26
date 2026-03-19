@@ -20,7 +20,7 @@ export default function Sidebar({
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
-        <div className="sidebar-title">◈ DQ Dashboard</div>
+        <div className="sidebar-title">◈ MedMap</div>
         <div className="sidebar-subtitle">
           {loading ? 'loading...' : `${datasets.length} datasets`}
         </div>

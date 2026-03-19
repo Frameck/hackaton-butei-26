@@ -1113,21 +1113,52 @@ def export_db(name: str):
             except Exception:
                 continue
 
-        # ── Derive table / file name ────────────────────────────────────────
-        base       = os.path.splitext(name)[0]
-        table_name = re.sub(r"[^\w]", "_", base).strip("_") or "dataset"
+        # ── Derive candidate table name from filename ───────────────────────
+        base            = os.path.splitext(name)[0]
+        candidate_name  = re.sub(r"[^\w]", "_", base).strip("_") or "dataset"
 
-        # ── Write to SQLite ─────────────────────────────────────────────────
-        db_dir  = os.path.join(os.path.dirname(__file__), "databases")
+        # ── Single shared DB, schema-initialised on first use ───────────────
+        db_dir      = os.path.join(os.path.dirname(__file__), "databases")
         os.makedirs(db_dir, exist_ok=True)
-        db_path = os.path.join(db_dir, f"{table_name}.sqlite")
+        db_path     = os.path.join(db_dir, "epacc.sqlite")
+        schema_path = os.path.join(os.path.dirname(__file__), "schema.sql")
 
         with sqlite3.connect(db_path) as con:
-            corrected_df.to_sql(table_name, con, if_exists="replace", index=False)
+            # Apply schema only if the DB is new (no tables yet)
+            cur = con.execute("SELECT count(*) FROM sqlite_master WHERE type='table'")
+            if cur.fetchone()[0] == 0 and os.path.exists(schema_path):
+                with open(schema_path, "r", encoding="utf-8") as f:
+                    con.executescript(f.read())
+
+            # Case-insensitive match against existing schema tables
+            existing = {
+                row[0].lower(): row[0]
+                for row in con.execute(
+                    "SELECT name FROM sqlite_master WHERE type='table'"
+                ).fetchall()
+            }
+            table_name = existing.get(candidate_name.lower(), candidate_name)
+
+            # Only insert columns that exist in the schema table (if it exists)
+            if table_name in existing.values():
+                schema_cols = [
+                    row[1]
+                    for row in con.execute(
+                        f'PRAGMA table_info("{table_name}")'
+                    ).fetchall()
+                ]
+                common_cols = [c for c in schema_cols if c in corrected_df.columns]
+                export_df   = corrected_df[common_cols] if common_cols else corrected_df
+                # Clear previous data for this table before inserting
+                con.execute(f'DELETE FROM "{table_name}"')
+                export_df.to_sql(table_name, con, if_exists="append", index=False)
+            else:
+                # Fallback: create table dynamically
+                corrected_df.to_sql(table_name, con, if_exists="replace", index=False)
 
         return safe_jsonify({
             "success":             True,
-            "file_name":           f"{table_name}.sqlite",
+            "file_name":           "epacc.sqlite",
             "table_name":          table_name,
             "rows_exported":       len(corrected_df),
             "corrections_applied": applied,
@@ -1139,14 +1170,12 @@ def export_db(name: str):
 
 @app.route("/api/datasets/<path:name>/download-sqlite", methods=["GET"])
 def download_sqlite(name: str):
-    """Download the previously exported SQLite file."""
+    """Download the shared epacc.sqlite database."""
     from flask import send_file
-    base       = os.path.splitext(name)[0]
-    table_name = re.sub(r"[^\w]", "_", base).strip("_") or "dataset"
-    db_path    = os.path.join(os.path.dirname(__file__), "databases", f"{table_name}.sqlite")
+    db_path = os.path.join(os.path.dirname(__file__), "databases", "epacc.sqlite")
     if not os.path.exists(db_path):
         return safe_jsonify({"error": "SQLite file not found — export first."}), 404
-    return send_file(db_path, as_attachment=True, download_name=f"{table_name}.sqlite")
+    return send_file(db_path, as_attachment=True, download_name="epacc.sqlite")
 
 
 # ---------------------------------------------------------------------------
