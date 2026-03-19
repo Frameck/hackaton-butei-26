@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const CONF_COLOR = { high: '#34c759', medium: '#fbbf24', low: '#f87171' }
 
@@ -6,21 +6,47 @@ export default function AIRepairPanel({ datasetName, dbConn }) {
   const [repairStatus, setRepairStatus] = useState('idle')
   const [corrections, setCorrections]   = useState([])
   const [summary, setSummary]           = useState('')
-  const [demoMeta, setDemoMeta]         = useState(null)
+  const [repairMeta, setRepairMeta]     = useState(null)
   const [repairError, setRepairError]   = useState(null)
   const [exportStatus, setExportStatus] = useState('idle')
   const [exportResult, setExportResult] = useState(null)
+  const repairAbortRef = useRef(null)
+  const exportAbortRef = useRef(null)
 
   const isConnected = dbConn?.status === 'connected'
 
-  async function handleRepair() {
-    setRepairStatus('loading')
+  useEffect(() => {
+    return () => {
+      repairAbortRef.current?.abort()
+      exportAbortRef.current?.abort()
+    }
+  }, [])
+
+  useEffect(() => {
+    repairAbortRef.current?.abort()
+    exportAbortRef.current?.abort()
+    setRepairStatus('idle')
     setCorrections([])
     setSummary('')
-    setDemoMeta(null)
+    setRepairMeta(null)
     setRepairError(null)
     setExportStatus('idle')
     setExportResult(null)
+  }, [datasetName])
+
+  async function handleRepair() {
+    repairAbortRef.current?.abort()
+    const controller = new AbortController()
+    repairAbortRef.current = controller
+
+    setRepairStatus('loading')
+    setCorrections([])
+    setSummary('')
+    setRepairMeta(null)
+    setRepairError(null)
+    setExportStatus('idle')
+    setExportResult(null)
+
     try {
       const r = await fetch(
         `/api/datasets/${encodeURIComponent(datasetName)}/ai-repair`,
@@ -28,21 +54,33 @@ export default function AIRepairPanel({ datasetName, dbConn }) {
           method:  'POST',
           headers: { 'Content-Type': 'application/json' },
           body:    JSON.stringify({}),
+          signal:  controller.signal,
         }
       )
-      const data = await r.json()
-      if (data.error) throw new Error(data.error)
+      const data = await r.json().catch(() => ({}))
+      if (!r.ok || data.error) throw new Error(data.error || `Request failed (${r.status})`)
+      if (controller.signal.aborted) return
+
       setCorrections(data.corrections || [])
       setSummary(data.summary || '')
-      setDemoMeta(data.demo || null)
+      setRepairMeta(data.meta || data.demo || null)
       setRepairStatus('done')
     } catch (e) {
+      if (e.name === 'AbortError') return
       setRepairError(e.message)
       setRepairStatus('error')
+    } finally {
+      if (repairAbortRef.current === controller) {
+        repairAbortRef.current = null
+      }
     }
   }
 
   async function handleExport() {
+    exportAbortRef.current?.abort()
+    const controller = new AbortController()
+    exportAbortRef.current = controller
+
     setExportStatus('loading')
     setExportResult(null)
     try {
@@ -63,15 +101,23 @@ export default function AIRepairPanel({ datasetName, dbConn }) {
               driver:   dbConn.driver,
             },
           }),
+          signal: controller.signal,
         }
       )
-      const data = await r.json()
-      if (data.error) throw new Error(data.error)
+      const data = await r.json().catch(() => ({}))
+      if (!r.ok || data.error) throw new Error(data.error || `Export failed (${r.status})`)
+      if (controller.signal.aborted) return
+
       setExportResult(data)
       setExportStatus('done')
     } catch (e) {
+      if (e.name === 'AbortError') return
       setExportResult({ error: e.message })
       setExportStatus('error')
+    } finally {
+      if (exportAbortRef.current === controller) {
+        exportAbortRef.current = null
+      }
     }
   }
 
@@ -111,8 +157,8 @@ export default function AIRepairPanel({ datasetName, dbConn }) {
         <div className="ai-repair-loading">
           <div className="loading-spinner" />
           <div className="ai-repair-loading-text">
-            Claude is analyzing the data…
-            <span className="ai-repair-loading-sub">This may take 15–30 seconds</span>
+            Claude is running an optimized repair pass…
+            <span className="ai-repair-loading-sub">Usually 5–20 seconds depending on dataset size</span>
           </div>
         </div>
       )}
@@ -129,13 +175,24 @@ export default function AIRepairPanel({ datasetName, dbConn }) {
       {repairStatus === 'done' && (
         <div className="ai-repair-results">
           {summary && <div className="ai-repair-summary">{summary}</div>}
-          {demoMeta && (
-            <div style={{
-              fontFamily: 'var(--font-data)', fontSize: 10, color: '#fbbf24',
-              background: '#fbbf2415', border: '1px solid #fbbf2440',
-              borderRadius: 6, padding: '6px 10px', marginBottom: 10,
-            }}>
-              ⚡ DEMO MODE — {demoMeta.note}
+          {repairMeta && (
+            <div className="ai-repair-meta">
+              <span className="ai-repair-meta-title">OPTIMIZED CLAUDE PASS</span>
+              <span className="ai-repair-meta-note">{repairMeta.note}</span>
+              <span className="ai-repair-meta-stats">
+                {repairMeta.rows_analysed ?? 0} rows analysed
+                {' · '}
+                {repairMeta.total_issue_rows ?? 0} issue rows detected
+                {repairMeta.duration_ms ? ` · ${repairMeta.duration_ms} ms` : ''}
+              </span>
+              {repairMeta.model && (
+                <span className="ai-repair-meta-model">{repairMeta.model}</span>
+              )}
+            </div>
+          )}
+          {repairMeta?.context_columns?.length > 0 && (
+            <div className="ai-repair-context">
+              Focus columns: {repairMeta.context_columns.join(', ')}
             </div>
           )}
 

@@ -1212,6 +1212,43 @@ html, body, #root {
   line-height: 1.6;
 }
 
+.ai-repair-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(251,191,36,0.30);
+  background: rgba(251,191,36,0.10);
+}
+
+.ai-repair-meta-title {
+  font-family: var(--font-data);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #b45309;
+}
+
+.ai-repair-meta-note {
+  font-size: 11px;
+  color: var(--text-primary);
+}
+
+.ai-repair-meta-stats,
+.ai-repair-meta-model,
+.ai-repair-context {
+  font-family: var(--font-data);
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+.ai-repair-context {
+  margin-bottom: 12px;
+}
+
 .ai-repair-empty {
   font-family: var(--font-data);
   font-size: 12px;

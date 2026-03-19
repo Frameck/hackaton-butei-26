@@ -7,6 +7,7 @@ import os
 import re
 import sys
 import logging
+import time
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -253,12 +254,38 @@ def load_dataset(filepath: str) -> pd.DataFrame:
 # ---------------------------------------------------------------------------
 # Column analysis
 # ---------------------------------------------------------------------------
-RE_MIXED_CHARS = re.compile(r"\d[\@\#\$\%\!\*\&][^\s]|[^\d\s][\d]+\@")
+RE_HAS_ALPHA_OR_SPECIAL = re.compile(r"[A-Za-z@#$%!*&]")
+RE_HAS_DIGIT = re.compile(r"\d")
 
 def is_sentinel(val) -> bool:
     if pd.isna(val):
         return False  # already null, counted separately
     return str(val).strip().lower() in SENTINEL_VALUES
+
+
+def _sentinel_mask(series: pd.Series) -> pd.Series:
+    if str(series.dtype) != "object":
+        return pd.Series(False, index=series.index)
+    return (
+        series
+        .fillna("")
+        .astype(str)
+        .str.strip()
+        .str.lower()
+        .isin(SENTINEL_VALUES)
+        & series.notna()
+    )
+
+
+def _garbled_numeric_mask(series: pd.Series) -> pd.Series:
+    if str(series.dtype) != "object":
+        return pd.Series(False, index=series.index)
+    text = series.fillna("").astype(str)
+    return (
+        text.str.contains(RE_HAS_ALPHA_OR_SPECIAL, regex=True)
+        & text.str.contains(RE_HAS_DIGIT, regex=True)
+        & series.notna()
+    )
 
 
 def infer_type(series: pd.Series, dtype) -> str:
@@ -294,9 +321,10 @@ def detect_wrong_type(series: pd.Series, dtype) -> tuple[bool, str]:
     sample = series.dropna().astype(str)
     if len(sample) == 0:
         return False, ""
-    # Check for mixed chars like "73.9@"
-    garbled = sample.apply(lambda v: bool(re.search(r"[a-zA-Z@#$%!*&]", v) and
-                                          re.search(r"\d", v))).sum()
+    garbled = (
+        sample.str.contains(RE_HAS_ALPHA_OR_SPECIAL, regex=True)
+        & sample.str.contains(RE_HAS_DIGIT, regex=True)
+    ).sum()
     garbled_ratio = garbled / len(sample)
 
     numeric_ok = pd.to_numeric(sample, errors="coerce").notna().sum()
@@ -441,6 +469,144 @@ def list_dataset_files() -> list:
             if os.path.splitext(f)[1].lower() in {".csv", ".xlsx", ".xls", ".pdf"}]
 
 
+def _coerce_json_cell(v):
+    if pd.isna(v):
+        return None
+    if isinstance(v, np.integer):
+        return int(v)
+    if isinstance(v, np.floating):
+        fv = float(v)
+        return None if (math.isnan(fv) or math.isinf(fv)) else fv
+    return str(v)
+
+
+def _collect_issue_analysis(
+    df: pd.DataFrame,
+    row_limit: int = 500,
+    display_col_limit: int = 30,
+    issue_limit_per_row: int | None = None,
+    prioritize: bool = False,
+) -> dict:
+    empty_mask = pd.Series(False, index=df.index)
+    wt_cols = {col for col in df.columns if detect_wrong_type(df[col], df[col].dtype)[0]}
+    sentinel_by_col = {
+        col: _sentinel_mask(df[col])
+        for col in df.select_dtypes(include="object").columns
+    }
+    garbled_by_col = {
+        col: _garbled_numeric_mask(df[col])
+        for col in wt_cols
+        if str(df[col].dtype) == "object"
+    }
+
+    null_mask = df.isna().any(axis=1)
+
+    sentinel_mask = empty_mask.copy()
+    for mask in sentinel_by_col.values():
+        sentinel_mask |= mask.reindex(df.index, fill_value=False)
+
+    wt_cell_mask = empty_mask.copy()
+    for mask in garbled_by_col.values():
+        wt_cell_mask |= mask.reindex(df.index, fill_value=False)
+
+    pid_col = find_patient_id_col(df)
+    pid_stats = _analyze_patient_id(df, pid_col) if pid_col else {
+        "invalid_indices": [],
+        "invalid_count": 0,
+        "dominant_pattern": "",
+        "has_pattern": False,
+        "reasons": {},
+    }
+    pid_invalid_set = set(pid_stats["invalid_indices"])
+    pid_mask = pd.Series(df.index.isin(pid_invalid_set), index=df.index)
+
+    has_issue = null_mask | sentinel_mask | wt_cell_mask | pid_mask
+    issue_index = pd.Index(df.index[has_issue])
+    total_issue_rows = int(len(issue_index))
+
+    if prioritize and len(issue_index) > 0:
+        score = (
+            df.isna().sum(axis=1).astype(int)
+            + pid_mask.astype(int) * 4
+            + sentinel_mask.astype(int) * 3
+            + wt_cell_mask.astype(int) * 5
+        )
+        ordered = score.loc[issue_index].sort_values(ascending=False, kind="stable")
+        selected_indices = list(ordered.head(row_limit).index)
+    else:
+        selected_indices = list(issue_index[:row_limit])
+
+    display_cols = list(df.columns[:display_col_limit])
+    issue_rows = []
+    for idx in selected_indices:
+        row = df.loc[idx]
+        issues = []
+        for col in df.columns:
+            if pd.isna(row[col]):
+                issues.append({"col": col, "type": "null"})
+            elif col in sentinel_by_col and bool(sentinel_by_col[col].get(idx, False)):
+                issues.append({"col": col, "type": "sentinel", "value": str(row[col])})
+            elif col in garbled_by_col and bool(garbled_by_col[col].get(idx, False)):
+                issues.append({"col": col, "type": "wrong_type", "value": str(row[col])})
+        if pid_col and idx in pid_invalid_set and not any(i["col"] == pid_col for i in issues):
+            pid_val = row[pid_col]
+            if pd.isna(pid_val):
+                invalid_reason = "missing"
+            else:
+                pid_str = str(pid_val).strip()
+                if not pid_str:
+                    invalid_reason = "empty"
+                elif _has_bad_chars(pid_str):
+                    invalid_reason = "corrupt_chars"
+                else:
+                    invalid_reason = "pattern_mismatch"
+            issues.append({
+                "col": pid_col,
+                "type": "invalid_patient_id",
+                "value": None if pd.isna(pid_val) else str(pid_val),
+                "reason": invalid_reason,
+            })
+
+        if not issues:
+            continue
+
+        if issue_limit_per_row is not None:
+            issues = issues[:issue_limit_per_row]
+
+        row_data = {col: _coerce_json_cell(row[col]) for col in display_cols}
+        issue_rows.append({
+            "row_index": int(idx),
+            "data": row_data,
+            "issues": issues,
+            "issue_count": len(issues),
+        })
+
+    col_summary = {}
+    for col in df.columns:
+        null_count = int(df[col].isna().sum())
+        sentinel_count = int(sentinel_by_col[col].sum()) if col in sentinel_by_col else 0
+        wrong_type = col in wt_cols
+        invalid_patient_ids = int(pid_col == col and pid_stats["invalid_count"])
+        if null_count or sentinel_count or wrong_type or invalid_patient_ids:
+            col_summary[col] = {
+                "null_count": null_count,
+                "sentinel_count": sentinel_count,
+                "wrong_type": wrong_type,
+            }
+            if invalid_patient_ids:
+                col_summary[col]["invalid_patient_ids"] = invalid_patient_ids
+
+    return {
+        "total_rows": int(len(df)),
+        "total_issue_rows": total_issue_rows,
+        "columns": display_cols,
+        "issue_rows": issue_rows,
+        "col_summary": col_summary,
+        "patient_id_col": pid_col,
+        "patient_id_stats": pid_stats,
+    }
+
+
 # ---------------------------------------------------------------------------
 # Routes
 # ---------------------------------------------------------------------------
@@ -486,100 +652,14 @@ def api_dataset_issues(name: str):
         df = get_dataset(name)
         if df is None:
             return safe_jsonify({"error": "Dataset not found"}), 404
-
-        # Pre-compute which columns have wrong types
-        wt_cols = set()
-        for col in df.columns:
-            wt, _ = detect_wrong_type(df[col], df[col].dtype)
-            if wt:
-                wt_cols.add(col)
-
-        # Vectorised masks --------------------------------------------------
-        null_mask = df.isna().any(axis=1)
-
-        sentinel_mask = pd.Series(False, index=df.index)
-        for col in df.select_dtypes(include="object").columns:
-            sent = (
-                df[col]
-                .dropna()
-                .astype(str)
-                .str.strip()
-                .str.lower()
-                .isin(SENTINEL_VALUES)
-            )
-            sentinel_mask |= sent.reindex(df.index, fill_value=False)
-
-        wt_cell_mask = pd.Series(False, index=df.index)
-        for col in wt_cols:
-            if df[col].dtype == object:
-                garbled = (
-                    df[col]
-                    .dropna()
-                    .astype(str)
-                    .apply(lambda v: bool(
-                        re.search(r"[a-zA-Z@#$%!*&]", v) and re.search(r"\d", v)
-                    ))
-                )
-                wt_cell_mask |= garbled.reindex(df.index, fill_value=False)
-
-        has_issue = null_mask | sentinel_mask | wt_cell_mask
-        total_issue_rows = int(has_issue.sum())
-
-        # Build detail for up to 500 issue rows -----------------------------
-        issue_df = df[has_issue].head(500)
-        display_cols = list(df.columns[:30])
-
-        issue_rows = []
-        for idx in issue_df.index:
-            row = df.loc[idx]
-            issues = []
-            for col in df.columns:
-                val = row[col]
-                if pd.isna(val):
-                    issues.append({"col": col, "type": "null"})
-                elif is_sentinel(val):
-                    issues.append({"col": col, "type": "sentinel", "value": str(val)})
-                elif col in wt_cols:
-                    sv = str(val)
-                    if re.search(r"[a-zA-Z@#$%!*&]", sv) and re.search(r"\d", sv):
-                        issues.append({"col": col, "type": "wrong_type", "value": sv})
-
-            if not issues:
-                continue
-
-            row_data = {}
-            for col in display_cols:
-                v = row[col]
-                row_data[col] = None if pd.isna(v) else str(v)
-
-            issue_rows.append({
-                "row_index": int(idx),
-                "data": row_data,
-                "issues": issues,
-                "issue_count": len(issues),
-            })
-
-        # Per-column issue summary ------------------------------------------
-        col_summary = {}
-        for col in df.columns:
-            nc = int(df[col].isna().sum())
-            sc = 0
-            if df[col].dtype == object:
-                sc = int(
-                    df[col].dropna().astype(str).str.strip().str.lower()
-                    .isin(SENTINEL_VALUES).sum()
-                )
-            wt = col in wt_cols
-            if nc or sc or wt:
-                col_summary[col] = {"null_count": nc, "sentinel_count": sc, "wrong_type": wt}
-
+        analysis = _collect_issue_analysis(df, row_limit=500, display_col_limit=30)
         return safe_jsonify({
-            "total_rows":       int(len(df)),
-            "total_issue_rows": total_issue_rows,
-            "shown_rows":       len(issue_rows),
-            "columns":          display_cols,
-            "issue_rows":       issue_rows,
-            "col_summary":      col_summary,
+            "total_rows": analysis["total_rows"],
+            "total_issue_rows": analysis["total_issue_rows"],
+            "shown_rows": len(analysis["issue_rows"]),
+            "columns": analysis["columns"],
+            "issue_rows": analysis["issue_rows"],
+            "col_summary": analysis["col_summary"],
         })
     except Exception as e:
         return safe_jsonify({"error": str(e)}), 500
@@ -1011,55 +1091,244 @@ _CORRECTION_SCHEMA = {
     "additionalProperties": False,
 }
 
+_AI_REPAIR_MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-6").strip() or "claude-sonnet-4-6"
+_AI_REPAIR_MAX_ROWS = 18
+_AI_REPAIR_MAX_CONTEXT_COLS = 8
+_AI_REPAIR_MAX_ISSUES_PER_ROW = 4
+_AI_REPAIR_REFERENCE_ROWS = 4
+_AI_REPAIR_MAX_TOKENS = 1400
+_AI_REPAIR_CONFIDENCE = {"high", "medium", "low"}
+_AI_REPAIR_TOOL_NAME = "suggest_dataset_repairs"
+_AI_REPAIR_SYSTEM_PROMPT = (
+    "You are a medical data quality engineer. "
+    "Suggest only precise, cell-level corrections for corrupted healthcare data. "
+    "Use NULL only when a value cannot be inferred with confidence. "
+    "Prefer conservative fixes over guesses."
+)
+_AI_REPAIR_TOOL = {
+    "name": _AI_REPAIR_TOOL_NAME,
+    "description": (
+        "Return suggested corrections for corrupted dataset cells. "
+        "Use exact row indices and column names from the payload. "
+        "Only include meaningful fixes. "
+        "original_value must exactly match the supplied value or be NULL for missing cells."
+    ),
+    "input_schema": _CORRECTION_SCHEMA,
+    "strict": True,
+}
+_anthropic_client = None
+_anthropic_client_key = None
 
-def _build_repair_prompt(dataset_name: str, df: pd.DataFrame, issue_rows: list) -> str:
-    schema_lines = []
-    for col in list(df.columns[:10]):
-        dtype = str(df[col].dtype)
-        sample = df[col].dropna().astype(str).head(20)
-        dom_pat = ""
-        if len(sample) >= 3:
-            pats = sample.apply(_to_pattern)
-            dom_pat = pats.mode().iloc[0] if not pats.empty else ""
-        schema_lines.append(
-            f"  {col} ({dtype})" + (f"  [pattern: {dom_pat}]" if dom_pat else "")
-        )
 
-    all_issue_idx = {r["row_index"] for r in issue_rows}
-    valid_rows = df[~df.index.isin(all_issue_idx)].head(3)
-    valid_examples = []
+def _get_anthropic_client(api_key: str):
+    global _anthropic_client, _anthropic_client_key
+    if _anthropic_client is None or _anthropic_client_key != api_key:
+        _anthropic_client = _anthropic.Anthropic(api_key=api_key)
+        _anthropic_client_key = api_key
+    return _anthropic_client
+
+
+def _column_profile(df: pd.DataFrame, col: str) -> dict:
+    series = df[col]
+    sample = series.dropna().astype(str).head(20)
+    dominant_pattern = ""
+    if len(sample) >= 3:
+        patterns = sample.apply(_to_pattern)
+        dominant_pattern = patterns.mode().iloc[0] if not patterns.empty else ""
+    profile = {
+        "name": col,
+        "dtype": str(series.dtype),
+    }
+    if dominant_pattern:
+        profile["dominant_pattern"] = dominant_pattern
+    return profile
+
+
+def _build_ai_context_columns(df: pd.DataFrame, issue_rows: list, patient_id_col: str | None) -> list[str]:
+    ranked = []
+    seen = set()
+    if patient_id_col and patient_id_col in df.columns:
+        ranked.append(patient_id_col)
+        seen.add(patient_id_col)
+
+    for row in issue_rows:
+        for issue in row["issues"]:
+            col = issue["col"]
+            if col in df.columns and col not in seen:
+                ranked.append(col)
+                seen.add(col)
+            if len(ranked) >= _AI_REPAIR_MAX_CONTEXT_COLS:
+                return ranked
+
+    for col in df.columns:
+        if col not in seen:
+            ranked.append(col)
+            seen.add(col)
+        if len(ranked) >= _AI_REPAIR_MAX_CONTEXT_COLS:
+            break
+    return ranked
+
+
+def _build_repair_request(dataset_name: str, df: pd.DataFrame, issue_rows: list, patient_id_stats: dict, patient_id_col: str | None) -> tuple[dict, list[str]]:
+    context_cols = _build_ai_context_columns(df, issue_rows, patient_id_col)
+    issue_row_indices = {r["row_index"] for r in issue_rows}
+
+    reference_rows = []
+    valid_rows = df[~df.index.isin(issue_row_indices)].head(_AI_REPAIR_REFERENCE_ROWS)
     for _, row in valid_rows.iterrows():
-        ex = {}
-        for col in list(df.columns[:10]):
-            v = row[col]
-            ex[col] = None if pd.isna(v) else str(v)
-        valid_examples.append(ex)
+        reference_rows.append({col: _coerce_json_cell(row[col]) for col in context_cols})
 
-    return f"""You are a medical data quality engineer. Suggest precise corrections for corrupted values.
+    compact_issue_rows = []
+    for row in issue_rows:
+        compact_issue_rows.append({
+            "row_index": row["row_index"],
+            "data": {col: row["data"].get(col) for col in context_cols},
+            "issues": row["issues"],
+        })
 
-Dataset: {dataset_name}
+    payload = {
+        "dataset_name": dataset_name,
+        "context_columns": [_column_profile(df, col) for col in context_cols],
+        "reference_rows": reference_rows,
+        "corrupted_rows": compact_issue_rows,
+        "rules": {
+            "null_or_missing": 'Fill from context if obvious, otherwise use "NULL".',
+            "wrong_type": 'Strip invalid characters and return the clean value as a string.',
+            "invalid_patient_id": "Match the dominant patient ID pattern when clear.",
+            "sentinel_values": 'Prefer "NULL" unless a better replacement is strongly inferable.',
+            "confidence_levels": {
+                "high": "obvious fix",
+                "medium": "reasonable inference",
+                "low": "uncertain but still useful",
+            },
+        },
+    }
+    if patient_id_col:
+        payload["patient_id_context"] = {
+            "column": patient_id_col,
+            "dominant_pattern": patient_id_stats.get("dominant_pattern", ""),
+            "has_pattern": bool(patient_id_stats.get("has_pattern")),
+        }
+    return payload, context_cols
 
-Columns:
-{chr(10).join(schema_lines)}
 
-Reference valid rows (examples of correct data):
-{json.dumps(valid_examples, ensure_ascii=False)}
+def _block_attr(block, attr: str, default=None):
+    if isinstance(block, dict):
+        return block.get(attr, default)
+    return getattr(block, attr, default)
 
-Corrupted rows to fix:
-{json.dumps(issue_rows, ensure_ascii=False)}
 
-Rules:
-- null/missing values: fill from context if obvious, else use "NULL"
-- wrong-type (e.g. "73.9@"): strip invalid chars, return clean numeric string
-- invalid PatientID: fix to match the column pattern shown above
-- sentinel strings ("N/A", "missing", "?"): use "NULL" unless better value is inferable
-- confidence: "high"=obvious fix, "medium"=reasonable guess, "low"=uncertain
-- corrected_value="NULL" means the field should be set to null/missing
-- Only include corrections where you have a meaningful suggestion
-- original_value: exact value from the data (use "NULL" if the cell was null)
+def _extract_tool_payload(response) -> dict | None:
+    for block in getattr(response, "content", []):
+        if _block_attr(block, "type") == "tool_use" and _block_attr(block, "name") == _AI_REPAIR_TOOL_NAME:
+            payload = _block_attr(block, "input", {})
+            return payload if isinstance(payload, dict) else {}
+    return None
 
-Respond with ONLY valid JSON — no markdown, no explanation — matching exactly:
-{{"corrections":[{{"row_index":0,"column":"col","original_value":"x","corrected_value":"y","confidence":"high","reason":"why"}}],"summary":"one line summary"}}"""
+
+def _extract_text_response(response) -> str:
+    chunks = []
+    for block in getattr(response, "content", []):
+        if _block_attr(block, "type") == "text":
+            text = _block_attr(block, "text", "")
+            if text:
+                chunks.append(text)
+    return "\n".join(chunks).strip()
+
+
+def _parse_legacy_claude_json(raw_text: str) -> dict:
+    clean = raw_text.strip()
+    if clean.startswith("```"):
+        clean = re.sub(r"^```[a-z]*\n?", "", clean)
+        clean = re.sub(r"\n?```$", "", clean.rstrip())
+    return json.loads(clean)
+
+
+def _normalize_ai_result(result: dict, df: pd.DataFrame) -> dict:
+    corrections = []
+    seen = set()
+    for corr in result.get("corrections", []):
+        try:
+            row_index = int(corr["row_index"])
+            column = str(corr["column"])
+            if column not in df.columns or row_index not in df.index:
+                continue
+
+            key = (row_index, column)
+            if key in seen:
+                continue
+            seen.add(key)
+
+            current_value = df.at[row_index, column]
+            original_value = "NULL" if pd.isna(current_value) else str(current_value)
+            corrected_value = str(corr["corrected_value"]).strip()
+            if not corrected_value:
+                continue
+
+            confidence = str(corr.get("confidence", "medium")).strip().lower()
+            if confidence not in _AI_REPAIR_CONFIDENCE:
+                confidence = "medium"
+
+            normalized = {
+                "row_index": row_index,
+                "column": column,
+                "original_value": original_value,
+                "corrected_value": corrected_value,
+                "confidence": confidence,
+                "reason": str(corr.get("reason", "")).strip() or "AI suggested correction",
+            }
+            if normalized["corrected_value"] == normalized["original_value"]:
+                continue
+            corrections.append(normalized)
+        except Exception:
+            continue
+
+    summary = str(result.get("summary", "")).strip()
+    if not summary:
+        summary = f"Generated {len(corrections)} AI repair suggestions."
+
+    return {"corrections": corrections, "summary": summary}
+
+
+def _call_claude_repair(client_ai, payload: dict) -> dict:
+    request_args = {
+        "model": _AI_REPAIR_MODEL,
+        "max_tokens": _AI_REPAIR_MAX_TOKENS,
+        "system": _AI_REPAIR_SYSTEM_PROMPT,
+        "messages": [{"role": "user", "content": json.dumps(payload, ensure_ascii=False)}],
+        "tools": [_AI_REPAIR_TOOL],
+        "tool_choice": {"type": "tool", "name": _AI_REPAIR_TOOL_NAME},
+        "disable_parallel_tool_use": True,
+    }
+
+    try:
+        response = client_ai.messages.create(**request_args)
+    except Exception as tool_exc:
+        log.warning("Structured Claude repair call failed, falling back to text JSON: %s", tool_exc)
+        fallback_prompt = (
+            f"{_AI_REPAIR_SYSTEM_PROMPT}\n\n"
+            "Return only JSON matching this schema:\n"
+            f"{json.dumps(_CORRECTION_SCHEMA, ensure_ascii=False)}\n\n"
+            f"Payload:\n{json.dumps(payload, ensure_ascii=False)}"
+        )
+        response = client_ai.messages.create(
+            model=_AI_REPAIR_MODEL,
+            max_tokens=_AI_REPAIR_MAX_TOKENS,
+            messages=[{"role": "user", "content": fallback_prompt}],
+        )
+        raw_text = _extract_text_response(response)
+        if not raw_text:
+            raise RuntimeError("Claude returned an empty response")
+        return _parse_legacy_claude_json(raw_text)
+
+    tool_payload = _extract_tool_payload(response)
+    if tool_payload is not None:
+        return tool_payload
+
+    raw_text = _extract_text_response(response)
+    if not raw_text:
+        raise RuntimeError("Claude returned neither tool output nor text output")
+    return _parse_legacy_claude_json(raw_text)
 
 
 @app.route("/api/db/test-connection", methods=["POST"])
@@ -1108,12 +1377,6 @@ def test_db_connection():
         return safe_jsonify({"ok": False, "error": str(e)}), 200
 
 
-# Demo limits — keep payloads small so Claude responds fast and JSON stays intact
-_DEMO_MAX_ROWS    = 10   # rows sent to Claude
-_DEMO_MAX_COLS    = 10   # columns included per row
-_DEMO_MAX_ISSUES  = 3    # issue entries kept per row
-
-
 @app.route("/api/datasets/<path:name>/ai-repair", methods=["POST"])
 def ai_repair(name: str):
     """Use Claude AI to suggest corrections for corrupted data."""
@@ -1121,8 +1384,6 @@ def ai_repair(name: str):
 
     if not _HAS_ANTHROPIC:
         return safe_jsonify({"error": "anthropic package not installed. Run: pip install anthropic"}), 500
-
-    body = request.get_json(silent=True) or {}
 
     try:
         df = get_dataset(name)
@@ -1135,129 +1396,83 @@ def ai_repair(name: str):
             log.error("ANTHROPIC_API_KEY not set")
             return safe_jsonify({"error": "ANTHROPIC_API_KEY env var not set"}), 400
 
-        # ── Collect issue rows ──────────────────────────────────────────────
-        wt_cols = set()
-        for col in df.columns:
-            wt, _ = detect_wrong_type(df[col], df[col].dtype)
-            if wt:
-                wt_cols.add(col)
-
-        null_mask = df.isna().any(axis=1)
-
-        sent_mask = pd.Series(False, index=df.index)
-        for col in df.select_dtypes(include="object").columns:
-            sent = (df[col].dropna().astype(str).str.strip().str.lower()
-                    .isin(SENTINEL_VALUES))
-            sent_mask |= sent.reindex(df.index, fill_value=False)
-
-        wt_mask = pd.Series(False, index=df.index)
-        for col in wt_cols:
-            if df[col].dtype == object:
-                garbled = df[col].dropna().astype(str).apply(
-                    lambda v: bool(re.search(r"[a-zA-Z@#$%!*&]", v)
-                               and re.search(r"\d", v))
-                )
-                wt_mask |= garbled.reindex(df.index, fill_value=False)
-
-        pid_col = find_patient_id_col(df)
-        pid_invalid_set = set()
-        if pid_col:
-            pid_stats = _analyze_patient_id(df, pid_col)
-            pid_invalid_set = set(int(i) for i in pid_stats["invalid_indices"])
-
-        pid_mask = pd.Series(df.index.isin(pid_invalid_set), index=df.index)
-
-        has_issue = null_mask | sent_mask | wt_mask | pid_mask
-        total_issue_rows = int(has_issue.sum())
-
-        # ── Demo limit: only send a small sample to Claude ──────────────────
-        issue_indices = list(df[has_issue].head(_DEMO_MAX_ROWS).index)
-        log.info("Total issue rows: %d, sending %d to Claude (demo limit)",
-                 total_issue_rows, len(issue_indices))
-
-        display_cols = list(df.columns[:_DEMO_MAX_COLS])
-        issue_rows = []
-        for idx in issue_indices:
-            row = df.loc[idx]
-            issues = []
-            for col in df.columns:
-                val = row[col]
-                if pd.isna(val):
-                    issues.append({"col": col, "type": "null"})
-                elif is_sentinel(val):
-                    issues.append({"col": col, "type": "sentinel", "value": str(val)})
-                elif col in wt_cols:
-                    sv = str(val)
-                    if re.search(r"[a-zA-Z@#$%!*&]", sv) and re.search(r"\d", sv):
-                        issues.append({"col": col, "type": "wrong_type", "value": sv})
-            if pid_col and int(idx) in pid_invalid_set:
-                val = row[pid_col]
-                if not pd.isna(val):
-                    issues.append({"col": pid_col, "type": "invalid_patient_id",
-                                   "value": str(val)})
-
-            # Demo limit: cap issues per row
-            issues = issues[:_DEMO_MAX_ISSUES]
-
-            row_data = {}
-            for col in display_cols:
-                v = row[col]
-                row_data[col] = None if pd.isna(v) else str(v)
-
-            issue_rows.append({
-                "row_index": int(idx),
-                "data": row_data,
-                "issues": issues,
-            })
+        analysis = _collect_issue_analysis(
+            df,
+            row_limit=_AI_REPAIR_MAX_ROWS,
+            display_col_limit=_AI_REPAIR_MAX_CONTEXT_COLS,
+            issue_limit_per_row=_AI_REPAIR_MAX_ISSUES_PER_ROW,
+            prioritize=True,
+        )
+        issue_rows = analysis["issue_rows"]
+        total_issue_rows = analysis["total_issue_rows"]
 
         if not issue_rows:
             return safe_jsonify({"corrections": [], "summary": "No issues found in dataset."})
 
-        # ── Call Claude ─────────────────────────────────────────────────────
-        prompt = _build_repair_prompt(name, df, issue_rows)
-        log.debug("Prompt length: %d chars, rows: %d", len(prompt), len(issue_rows))
-
-        client_ai = _anthropic.Anthropic(api_key=api_key)
-
-        response = client_ai.messages.create(
-            model="claude-sonnet-4-6",
-            max_tokens=4096,
-            messages=[{"role": "user", "content": prompt}],
+        payload, context_cols = _build_repair_request(
+            name,
+            df,
+            issue_rows,
+            analysis["patient_id_stats"],
+            analysis["patient_id_col"],
+        )
+        payload_size = len(json.dumps(payload, ensure_ascii=False))
+        log.info(
+            "ai-repair sending %d prioritized rows out of %d issue rows (%d chars)",
+            len(issue_rows),
+            total_issue_rows,
+            payload_size,
         )
 
-        raw_text = next((b.text for b in response.content if b.type == "text"), "")
-        log.debug("Claude raw response (%d chars): %s", len(raw_text), raw_text[:500])
+        start = time.perf_counter()
+        client_ai = _get_anthropic_client(api_key)
+        raw_result = _call_claude_repair(client_ai, payload)
+        result = _normalize_ai_result(raw_result, df)
+        elapsed_ms = round((time.perf_counter() - start) * 1000)
 
-        # Strip markdown code fences if Claude wrapped the JSON
-        clean = raw_text.strip()
-        if clean.startswith("```"):
-            clean = re.sub(r"^```[a-z]*\n?", "", clean)
-            clean = re.sub(r"\n?```$", "", clean.rstrip())
-
-        if not clean:
-            log.error("Claude returned empty response")
-            return safe_jsonify({"error": "Claude returned an empty response"}), 500
-
-        try:
-            result = json.loads(clean)
-        except json.JSONDecodeError as je:
-            log.error("JSON parse failed: %s\nRaw text: %s", je, raw_text[:1000])
-            return safe_jsonify({"error": f"Failed to parse Claude response: {je}",
-                                 "raw": raw_text[:500]}), 500
-
-        # Attach demo metadata so the UI can show a disclaimer
-        result["demo"] = {
+        result["meta"] = {
             "rows_analysed": len(issue_rows),
             "total_issue_rows": total_issue_rows,
-            "note": f"Demo mode: showing fixes for {len(issue_rows)} of {total_issue_rows} issue rows.",
+            "context_columns": context_cols,
+            "model": _AI_REPAIR_MODEL,
+            "duration_ms": elapsed_ms,
+            "note": (
+                f"Optimized AI pass: prioritised {len(issue_rows)} high-signal rows "
+                f"out of {total_issue_rows} issue rows."
+            ),
         }
 
-        log.info("ai-repair done — %d corrections returned", len(result.get("corrections", [])))
+        log.info(
+            "ai-repair done — %d corrections returned in %d ms",
+            len(result.get("corrections", [])),
+            elapsed_ms,
+        )
         return safe_jsonify(result)
 
     except Exception as e:
         log.exception("Unhandled error in ai_repair")
         return safe_jsonify({"error": str(e)}), 500
+
+
+def _coerce_corrected_value(series: pd.Series, value):
+    if value == "NULL":
+        return None
+
+    dtype = series.dtype
+    if pd.api.types.is_integer_dtype(dtype):
+        parsed = pd.to_numeric(pd.Series([value]), errors="coerce").iloc[0]
+        return None if pd.isna(parsed) else int(parsed)
+    if pd.api.types.is_float_dtype(dtype):
+        parsed = pd.to_numeric(pd.Series([value]), errors="coerce").iloc[0]
+        return None if pd.isna(parsed) else float(parsed)
+    if pd.api.types.is_bool_dtype(dtype):
+        sval = str(value).strip().lower()
+        if sval in {"true", "1", "yes"}:
+            return True
+        if sval in {"false", "0", "no"}:
+            return False
+        return value
+    return value
 
 
 @app.route("/api/datasets/<path:name>/export-db", methods=["POST"])
@@ -1301,7 +1516,7 @@ def export_db(name: str):
                     continue
                 if row_idx not in corrected_df.index:
                     continue
-                corrected_df.at[row_idx, col] = (None if val == "NULL" else val)
+                corrected_df.at[row_idx, col] = _coerce_corrected_value(corrected_df[col], val)
                 applied += 1
             except Exception:
                 continue
