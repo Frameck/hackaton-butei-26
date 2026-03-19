@@ -1061,6 +1061,24 @@ def ai_repair(name: str):
 
         text = next((b.text for b in response.content if b.type == "text"), "{}")
         result = json.loads(text)
+
+        # ── Append issues Claude couldn't fix (for manual review in the UI) ──
+        addressed = {
+            (int(c["row_index"]), c["column"])
+            for c in result.get("corrections", [])
+        }
+        for row in issue_rows:
+            for iss in row["issues"]:
+                if (row["row_index"], iss["col"]) not in addressed:
+                    result["corrections"].append({
+                        "row_index":       row["row_index"],
+                        "column":          iss["col"],
+                        "original_value":  iss.get("value") or "NULL",
+                        "corrected_value": "",
+                        "confidence":      "none",
+                        "reason":          "No suggestion — manual review required",
+                    })
+
         return safe_jsonify(result)
 
     except Exception as e:

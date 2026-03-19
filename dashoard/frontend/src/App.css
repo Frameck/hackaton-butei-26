@@ -1226,6 +1226,7 @@ html, body, #root {
 }
 .ai-corrections-table {
   width: 100%;
+  min-width: 860px;
   border-collapse: collapse;
   font-family: var(--font-data);
   font-size: 11px;
@@ -1297,7 +1298,16 @@ html, body, #root {
   padding: 8px 12px;
   color: var(--text-secondary);
   font-size: 10px;
-  max-width: 260px;
+  max-width: 220px;
+}
+.ai-ct-actions {
+  padding: 6px 10px;
+  white-space: nowrap;
+  min-width: 100px;
+}
+.ai-ct-new {
+  padding: 8px 8px;
+  min-width: 110px;
 }
 
 /* ── Export section ─────────────────────────────────────────── */
